@@ -1,0 +1,4 @@
+mynginxmodule
+=============
+
+nginx test
