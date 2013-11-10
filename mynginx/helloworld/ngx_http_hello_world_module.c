@@ -69,6 +69,7 @@ static ngx_int_t ngx_http_hello_world_handler(ngx_http_request_t *r)
         b->memory=1; 
         b->last_buf=1; 
 
+	ngx_log_stderr(0, "haoning: ngx_http_hello_world_handler this will print ngx_hello_world\"%s\"",ngx_hello_world );
         r->headers_out.status=NGX_HTTP_OK; 
         r->headers_out.content_length_n=sizeof(ngx_hello_world); 
         ngx_http_send_header(r); 

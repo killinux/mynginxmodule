@@ -1,0 +1,7 @@
+should be use config include the .h and the .c files
+gdb:
+
+(gdb) break [<file-name>:]<func-name>
+(gdb) break [<file-name>:]<line-num>
+for example:
+(gdb) b  ngx_http_echo_module.c:107
