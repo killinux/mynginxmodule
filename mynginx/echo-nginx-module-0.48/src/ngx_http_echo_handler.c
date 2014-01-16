@@ -98,12 +98,12 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 {
     ngx_int_t                    rc;
     ngx_http_echo_ctx_t         *ctx;
-    ngx_log_stderr(0, "haoning: ngx_http_echo_handler\"%s\"","ngx_http_echo_handler.c" );
-    system("echo ngx_http_echo_handler > /data/a.log");
+    ngx_log_stderr(0, "haoning---- ngx_http_echo_handler\"%s\"","ngx_http_echo_handler.c" );
+    system("echo 'ngx_http_echo_handler' >> /data/ngx_http_echo_handler.log");
     dd("subrequest in memory: %d", (int) r->subrequest_in_memory);
     dd("haoning haohao subrequest in memory: %d", (int) r->subrequest_in_memory);
 
-    dd("haoning haohao  r->method in memory: %d",(int) r->method);
+    dd("haoning haohao  r->method in : %d",(int) r->method);
     dd("haoning haohao r->http_version: %d",(int) r->http_version) ;
     dd("haoning haohao r->request_line.data: %s",r->request_line.data) ;
     dd("haoning haohao r->uri.data): %s",r->uri.data);          

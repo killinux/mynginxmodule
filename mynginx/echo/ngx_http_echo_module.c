@@ -7,6 +7,7 @@
 #include <time.h>
 #include "haolog.h"
 
+#include <ngx_log.h>
 /* Module config */
 typedef struct {
 	ngx_str_t  ed;
@@ -56,7 +57,21 @@ ngx_module_t  ngx_http_echo_module = {
 	static ngx_int_t
 ngx_http_echo_handler(ngx_http_request_t *r)
 {
-	DEBUG_LOG("haoning.........ngx_http_echo_handler\n");
+	DEBUG_LOG("haoning haohao .........ngx_http_echo_handler\n");
+	ngx_log_stderr(0,"haoning: ngx_http_hello_world_handler\"%s\"","haohao" );
+//	ngx_log_error(0,"haoning: ngx_http_hello_world_handler\"%s\"","haohao" );
+	fprintf(stderr, "haoning hahahah:%s\r\n","ningning");
+        fprintf(stderr,"haoning haohao subrequest in memory: %d\n", (int) r->subrequest_in_memory);
+        fprintf(stderr,"haoning haohao  r->method : %d\n",(int) r->method);
+        fprintf(stderr,"haoning haohao r->http_version: %d\n",(int) r->http_version) ;
+        fprintf(stderr,"haoning haohao r->request_line.data: %s\n",r->request_line.data) ;
+        fprintf(stderr,"haoning haohao r->uri.data): %s\n",r->uri.data);
+        fprintf(stderr,"haoning haohao r->args.data: %s\n",r->args.data);
+        fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
+        fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
+        fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
+	fprintf(stderr,"haoning haohao r->exten.data: %s\n",r->exten.data);
+        fprintf(stderr,"haoning haohao -----------------: %s\n","end");
 	ngx_int_t rc;
 	ngx_buf_t *b;
 	ngx_chain_t out;
@@ -102,8 +117,7 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	static char *
 ngx_http_echo(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
-	//DEBUG_LOG("haoning --ngx_http_echo->>>>> init");
- 	ngx_log_stderr(0, "haoning: ngx_http_echo\"%s\"","haohao" );
+	DEBUG_LOG("haoning --ngx_http_echo->>>>> init");
 	ngx_http_core_loc_conf_t  *clcf;
 	clcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_core_module);
 	clcf->handler = ngx_http_echo_handler;
@@ -113,8 +127,7 @@ ngx_http_echo(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 	static void *
 ngx_http_echo_create_loc_conf(ngx_conf_t *cf)
 {
-	///DEBUG_LOG("haoning --ngx_http_echo_create_loc_conf");
- 	ngx_log_stderr(0, "haoning: ngx_http_echo_create_loc_conf\"%s\"","haohao" );
+	DEBUG_LOG("haoning --ngx_http_echo_create_loc_conf");
 	ngx_http_echo_loc_conf_t  *conf;
 	conf = ngx_pcalloc(cf->pool, sizeof(ngx_http_echo_loc_conf_t));
 	if (conf == NULL) {
@@ -127,8 +140,7 @@ ngx_http_echo_create_loc_conf(ngx_conf_t *cf)
 	static char *
 ngx_http_echo_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
 {
- 	ngx_log_stderr(0, "haoning: ngx_http_echo_merge_loc_conf\"%s\"","haohao" );
-//	DEBUG_LOG("haoning --ngx_http_echo_merge_loc_conf");
+	DEBUG_LOG("haoning --ngx_http_echo_merge_loc_conf");
 	ngx_http_echo_loc_conf_t *prev = parent;
 	ngx_http_echo_loc_conf_t *conf = child;
 	ngx_conf_merge_str_value(conf->ed, prev->ed, "");

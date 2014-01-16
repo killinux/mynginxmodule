@@ -1,4 +1,9 @@
-#define NGX_CONFIGURE " --prefix=/usr/local/nginx_hello --add-module=/root/mymodule/mynginxmodule/mynginx/helloworld"
+#define NGX_CONFIGURE " --prefix=/usr/local/nginx_echo --add-module=/root/haoning/mygit/mynginxmodule/mynginx/echo --with-debug"
+
+#ifndef NGX_DEBUG
+#define NGX_DEBUG  1
+#endif
+
 
 #ifndef NGX_COMPILER
 #define NGX_COMPILER  "gcc 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) "
@@ -66,7 +71,7 @@
 
 
 #ifndef NGX_CPU_CACHE_LINE
-#define NGX_CPU_CACHE_LINE  32
+#define NGX_CPU_CACHE_LINE  64
 #endif
 
 
@@ -129,7 +134,7 @@
 
 
 #ifndef NGX_PTR_SIZE
-#define NGX_PTR_SIZE  4
+#define NGX_PTR_SIZE  8
 #endif
 
 
@@ -144,12 +149,12 @@
 
 
 #ifndef NGX_MAX_SIZE_T_VALUE
-#define NGX_MAX_SIZE_T_VALUE  2147483647L
+#define NGX_MAX_SIZE_T_VALUE  9223372036854775807LL
 #endif
 
 
 #ifndef NGX_SIZE_T_LEN
-#define NGX_SIZE_T_LEN  (sizeof("-2147483648") - 1)
+#define NGX_SIZE_T_LEN  (sizeof("-9223372036854775808") - 1)
 #endif
 
 
@@ -164,12 +169,12 @@
 
 
 #ifndef NGX_TIME_T_SIZE
-#define NGX_TIME_T_SIZE  4
+#define NGX_TIME_T_SIZE  8
 #endif
 
 
 #ifndef NGX_TIME_T_LEN
-#define NGX_TIME_T_LEN  (sizeof("-2147483648") - 1)
+#define NGX_TIME_T_LEN  (sizeof("-9223372036854775808") - 1)
 #endif
 
 
@@ -324,7 +329,7 @@
 
 
 #ifndef NGX_PREFIX
-#define NGX_PREFIX  "/usr/local/nginx_hello/"
+#define NGX_PREFIX  "/usr/local/nginx_echo/"
 #endif
 
 

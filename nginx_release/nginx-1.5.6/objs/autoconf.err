@@ -184,8 +184,8 @@ cc -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -o objs/autotest objs/autotest.c
 ----------------------------------------
 checking for crypt()
 
-/tmp/cc6CbRny.o: In function `main':
-autotest.c:(.text+0x19): undefined reference to `crypt'
+/tmp/ccFGnsKU.o: In function `main':
+autotest.c:(.text+0xf): undefined reference to `crypt'
 collect2: ld returned 1 exit status
 ----------
 
@@ -292,8 +292,8 @@ checking for statvfs()
 ----------------------------------------
 checking for dlopen()
 
-/tmp/cc4ro733.o: In function `main':
-autotest.c:(.text+0x19): undefined reference to `dlopen'
+/tmp/ccOcpUWk.o: In function `main':
+autotest.c:(.text+0xf): undefined reference to `dlopen'
 collect2: ld returned 1 exit status
 ----------
 
@@ -441,8 +441,8 @@ checking for time_t size
 ----------------------------------------
 checking for setproctitle()
 
-/tmp/cc1UXajO.o: In function `main':
-autotest.c:(.text+0x11): undefined reference to `setproctitle'
+/tmp/cc8Ndqms.o: In function `main':
+autotest.c:(.text+0xf): undefined reference to `setproctitle'
 collect2: ld returned 1 exit status
 ----------
 
@@ -470,8 +470,8 @@ checking for pwrite()
 ----------------------------------------
 checking for sys_nerr
 
-/tmp/ccVfBHx5.o: In function `main':
-autotest.c:(.text+0xb): warning: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
+/tmp/ccEp5TCB.o: In function `main':
+autotest.c:(.text+0x6): warning: `sys_nerr' is deprecated; use `strerror' or `strerror_r' instead
 135
 ----------------------------------------
 checking for localtime_r()
@@ -500,9 +500,9 @@ checking for System V shared memory
 ----------------------------------------
 checking for POSIX semaphores
 
-/tmp/ccWbaRgK.o: In function `main':
-autotest.c:(.text+0x21): undefined reference to `sem_init'
-autotest.c:(.text+0x39): undefined reference to `sem_destroy'
+/tmp/cc4oIfFT.o: In function `main':
+autotest.c:(.text+0x1a): undefined reference to `sem_init'
+autotest.c:(.text+0x32): undefined reference to `sem_destroy'
 collect2: ld returned 1 exit status
 ----------
 

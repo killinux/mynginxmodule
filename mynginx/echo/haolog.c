@@ -1,20 +1,25 @@
 #include <stdio.h>
 #include <time.h>
-#define DEBUG_LOG( str ) log_append_to_file("/root/hellogit/hello/graphviz/nginx/mymodule/mylog/test.log", str,__FILE__,__LINE__ );  
+#define DEBUG_LOG( str ) log_append_to_file("/root/haolog.log", str,__FILE__,__LINE__ );  
 void log_append_to_file(char* filename,char* str,char* sourceFile,int fileLine)
 {
-        time_t t;
-        time(&t);
-        struct tm* tp= localtime(&t);
-        char now_str[100];
-        strftime(now_str, 100, "%Y-%m-%d %H:%M:%S", tp);
-        FILE *fo;
-        fo = fopen(filename, "a");
-    if (fo == 0) {
-        return;
-    }
-        fprintf(fo, "%s %s(:%d):%s\r\n",now_str,sourceFile,fileLine, str);
-        fclose(fo);
+	time_t t;
+	time(&t);
+	struct tm* tp= localtime(&t);
+	char now_str[100];
+	strftime(now_str, 100, "%Y-%m-%d %H:%M:%S", tp);
+	FILE *fo;
+	fo = fopen(filename, "a");
+	if (fo == 0) {
+		return;
+	}
+	//char buffer [255];
+	fprintf(fo, "%s %s(:%d):%s\r\n",now_str,sourceFile,fileLine, str);
+	//fprintf(stderr, "%s %s(:%d):%s\r\n",now_str,sourceFile,fileLine, str);
+	//sprintf(buffer, "%s %s(:%d):%s\r\n",now_str,sourceFile,fileLine, str);
+	//fputs( buffer,fo);
+	//write(ngx_stderr,buffer,sizeof(buffer));
+	fclose(fo);
 }
 
 //int main(int argc, char **argv)
