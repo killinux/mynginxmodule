@@ -97,7 +97,7 @@ HTTP_INCS = -I src/http \
 	-I src/http/modules
 
 
-ADDON_DEPS = $(CORE_DEPS)  /root/haoning/mygit/mynginxmodule/mynginx/echo/haolog.h $(HTTP_DEPS)
+ADDON_DEPS = $(CORE_DEPS)  $(HTTP_DEPS)
 
 
 objs/nginx:	objs/src/core/nginx.o \
@@ -207,8 +207,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_upstream_ip_hash_module.o \
 	objs/src/http/modules/ngx_http_upstream_least_conn_module.o \
 	objs/src/http/modules/ngx_http_upstream_keepalive_module.o \
-	objs/addon/echo/ngx_http_echo_module.o \
-	objs/addon/echo/haolog.o \
+	objs/addon/upstream/ngx_http_mytest_module.o \
 	objs/ngx_modules.o
 
 	$(LINK) -o objs/nginx \
@@ -319,10 +318,9 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/http/modules/ngx_http_upstream_ip_hash_module.o \
 	objs/src/http/modules/ngx_http_upstream_least_conn_module.o \
 	objs/src/http/modules/ngx_http_upstream_keepalive_module.o \
-	objs/addon/echo/ngx_http_echo_module.o \
-	objs/addon/echo/haolog.o \
+	objs/addon/upstream/ngx_http_mytest_module.o \
 	objs/ngx_modules.o \
-	-lpthread -lcrypt -lpcre -lpcre -lcrypto -lcrypto -lz
+	-lpthread -lcrypt -lpcre -lcrypto -lcrypto -lz
 	
 
 
@@ -1082,64 +1080,57 @@ objs/src/http/modules/ngx_http_upstream_keepalive_module.o:	$(CORE_DEPS) $(HTTP_
 		src/http/modules/ngx_http_upstream_keepalive_module.c
 
 
-objs/addon/echo/ngx_http_echo_module.o:	$(ADDON_DEPS) \
-	/root/haoning/mygit/mynginxmodule/mynginx/echo/ngx_http_echo_module.c
+objs/addon/upstream/ngx_http_mytest_module.o:	$(ADDON_DEPS) \
+	/root/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream/ngx_http_mytest_module.c
 	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
-		-o objs/addon/echo/ngx_http_echo_module.o \
-		/root/haoning/mygit/mynginxmodule/mynginx/echo/ngx_http_echo_module.c
-
-
-objs/addon/echo/haolog.o:	$(ADDON_DEPS) \
-	/root/haoning/mygit/mynginxmodule/mynginx/echo/haolog.c
-	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
-		-o objs/addon/echo/haolog.o \
-		/root/haoning/mygit/mynginxmodule/mynginx/echo/haolog.c
+		-o objs/addon/upstream/ngx_http_mytest_module.o \
+		/root/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream/ngx_http_mytest_module.c
 
 
 manpage:	objs/nginx.8
 
 objs/nginx.8:	man/nginx.8 objs/ngx_auto_config.h
-	sed -e "s|%%PREFIX%%|/usr/local/nginx_echo|" \
-		-e "s|%%PID_PATH%%|/usr/local/nginx_echo/logs/nginx.pid|" \
-		-e "s|%%CONF_PATH%%|/usr/local/nginx_echo/conf/nginx.conf|" \
-		-e "s|%%ERROR_LOG_PATH%%|/usr/local/nginx_echo/logs/error.log|" \
+	sed -e "s|%%PREFIX%%|/usr/local/nginx_upstream|" \
+		-e "s|%%PID_PATH%%|/usr/local/nginx_upstream/logs/nginx.pid|" \
+		-e "s|%%CONF_PATH%%|/usr/local/nginx_upstream/conf/nginx.conf|" \
+		-e "s|%%ERROR_LOG_PATH%%|/usr/local/nginx_upstream/logs/error.log|" \
 		< man/nginx.8 > $@
 
 install:	objs/nginx 		
-	test -d '$(DESTDIR)/usr/local/nginx_echo' || mkdir -p '$(DESTDIR)/usr/local/nginx_echo'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream' || mkdir -p '$(DESTDIR)/usr/local/nginx_upstream'
 
-	test -d '$(DESTDIR)/usr/local/nginx_echo/sbin' 		|| mkdir -p '$(DESTDIR)/usr/local/nginx_echo/sbin'
-	test ! -f '$(DESTDIR)/usr/local/nginx_echo/sbin/nginx' 		|| mv '$(DESTDIR)/usr/local/nginx_echo/sbin/nginx' 			'$(DESTDIR)/usr/local/nginx_echo/sbin/nginx.old'
-	cp objs/nginx '$(DESTDIR)/usr/local/nginx_echo/sbin/nginx'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream/sbin' 		|| mkdir -p '$(DESTDIR)/usr/local/nginx_upstream/sbin'
+	test ! -f '$(DESTDIR)/usr/local/nginx_upstream/sbin/nginx' 		|| mv '$(DESTDIR)/usr/local/nginx_upstream/sbin/nginx' 			'$(DESTDIR)/usr/local/nginx_upstream/sbin/nginx.old'
+	cp objs/nginx '$(DESTDIR)/usr/local/nginx_upstream/sbin/nginx'
 
-	test -d '$(DESTDIR)/usr/local/nginx_echo/conf' 		|| mkdir -p '$(DESTDIR)/usr/local/nginx_echo/conf'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream/conf' 		|| mkdir -p '$(DESTDIR)/usr/local/nginx_upstream/conf'
 
-	cp conf/koi-win '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/koi-utf '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/win-utf '$(DESTDIR)/usr/local/nginx_echo/conf'
+	cp conf/koi-win '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/koi-utf '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/win-utf '$(DESTDIR)/usr/local/nginx_upstream/conf'
 
-	test -f '$(DESTDIR)/usr/local/nginx_echo/conf/mime.types' 		|| cp conf/mime.types '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/mime.types '$(DESTDIR)/usr/local/nginx_echo/conf/mime.types.default'
+	test -f '$(DESTDIR)/usr/local/nginx_upstream/conf/mime.types' 		|| cp conf/mime.types '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/mime.types '$(DESTDIR)/usr/local/nginx_upstream/conf/mime.types.default'
 
-	test -f '$(DESTDIR)/usr/local/nginx_echo/conf/fastcgi_params' 		|| cp conf/fastcgi_params '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/fastcgi_params 		'$(DESTDIR)/usr/local/nginx_echo/conf/fastcgi_params.default'
+	test -f '$(DESTDIR)/usr/local/nginx_upstream/conf/fastcgi_params' 		|| cp conf/fastcgi_params '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/fastcgi_params 		'$(DESTDIR)/usr/local/nginx_upstream/conf/fastcgi_params.default'
 
-	test -f '$(DESTDIR)/usr/local/nginx_echo/conf/fastcgi.conf' 		|| cp conf/fastcgi.conf '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/fastcgi.conf '$(DESTDIR)/usr/local/nginx_echo/conf/fastcgi.conf.default'
+	test -f '$(DESTDIR)/usr/local/nginx_upstream/conf/fastcgi.conf' 		|| cp conf/fastcgi.conf '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/fastcgi.conf '$(DESTDIR)/usr/local/nginx_upstream/conf/fastcgi.conf.default'
 
-	test -f '$(DESTDIR)/usr/local/nginx_echo/conf/uwsgi_params' 		|| cp conf/uwsgi_params '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/uwsgi_params 		'$(DESTDIR)/usr/local/nginx_echo/conf/uwsgi_params.default'
+	test -f '$(DESTDIR)/usr/local/nginx_upstream/conf/uwsgi_params' 		|| cp conf/uwsgi_params '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/uwsgi_params 		'$(DESTDIR)/usr/local/nginx_upstream/conf/uwsgi_params.default'
 
-	test -f '$(DESTDIR)/usr/local/nginx_echo/conf/scgi_params' 		|| cp conf/scgi_params '$(DESTDIR)/usr/local/nginx_echo/conf'
-	cp conf/scgi_params 		'$(DESTDIR)/usr/local/nginx_echo/conf/scgi_params.default'
+	test -f '$(DESTDIR)/usr/local/nginx_upstream/conf/scgi_params' 		|| cp conf/scgi_params '$(DESTDIR)/usr/local/nginx_upstream/conf'
+	cp conf/scgi_params 		'$(DESTDIR)/usr/local/nginx_upstream/conf/scgi_params.default'
 
-	test -f '$(DESTDIR)/usr/local/nginx_echo/conf/nginx.conf' 		|| cp conf/nginx.conf '$(DESTDIR)/usr/local/nginx_echo/conf/nginx.conf'
-	cp conf/nginx.conf '$(DESTDIR)/usr/local/nginx_echo/conf/nginx.conf.default'
+	test -f '$(DESTDIR)/usr/local/nginx_upstream/conf/nginx.conf' 		|| cp conf/nginx.conf '$(DESTDIR)/usr/local/nginx_upstream/conf/nginx.conf'
+	cp conf/nginx.conf '$(DESTDIR)/usr/local/nginx_upstream/conf/nginx.conf.default'
 
-	test -d '$(DESTDIR)/usr/local/nginx_echo/logs' 		|| mkdir -p '$(DESTDIR)/usr/local/nginx_echo/logs'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream/logs' 		|| mkdir -p '$(DESTDIR)/usr/local/nginx_upstream/logs'
 
-	test -d '$(DESTDIR)/usr/local/nginx_echo/logs' || 		mkdir -p '$(DESTDIR)/usr/local/nginx_echo/logs'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream/logs' || 		mkdir -p '$(DESTDIR)/usr/local/nginx_upstream/logs'
 
-	test -d '$(DESTDIR)/usr/local/nginx_echo/html' 		|| cp -R html '$(DESTDIR)/usr/local/nginx_echo'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream/html' 		|| cp -R html '$(DESTDIR)/usr/local/nginx_upstream'
 
-	test -d '$(DESTDIR)/usr/local/nginx_echo/logs' || 		mkdir -p '$(DESTDIR)/usr/local/nginx_echo/logs'
+	test -d '$(DESTDIR)/usr/local/nginx_upstream/logs' || 		mkdir -p '$(DESTDIR)/usr/local/nginx_upstream/logs'

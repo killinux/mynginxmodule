@@ -1,4 +1,4 @@
-#define NGX_CONFIGURE " --prefix=/usr/local/nginx_echo --add-module=/root/haoning/mygit/mynginxmodule/mynginx/echo --with-debug"
+#define NGX_CONFIGURE " --prefix=/usr/local/nginx_upstream --add-module=/root/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream --with-debug"
 
 #ifndef NGX_DEBUG
 #define NGX_DEBUG  1
@@ -6,7 +6,7 @@
 
 
 #ifndef NGX_COMPILER
-#define NGX_COMPILER  "gcc 4.4.7 20120313 (Red Hat 4.4.7-3) (GCC) "
+#define NGX_COMPILER  "gcc 4.4.7 20120313 (Red Hat 4.4.7-4) (GCC) "
 #endif
 
 
@@ -329,7 +329,7 @@
 
 
 #ifndef NGX_PREFIX
-#define NGX_PREFIX  "/usr/local/nginx_echo/"
+#define NGX_PREFIX  "/usr/local/nginx_upstream/"
 #endif
 
 

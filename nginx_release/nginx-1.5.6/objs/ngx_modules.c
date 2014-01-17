@@ -37,7 +37,7 @@ extern ngx_module_t  ngx_http_browser_module;
 extern ngx_module_t  ngx_http_upstream_ip_hash_module;
 extern ngx_module_t  ngx_http_upstream_least_conn_module;
 extern ngx_module_t  ngx_http_upstream_keepalive_module;
-extern ngx_module_t  ngx_http_echo_module;
+extern ngx_module_t  ngx_http_mytest_module;
 extern ngx_module_t  ngx_http_write_filter_module;
 extern ngx_module_t  ngx_http_header_filter_module;
 extern ngx_module_t  ngx_http_chunked_filter_module;
@@ -86,7 +86,7 @@ ngx_module_t *ngx_modules[] = {
     &ngx_http_upstream_ip_hash_module,
     &ngx_http_upstream_least_conn_module,
     &ngx_http_upstream_keepalive_module,
-    &ngx_http_echo_module,
+    &ngx_http_mytest_module,
     &ngx_http_write_filter_module,
     &ngx_http_header_filter_module,
     &ngx_http_chunked_filter_module,
