@@ -7,8 +7,7 @@
 (set-buffer-file-coding-system 'euc-cn)
 (set-selection-coding-system 'euc-cn)
 (modify-coding-system-alist 'process "*" 'utf-8)
-(setq default-process-coding-system
-            '(euc-cn . euc-cn))
+(setq default-process-coding-system '(euc-cn . euc-cn))
 (setq-default pathname-coding-system 'utf-8)
 
 (add-to-list 'load-path "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/auto-complete")  
@@ -19,3 +18,11 @@
 (add-to-list 'load-path "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c")  
 (require 'gccsense)  
 (global-set-key "\257" (quote ac-complete-gccsense))
+
+(global-set-key (kbd "C-c z") 'shell)
+(global-set-key (kbd "<f10>") 'rename-buffer)
+
+(when (fboundp 'winner-mode) 
+  (winner-mode) 
+  (windmove-default-keybindings)) 
+;然后就可以使用 Ctrl-c ← （对，就是向左的箭头键）组合键，退回你的上一个窗口设置。
