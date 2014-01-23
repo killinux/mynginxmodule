@@ -1,0 +1,11 @@
+yum install cscope
+whereis cscope-indexer
+vim cscope-indexer
+
+改cscope-indexer脚本，将
+cscope -b -i $LIST_FILE -f $DATABASE_FILE
+替换为
+cscope -q -b -i $LIST_FILE -f $DATABASE_FILE改cscope-indexer脚本，将
+cscope -b -i $LIST_FILE -f $DATABASE_FILE
+替换为
+cscope -q -b -i $LIST_FILE -f $DATABASE_FILE
