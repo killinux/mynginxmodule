@@ -3,7 +3,7 @@
 #include <ngx_http.h>
 
 
-typedef struct
+typedef  struct
 {
     ngx_http_status_t           status;
     ngx_str_t					backendServer;

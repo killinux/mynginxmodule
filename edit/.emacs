@@ -26,3 +26,6 @@
   (winner-mode) 
   (windmove-default-keybindings)) 
 ;然后就可以使用 Ctrl-c ← （对，就是向左的箭头键）组合键，退回你的上一个窗口设置。
+
+(add-to-list 'load-path "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/weibo.emacs-master")
+(require 'weibo)
