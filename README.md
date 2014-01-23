@@ -29,3 +29,4 @@ git push
 
 
 ctags -R -f /data/haoning/mygit/mynginxmodule/nginxtags /data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6 /usr/include/ /data/haoning/mygit/mynginxmodule/mynginx/helloworld/ /data/haoning/mygit/mynginxmodule/mynginx/echo-nginx-module-0.48 /data/haoning/mygit/mynginxmodule/mynginx/echo /data/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream 
+test
