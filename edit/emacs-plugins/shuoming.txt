@@ -1,0 +1,7 @@
+/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/graphviz-dot-mode
+是画图的插件
+weibo.emacs-master
+是微博的插件
+auto-complete  c  cscope-plugin 
+是自动提示和cscope的插件
+test

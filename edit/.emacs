@@ -33,7 +33,7 @@
 (add-to-list 'load-path' "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/cscope-plugin")
 (require 'xcscope)
 ;只在打开c/c++文件的时候才加载xcscope，可以加入
-(add-hook 'c-mode-common-hook '(lambda() (require 'xcscope)))
+;;(add-hook 'c-mode-common-hook '(lambda() (require 'xcscope)))
 (define-key global-map [(control f3)]  'cscope-set-initial-directory)
 (define-key global-map [(control f4)]  'cscope-unset-initial-directory)
 (define-key global-map [(control f5)]  'cscope-find-this-symbol)
@@ -49,4 +49,11 @@
 (setq cscope-do-not-update-database t)
 
 
+(define-prefix-command 'ctl-z-map)
+(global-set-key (kbd "C-z") 'ctl-z-map)
+(global-set-key (kbd "C-z C-z") 'linum-mode)
+(global-set-key (kbd "C-z C-a") 'goto-line)
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/graphviz-dot-mode/graphviz-dot-mode.el")
+(setq tags-file-name "/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/TAGS")
 
+(global-hl-line-mode 1)
