@@ -5,3 +5,7 @@ weibo.emacs-master
 auto-complete  c  cscope-plugin 
 是自动提示和cscope的插件
 test
+/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/unicad.el
+乱码问题
+(require 'unicad)
+https://code.google.com/p/unicad/wiki/FAQ_Chinese
