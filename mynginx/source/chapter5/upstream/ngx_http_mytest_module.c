@@ -61,13 +61,10 @@ static ngx_http_module_t  ngx_http_mytest_module_ctx =
 {
     NULL,                              /* preconfiguration */
     NULL,                  		/* postconfiguration */
-
     NULL,                              /* create main configuration */
     NULL,                              /* init main configuration */
-
     NULL,                              /* create server configuration */
     NULL,                              /* merge server configuration */
-
     ngx_http_mytest_create_loc_conf,       			/* create location configuration */
     ngx_http_mytest_merge_loc_conf         			/* merge location configuration */
 };
