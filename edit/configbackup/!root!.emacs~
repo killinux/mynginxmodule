@@ -58,4 +58,9 @@
 
 (load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/tabbar.el")
 (require 'tabbar)
-(tabbar-mode)
+(tabbar-mode 1)
+(global-set-key [(meta j)] 'tabbar-backward)  
+(global-set-key [(meta k)] 'tabbar-forward) 
+
+(require 'rect-mark)
+

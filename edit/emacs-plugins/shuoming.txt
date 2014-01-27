@@ -38,3 +38,6 @@ ido.el
 tabbar
 http://blog.csdn.net/CherylNatsu/article/details/6204737
 标签页
+
+hippie-expand
+补全
