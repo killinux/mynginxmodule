@@ -421,6 +421,7 @@ ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 static ngx_int_t
 ngx_http_mytest_handler(ngx_http_request_t *r)
 {
+    fprintf(stderr, "haoning ngx_http_mytest_handler:%s\r\n","ningning");
     //首先建立http上下文结构体ngx_http_mytest_ctx_t
     ngx_http_mytest_ctx_t* myctx = ngx_http_get_module_ctx(r, ngx_http_mytest_module);
     if (myctx == NULL)

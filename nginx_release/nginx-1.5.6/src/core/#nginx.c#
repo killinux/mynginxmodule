@@ -1,14 +1,14 @@
 
-
 /*
  * Copyright (C) Igor Sysoev
  * Copyright (C) Nginx, Inc.
  */
+//test
 
 
-#include <ngx_config.h>
-#include <ngx_core.h>
-#include <nginx.h>
+#include   <ngx_config.h>
+#include   <ngx_core.h>
+#include   <nginx.h>
 
 
 static ngx_int_t ngx_add_inherited_sockets(ngx_cycle_t *cycle);

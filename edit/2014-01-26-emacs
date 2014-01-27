@@ -59,3 +59,55 @@
 
 ;;(global-hl-line-mode 1)
 (require 'unicad)
+
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/cedet-1.1/common/cedet.el")
+(require 'cedet)
+;(require 'ecb) 
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/session/lisp/session.el")
+(require 'session)
+(add-hook 'after-init-hook 'session-initialize)
+;(require 'doxymacs) 
+
+(require 'cc-mode)
+(c-set-offset 'inline-open 0)
+(c-set-offset 'friend '-)
+(c-set-offset 'substatement-open 0)
+(defun my-c-mode-common-hook()
+  (setq tab-width 4 indent-tabs-mode nil)
+  ;;; hungry-delete and auto-newline
+  (c-toggle-auto-hungry-state 1)
+  ;;按键定义
+  (define-key c-mode-base-map [(control \`)] 'hs-toggle-hiding)
+  (define-key c-mode-base-map [(return)] 'newline-and-indent)
+  (define-key c-mode-base-map [(f7)] 'compile)
+  (define-key c-mode-base-map [(meta \`)] 'c-indent-command)
+;;  (define-key c-mode-base-map [(tab)] 'hippie-expand)
+  (define-key c-mode-base-map [(tab)] 'my-indent-or-complete)
+  (define-key c-mode-base-map [(meta ?/)] 'semantic-ia-complete-symbol-menu)
+;;预处理设置
+  (setq c-macro-shrink-window-flag t)
+  (setq c-macro-preprocessor "cpp")
+  (setq c-macro-cppflags " ")
+  (setq c-macro-prompt-flag t)
+  (setq hs-minor-mode t)
+  (setq abbrev-mode t)
+)
+(add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
+
+;;;;我的C++语言编辑策略
+(defun my-c++-mode-hook()
+  (setq tab-width 4 indent-tabs-mode nil)
+  (c-set-style "stroustrup")
+;;  (define-key c++-mode-map [f3] 'replace-regexp)
+)
+(global-set-key [(f5)] 'speedbar)
+
+(load "desktop") (desktop-load-default) 
+(desktop-read)
+
+(require 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(setq default-directory "/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6")   
+(setq x-select-enable-clipboard t)   
+(setq backup-directory-alist '(("." . "/data/haoning/mygit/mynginxmodule/edit/configbackup"))) 

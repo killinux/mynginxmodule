@@ -1081,10 +1081,10 @@ objs/src/http/modules/ngx_http_upstream_keepalive_module.o:	$(CORE_DEPS) $(HTTP_
 
 
 objs/addon/upstream/ngx_http_mytest_module.o:	$(ADDON_DEPS) \
-	/root/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream/ngx_http_mytest_module.c
+	/data/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream/ngx_http_mytest_module.c
 	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
 		-o objs/addon/upstream/ngx_http_mytest_module.o \
-		/root/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream/ngx_http_mytest_module.c
+		/data/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream/ngx_http_mytest_module.c
 
 
 manpage:	objs/nginx.8

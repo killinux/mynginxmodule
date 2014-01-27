@@ -18,7 +18,7 @@
 (require 'gccsense)  
 (global-set-key "\257" (quote ac-complete-gccsense))
 
-(global-set-key (kbd "<f10>") 'rename-buffer)
+(global-set-key (kbd "<f11>") 'rename-buffer)
 
 (when (fboundp 'winner-mode) 
   (winner-mode) 
@@ -31,8 +31,36 @@
 (global-set-key (kbd "C-z") 'ctl-z-map)
 (global-set-key (kbd "C-z C-z") 'linum-mode)
 (global-set-key (kbd "C-z C-a") 'goto-line)
-(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/graphviz-dot-mode.el")
+;(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/graphviz-dot-mode.el")
 (setq tags-file-name "/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/TAGS")
 
-(global-hl-line-mode 1)
+;(global-hl-line-mode 1)
 (require 'unicad)
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/cedet-1.1/common/cedet.el")
+(require 'cedet)
+;(require 'ecb) 
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/session/lisp/session.el")
+(require 'session)
+(add-hook 'after-init-hook 'session-initialize)
+;(require 'doxymacs) 
+
+(global-set-key [(f5)] 'speedbar)
+
+(require 'ibuffer)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(setq default-directory "/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6")   
+(setq x-select-enable-clipboard t)   
+(setq backup-directory-alist '(("." . "/data/haoning/mygit/mynginxmodule/edit/configbackup")))
+
+(require 'ido)
+(ido-mode t)
+
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/tabbar.el")
+(require 'tabbar)
+(tabbar-mode 1)
+(global-set-key [(meta j)] 'tabbar-backward)  
+(global-set-key [(meta k)] 'tabbar-forward) 
+
+
+
