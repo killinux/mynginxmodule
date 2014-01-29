@@ -1,6 +1,6 @@
 
 /*
- * Copyright (C) Igor Sysoev
+ * CopyrighT (C) Igor Sysoev
  * Copyright (C) Nginx, Inc.
  */
 //test

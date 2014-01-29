@@ -1,0 +1,44 @@
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking www.baidu.com (be patient).....done
+
+
+Server Software:        BWS/1.0
+Server Hostname:        www.baidu.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        10340 bytes
+
+Concurrency Level:      1
+Time taken for tests:   5.074 seconds
+Complete requests:      10
+Failed requests:        7
+   (Connect: 0, Receive: 0, Length: 7, Exceptions: 0)
+Write errors:           0
+Total transferred:      107820 bytes
+HTML transferred:       103240 bytes
+Requests per second:    1.97 [#/sec] (mean)
+Time per request:       507.408 [ms] (mean)
+Time per request:       507.408 [ms] (mean, across all concurrent requests)
+Transfer rate:          20.75 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:      234  249  10.1    255     261
+Processing:   245  259  11.9    257     278
+Waiting:      245  258  11.8    257     277
+Total:        480  507  21.0    512     536
+
+Percentage of the requests served within a certain time (ms)
+  50%    512
+  66%    525
+  75%    525
+  80%    533
+  90%    536
+  95%    536
+  98%    536
+  99%    536
+ 100%    536 (longest request)

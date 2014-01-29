@@ -1,4 +1,4 @@
-#define NGX_CONFIGURE " --prefix=/usr/local/nginx_upstream --add-module=/data/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream --with-debug"
+#define NGX_CONFIGURE " --prefix=/usr/local/nginx_upstream --add-module=/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/upstream --with-debug"
 
 #ifndef NGX_DEBUG
 #define NGX_DEBUG  1
