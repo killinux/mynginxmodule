@@ -36,9 +36,20 @@
 
 ;(global-hl-line-mode 1)
 (require 'unicad)
-(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/cedet-1.1/common/cedet.el")
+(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/cedet-1.0.1/common/cedet.el")
 (require 'cedet)
-;(require 'ecb) 
+(add-to-list 'load-path "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/ecb-2.40")
+(require 'ecb) 
+(setq ecb-auto-activate t
+      ecb-tip-of-the-day nil)
+(global-set-key [M-left] 'windmove-left)
+(global-set-key [M-right] 'windmove-right)
+(global-set-key [M-up] 'windmove-up)
+(global-set-key [M-down] 'windmove-down)
+(define-key global-map [(control f3)] 'ecb-hide-ecb-windows)
+(define-key global-map [(control f2)] 'ecb-show-ecb-windows)
+
+
 (load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/session/lisp/session.el")
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
@@ -87,3 +98,16 @@
 	((looking-at "\\s\)") (forward-char 1) (backward-list 1))
 	(t (self-insert-command (or arg 1)))))
 
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.40")
+ '(session-use-package t nil (session)))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
