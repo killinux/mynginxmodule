@@ -30,3 +30,19 @@ git push
 
 ctags -R -f /data/haoning/mygit/mynginxmodule/nginxtags /data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6 /usr/include/ /data/haoning/mygit/mynginxmodule/mynginx/helloworld/ /data/haoning/mygit/mynginxmodule/mynginx/echo-nginx-module-0.48 /data/haoning/mygit/mynginxmodule/mynginx/echo /data/haoning/mygit/mynginxmodule/mynginx/source/chapter5/upstream 
 test
+
+
+delete files:
+http://ssd910.blog.163.com/blog/static/23876797201371623456174/
+
+正确方法
+
+add所有文件：
+
+git add .
+add并rm所有(不需要用上面的方法来delete)：
+
+git add -A
+提交modify和rm（新加的文件不会自动提交）
+
+git commit -a
