@@ -41,3 +41,9 @@ http://blog.csdn.net/CherylNatsu/article/details/6204737
 
 hippie-expand
 补全
+
+cflow
+ecb
+
+安装cc-mode
+http://cc-mode.sourceforge.net/installation.php

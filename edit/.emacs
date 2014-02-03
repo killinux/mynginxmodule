@@ -36,39 +36,57 @@
 
 ;(global-hl-line-mode 1)
 (require 'unicad)
-(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/cedet-1.0.1/common/cedet.el")
-(require 'cedet)
-(add-to-list 'load-path "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/ecb-2.40")
-(require 'ecb) 
-(setq ecb-tip-of-the-day nil)
-(global-set-key (kbd "C-z h") 'windmove-left)
-(global-set-key (kbd "C-z l") 'windmove-right)
-(global-set-key (kbd "C-z p") 'windmove-up)
-(global-set-key (kbd "C-z n") 'windmove-down)
+;(load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/cedet-1.0.1/common/cedet.el")
+;(require 'cedet)
 
-;;;自动启动ecb
-;; (setq ecb-auto-activate t)
-;;;一键开关
-(defun my-ecb-active-or-deactive ()
-  (interactive)
-  (if ecb-minor-mode
-      (ecb-deactivate)
-    (ecb-activate)))
-
-(global-set-key (kbd "C-z q") 'my-ecb-active-or-deactive)
-(global-set-key (kbd "C-z C-s") 'ecb-show-ecb-windows)
-(global-set-key (kbd "C-z C-h") 'ecb-hide-ecb-windows)
-
-(global-set-key (kbd "C-z d") 'ecb-maximize-window-directories)
-(global-set-key (kbd "C-z s") 'ecb-maximize-window-sources)
-(global-set-key (kbd "C-z m") 'ecb-maximize-window-methods)
-(global-set-key (kbd "C-z h") 'ecb-maximize-window-history)
-(global-set-key (kbd "C-z r") 'ecb-restore-default-window-sizes)
-(global-set-key (kbd "C-z C-l") 'windmove-left)
-(global-set-key (kbd "C-z C-r") 'windmove-right)
-(global-set-key (kbd "C-z C-u") 'windmove-up)
-(global-set-key (kbd "C-z C-d") 'windmove-down)
-
+;#|
+;(add-to-list 'load-path "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/ecb-2.40")
+;(require 'ecb) 
+;(setq ecb-tip-of-the-day nil)
+;(global-set-key (kbd "C-z h") 'windmove-left)
+;(global-set-key (kbd "C-z l") 'windmove-right)
+;(global-set-key (kbd "C-z p") 'windmove-up)
+;(global-set-key (kbd "C-z n") 'windmove-down)
+;
+;;;;自动启动ecb
+;;; (setq ecb-auto-activate t)
+;;;;一键开关
+;(defun my-ecb-active-or-deactive ()
+;  (interactive)
+;  (if ecb-minor-mode
+;      (ecb-deactivate)
+;    (ecb-activate)))
+;
+;(global-set-key (kbd "C-z q") 'my-ecb-active-or-deactive)
+;(global-set-key (kbd "C-z C-s") 'ecb-show-ecb-windows)
+;(global-set-key (kbd "C-z C-h") 'ecb-hide-ecb-windows)
+;
+;(global-set-key (kbd "C-z 1") 'ecb-maximize-window-directories)
+;(global-set-key (kbd "C-z 2") 'ecb-maximize-window-sources)
+;(global-set-key (kbd "C-z 3") 'ecb-maximize-window-methods)
+;(global-set-key (kbd "C-z 4") 'ecb-maximize-window-history)
+;(global-set-key (kbd "C-z r") 'ecb-restore-default-window-sizes)
+;(global-set-key (kbd "C-z C-b") 'windmove-left)
+;(global-set-key (kbd "C-z C-f") 'windmove-right)
+;(global-set-key (kbd "C-z C-p") 'windmove-up)
+;(global-set-key (kbd "C-z C-n") 'windmove-down)
+;
+;(custom-set-variables
+;  ;; custom-set-variables was added by Custom.
+;  ;; If you edit it by hand, you could mess it up, so be careful.
+;  ;; Your init file should contain only one such instance.
+;  ;; If there is more than one, they won't work right.
+; '(ecb-layout-window-sizes nil)
+; '(ecb-options-version "2.40")
+; '(ecb-source-path (quote (("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/" "/hn"))))
+; '(session-use-package t nil (session)))
+;(custom-set-faces
+;  ;; custom-set-faces was added by Custom.
+;  ;; If you edit it by hand, you could mess it up, so be careful.
+;  ;; Your init file should contain only one such instance.
+;  ;; If there is more than one, they won't work right.
+; )
+;|#
 (load-file "/data/haoning/mygit/mynginxmodule/edit/emacs-plugins/c/session/lisp/session.el")
 (require 'session)
 (add-hook 'after-init-hook 'session-initialize)
@@ -121,44 +139,26 @@
 (defun say-hello()(interactive)(print system-type))
 ;(defun say-hello()(interactive)(print "hello haoning"))
 
-(require 'tramp)
-(cond
- ((eq system-type 'windows-nt)
-  (setq tramp-default-method "plink"
-        tramp-password-end-of-line "\r\n"))
- ((eq system-type 'gnu/linux)
-  (setq tramp-default-method "ssh")))
-(setq tramp-default-user "root"
-         tramp-default-host "106.187.88.34")
-(setq password-cache-expiry 36000)
-
-
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(ecb-layout-window-sizes nil)
- '(ecb-options-version "2.40")
- '(ecb-source-path (quote (("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/" "/hn"))))
- '(session-use-package t nil (session)))
-(custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+;(require 'tramp)
+;(cond
+; ((eq system-type 'windows-nt)
+;  (setq tramp-default-method "plink"
+;        tramp-password-end-of-line "\r\n"))
+; ((eq system-type 'gnu/linux)
+;  (setq tramp-default-method "ssh")))
+;(setq tramp-default-user "root"
+;         tramp-default-host "106.187.88.34")
+;(setq password-cache-expiry 36000)
 
 (require 'cflow-mode)
 (defvar cmd nil nil)
 (defvar cflow-buf nil nil)
 (defvar cflow-buf-name nil nil)
  
-(defun yyc/cflow-function (function-name)
+(defun hao/cflow (function-name)
   "Get call graph of inputed function. "
-  ;(interactive "sFunction name:\n")
-  (interactive (list (car (senator-jump-interactive "Function name: "
-                                                    nil nil nil))))
+  (interactive "sFunction name:\n")
+;  (interactive (list (car (senator-jump-interactive "Function name: "  nil nil nil))))
   (setq cmd (format "cflow  -b --main=%s %s" function-name buffer-file-name))
   (setq cflow-buf-name (format "**cflow-%s:%s**"
                                (file-name-nondirectory buffer-file-name)
@@ -172,4 +172,7 @@
   (goto-char (point-min))
   (cflow-mode)
   )
-(print "hello emacs end")
+
+
+(require 'cc-mode)
+
