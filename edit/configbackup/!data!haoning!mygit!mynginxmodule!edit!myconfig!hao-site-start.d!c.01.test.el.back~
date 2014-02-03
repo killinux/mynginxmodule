@@ -1,0 +1,3 @@
+(global-set-key (kbd "C-z t") 'say-hello)
+(defun say-hello()(interactive)(print system-type))
+;(defun say-hello()(interactive)(print "hello haoning"))

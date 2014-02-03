@@ -10,17 +10,23 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/root/"
  "/data/haoning/mygit/mynginxmodule/fprintf/cflow/whoami.c/"
  "/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/upstream/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "back.emacs"
  "ngx_http_mytest_module.c"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/root/" (21231 32369) ".gccrec" "a/" ".emacs.bmk" ".ssh/" ".bashrc" ".viminfo" ".ido.last~" ".gitconfig" "linode.sh" ".eshell/" "test.c" "redhatlige.sh" "a.txt" "emacs.txt" "kvm_demo/" "test.c~" ".cshrc" ".projects.ede" "taglist_46.zip" "ace.rar" ".bash_profile" ".vimrc" ".gem/" ".rediscli_history" ".t.weibo.emacs.d/" ".tcshrc" "../" ".mysql_history" "./" "myemacs/" ".autopch/" ".pip/" ".ecb-tip-of-day.el" "test" ".bash_history" ".emacs" ".python-eggs/" ".emacs~" ".ido.last" "#copyemacs.sh#" "fanfan.sh" "copyemacs.sh" "back.emacs" ".w3m/" ".pki/" "aaa.txt" ".emacs.before_ecb_2.40" ".subversion/" ".vim/" "hosts" ".emacs.d/")
+
+ ("/data/haoning/mygit/mynginxmodule/edit/myconfig/hao-site-start.d/" (21231 32643) "a.01.common.el" "a.01.chinese.el" "b.02.session.el" "c.01.test.el.back" "./" "b.01.complete.el" "../" "b.03.cflow.el")
+
  ("/data/haoning/mygit/mynginxmodule/fprintf/cflow/" (21229 7666) "./" "../" "shuoming.txt")
 
  ("/data/haoning/mygit/mynginxmodule/" (21224 53797) "README.md" "redis/" "graphviz/" "edit/" "./" "mynginx/" "nginx_release/" "fprintf/" "../" "nginxtags" ".git/")
