@@ -2,6 +2,7 @@
 
 ;; ----- ido-last-directory-list -----
 (
+ ("/data/haoning/mygit/mynginxmodule/mynginx/" . "echo/")
  ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/" . "upstream/")
  ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/" . "chapter5/")
  ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/" . "mymodule/")
@@ -10,6 +11,8 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/data/haoning/mygit/mynginxmodule/mynginx/helloworld/"
+ "/data/haoning/mygit/mynginxmodule/mynginx/echo/"
  "/root/"
  "/data/haoning/mygit/mynginxmodule/fprintf/cflow/whoami.c/"
  "/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/upstream/"
@@ -17,13 +20,22 @@
 
 ;; ----- ido-work-file-list -----
 (
+ "config"
  "back.emacs"
  "ngx_http_mytest_module.c"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/root/" (21231 32369) ".gccrec" "a/" ".emacs.bmk" ".ssh/" ".bashrc" ".viminfo" ".ido.last~" ".gitconfig" "linode.sh" ".eshell/" "test.c" "redhatlige.sh" "a.txt" "emacs.txt" "kvm_demo/" "test.c~" ".cshrc" ".projects.ede" "taglist_46.zip" "ace.rar" ".bash_profile" ".vimrc" ".gem/" ".rediscli_history" ".t.weibo.emacs.d/" ".tcshrc" "../" ".mysql_history" "./" "myemacs/" ".autopch/" ".pip/" ".ecb-tip-of-day.el" "test" ".bash_history" ".emacs" ".python-eggs/" ".emacs~" ".ido.last" "#copyemacs.sh#" "fanfan.sh" "copyemacs.sh" "back.emacs" ".w3m/" ".pki/" "aaa.txt" ".emacs.before_ecb_2.40" ".subversion/" ".vim/" "hosts" ".emacs.d/")
+ ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/upstream/" (21231 39879) "./" "nginx.conf" "../" "config" "ngx_http_mytest_module.c")
+
+ ("/root/" (21236 37998) "del.txt" ".gccrec" "a/" ".emacs.bmk" ".ssh/" ".bashrc" ".viminfo" ".ido.last~" ".gitconfig" "linode.sh" ".eshell/" "test.c" "redhatlige.sh" "a.txt" "emacs.txt" "kvm_demo/" "test.c~" ".cshrc" ".projects.ede" "taglist_46.zip" "ace.rar" ".bash_profile" ".vimrc" ".gem/" ".rediscli_history" ".t.weibo.emacs.d/" ".tcshrc" "../" ".mysql_history" "./" "myemacs/" ".autopch/" ".pip/" ".ecb-tip-of-day.el" "#back.emacs#" "test" ".bash_history" ".emacs" ".python-eggs/" ".emacs~" ".ido.last" "#copyemacs.sh#" "fanfan.sh" "copyemacs.sh" "back.emacs" ".w3m/" ".pki/" "aaa.txt" ".emacs.before_ecb_2.40" ".subversion/" ".vim/" "hosts" ".emacs.d/")
+
+ ("/data/haoning/mygit/mynginxmodule/mynginx/helloworld/" (21236 37522) "ngx_http_hello_world_module.c" "./" "nginx.conf" "../" "config")
+
+ ("/data/haoning/mygit/mynginxmodule/mynginx/echo/" (21139 27674) "ngx_http_echo_module.c" "haolog.h" "haolog.c" "./" "nginx.conf" "../" "config" "shuoming.txt")
+
+ ("/data/haoning/mygit/mynginxmodule/mynginx/" (21207 38476) "helloworld/" "./" "source/" "../" "readme.txt" "echo/" "echo-nginx-module-0.48/")
 
  ("/data/haoning/mygit/mynginxmodule/edit/myconfig/hao-site-start.d/" (21231 32643) "a.01.common.el" "a.01.chinese.el" "b.02.session.el" "c.01.test.el.back" "./" "b.01.complete.el" "../" "b.03.cflow.el")
 
@@ -32,8 +44,6 @@
  ("/data/haoning/mygit/mynginxmodule/" (21224 53797) "README.md" "redis/" "graphviz/" "edit/" "./" "mynginx/" "nginx_release/" "fprintf/" "../" "nginxtags" ".git/")
 
  ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/src/core/" (21228 58601) "ngx_open_file_cache.c" "ngx_conf_file.h" "ngx_murmurhash.c" "ngx_inet.c" "#ngx_core.h#" "ngx_palloc.h" "ngx_md5.h" "ngx_cycle.c" "ngx_resolver.c" "ngx_regex.c" "ngx_conf_file.c" "ngx_hash.h" "ngx_string.h" "ngx_palloc.c" "ngx_radix_tree.c" "ngx_crc.h" "ngx_rbtree.c" "ngx_parse.h" "ngx_buf.h" "ngx_file.c" "ngx_sha1.h" "ngx_times.c" "ngx_parse.c" "ngx_slab.c" "ngx_resolver.h" "ngx_rbtree.h" "ngx_output_chain.c" "ngx_core.h" "ngx_crc32.h" "ngx_log.c" "nginx.h" "ngx_connection.h" "ngx_queue.h" "ngx_array.h" "ngx_log.h" ".emacs.desktop" "ngx_inet.h" "ngx_list.h" "./" "ngx_open_file_cache.h" "ngx_config.h" "ngx_spinlock.c" "ngx_times.h" "ngx_cycle.h" "ngx_connection.c" "ngx_radix_tree.h" "ngx_crc32.c" "ngx_shmtx.c" "ngx_murmurhash.h" "ngx_list.c" "ngx_queue.c" "ngx_buf.c" "ngx_crypt.c" "ngx_shmtx.h" "ngx_array.c" "ngx_crypt.h" "../" "ngx_file.h" "ngx_slab.h" "ngx_md5.c" "nginx.c" "ngx_cpuinfo.c" "ngx_hash.c" "ngx_regex.h" "ngx_string.c")
-
- ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/upstream/" (21224 49213) "./" "nginx.conf" "../" "config" "ngx_http_mytest_module.c")
 
  ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/" (21224 49213) "subrequest/" "upstream/" "./" "../")
 

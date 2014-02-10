@@ -81,5 +81,5 @@ export CLASSPATH=/usr/local/java/jdk1.6.0_45/jre/lib/rt.jar:.
 export HBASE_HOME=/data/hbase/hbase-install/hbase-0.94.13
 export PATH=/usr/local/java/jdk1.6.0_45/bin:$HBASE_HOME/bin:$PATH
 #mount  /dev/xvdb2 /mnt/mydata/
-export HAO=/data/haoning/mygit/mynginxmodule
+export HAO=/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6
 

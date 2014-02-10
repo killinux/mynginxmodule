@@ -1,0 +1,56 @@
+<html>
+<body>
+<div id="output"></div>
+<script>
+function checkBrowser(){
+	if (window.WebSocket){
+		log("This browser supports WebSocket!");
+	} else {
+		log("This browser does not support WebSocket.");
+	}
+}
+function setup(){
+	var wsServer = 'ws://localhost:3001';
+	var ws = new WebSocket(wsServer);
+
+	ws.onopen = function (e) {
+		log("Connected to WebSocket server.",e);
+		sendMessage("Conan");
+	} ;
+
+	ws.onclose = function (e) {
+		log("Disconnected",e);
+	} ;
+
+	ws.onmessage = function(e) {
+		log("RECEIVED: " + e.data, e);
+		ws.close();
+	}
+
+	ws.onerror = function (e) {
+		log('Error occured: ' + e.data,e);
+	} ;
+
+	var sendMessage = function(msg){
+		ws.send(msg);
+		log("SEND : "+ msg);
+	}
+}
+
+function log(s,e) {
+	var output = document.getElementById("output");
+	var p = document.createElement("p");
+	p.style.wordWrap = "break-word";
+	p.style.padding="10px";
+	p.style.background="#eee";
+	p.textContent = "LOG : "+s;
+	output.appendChild(p);
+	console.log("LOG : "+s, e);
+}
+
+checkBrowser();
+setup();
+</script>
+</body>
+</html>
+
