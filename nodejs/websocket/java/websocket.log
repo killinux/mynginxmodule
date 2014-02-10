@@ -1,0 +1,266 @@
+ChatServer started on port: 8887
+process(431): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: null
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: SMxbM9n1mhvGmTpLVp5Nzw==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+Exception in thread "main" java.lang.IllegalArgumentException: Cannot send 'null' data to a WebSocket.
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@1f292d26}
+write(5): {?new}	at org.java_websocket.WebSocket.send(WebSocket.java:432)
+
+	at ChatServer.sendToAll(ChatServer.java:67)
+	at ChatServer.main(ChatServer.java:88)
+org.java_websocket.WebSocket@4bdb699b entered the room!
+process(10): {??3???@???}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@f0f11b8}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@26544ec1}
+write(6): {?ssss}
+org.java_websocket.WebSocket@4bdb699b: ssss
+process(8): {??A?B?}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@6b4da8f4}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@378f6235}code: 1005
+org.java_websocket.WebSocket@4bdb699b has left the room!
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: H/6V3Hh/mvf2Az62kgI+jg==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@6115273a}
+write(5): {?new}
+org.java_websocket.WebSocket@33c282a1 entered the room!
+process(18): {??W?U???s??	?{??}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:12, payload:[B@270e3293}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:12, payload:[B@151a64ed}
+write(14): {?????????????}
+org.java_websocket.WebSocket@33c282a1: ????
+process(8): {???????}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@77d80e6d}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@99b5393}code: 1005
+org.java_websocket.WebSocket@33c282a1 has left the room!
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: YEUFbtWLsBk3prj1h/8pQA==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@6627e353}
+write(5): {?new}
+org.java_websocket.WebSocket@44bd928a entered the room!
+process(13): {????"???M???E}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@79dfc547}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@5210f6d3}
+write(9): {?haoning}
+org.java_websocket.WebSocket@44bd928a: haoning
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: S4RS9QZxOOsY/tfvGHsUyg==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2911a3a4}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@450e790c}
+write(5): {?new}
+org.java_websocket.WebSocket@392d263f entered the room!
+process(12): {????b??pu?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:6, payload:[B@432a0f6c}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:6, payload:[B@7e5a9de6}
+write(8): {?dddsss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:6, payload:[B@6f34a7d8}
+write(8): {?dddsss}
+org.java_websocket.WebSocket@392d263f: dddsss
+process(13): {???Z???)???)?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@69f78ef1}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@7bc9a690}
+write(9): {?sssssss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@73d6776d}
+write(9): {?sssssss}
+org.java_websocket.WebSocket@392d263f: sssssss
+process(30): {??????j{1E"ln53&j{1E"ln53&}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:24, payload:[B@53ad085}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:24, payload:[B@584fce71}
+write(26): {?????????????????????????}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:24, payload:[B@5f7a8a02}
+write(26): {?????????????????????????}
+org.java_websocket.WebSocket@44bd928a: ????????
+process(13): {??W?[U<?0><?0}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@65faba46}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@2fdb7df8}
+write(9): {?kkkkkkk}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@732b3d53}
+write(9): {?kkkkkkk}
+org.java_websocket.WebSocket@44bd928a: kkkkkkk
+process(10): {??dt?a?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@1bc74f37}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@3a21b220}
+write(6): {?ssss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@7a3570b0}
+write(6): {?ssss}
+org.java_websocket.WebSocket@44bd928a: ssss
+process(10): {??5sq?Q?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@4a79717e}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@6b0a2d64}
+write(6): {?dddd}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@692a3722}
+write(6): {?dddd}
+org.java_websocket.WebSocket@44bd928a: dddd
+process(13): {???Az-?#O?#}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@5289cf1e}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@557ce4e7}
+write(9): {?bbbbbbb}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@7a982589}
+write(9): {?bbbbbbb}
+org.java_websocket.WebSocket@392d263f: bbbbbbb
+process(10): {???"n??@?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@1ac88440}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@6262937c}
+write(6): {?bbbb}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@35c0e45a}
+write(6): {?bbbb}
+org.java_websocket.WebSocket@44bd928a: bbbb
+process(10): {???*
+??Ii?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@acfec48}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@58a17083}
+write(6): {?cccc}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@4ee1d5ea}
+write(6): {?cccc}
+org.java_websocket.WebSocket@392d263f: cccc
+process(10): {??hM?>m?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@4ca31e1b}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@690da5eb}
+write(6): {?ssss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@7f081d2e}
+write(6): {?ssss}
+org.java_websocket.WebSocket@44bd928a: ssss
+process(10): {??A?3#?Q}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@6db3f829}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@42698403}
+write(6): {?bbbb}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:4, payload:[B@1d5a0305}
+write(6): {?bbbb}
+org.java_websocket.WebSocket@392d263f: bbbb
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@7c4c51}
+write(58): {?8org.java_websocket.WebSocket@44bd928a has left the room!}
+org.java_websocket.WebSocket@44bd928a has left the room!
+org.java_websocket.WebSocket@392d263f has left the room!
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: VZrIaJ6TNm2CoDu+qFv41g==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@377653ae}
+write(5): {?new}
+org.java_websocket.WebSocket@396fe0f4 entered the room!
+process(12): {??.|??????}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:6, payload:[B@6019d0a1}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:6, payload:[B@3ed02b51}
+write(8): {???????}
+org.java_websocket.WebSocket@396fe0f4: ??
+process(15): {??#\?????????}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:9, payload:[B@54cbf30e}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:9, payload:[B@19c247a0}
+write(11): {?	?????????}
+org.java_websocket.WebSocket@396fe0f4: ???
+process(8): {???M????}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@21ec6696}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@27431340}code: 1005
+org.java_websocket.WebSocket@396fe0f4 has left the room!
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: 6Sy7JFWSkAuM1ipXAcU6Eg==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@3934f69a}
+write(5): {?new}
+org.java_websocket.WebSocket@442a15cd entered the room!
+process(9): {??hB??1?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@26fd68b1}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@46e45076}
+write(5): {?sss}
+org.java_websocket.WebSocket@442a15cd: sss
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: ULSwkGgIGKUlr4FdFgJ8Xw==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2321ab80}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@77827284}
+write(5): {?new}
+org.java_websocket.WebSocket@152c7568 entered the room!
+process(9): {?????$???}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@19d009b4}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@292d15a9}
+write(5): {?sss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@4ee91f5d}
+write(5): {?sss}
+org.java_websocket.WebSocket@152c7568: sss
+process(14): {???)?8?K?Z?K?Z}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:8, payload:[B@2b0a3b24}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:8, payload:[B@2cb0ce8f}
+write(10): {?bbbbbbbb}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:8, payload:[B@bc92535}
+write(10): {?bbbbbbbb}
+org.java_websocket.WebSocket@152c7568: bbbbbbbb

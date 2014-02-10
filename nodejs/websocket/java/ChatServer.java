@@ -13,10 +13,10 @@ import org.java_websocket.handshake.ClientHandshake;
 public class ChatServer extends WebSocketServer {
 
 	public ChatServer( int port ) throws UnknownHostException {
-		//				super( new InetSocketAddress( "10.221.12.197", port ) );
-				//		super( new InetSocketAddress( "203.195.183.79", port ) );
+						super( new InetSocketAddress( "10.221.12.197", port ) );
+		//				super( new InetSocketAddress( "203.195.183.79", port ) );
 		//		super( new InetSocketAddress( "localhost/127.0.0.1", port ) );
-				super( new InetSocketAddress( InetAddress.getByName( "localhost" ), port ) );
+						//	super( new InetSocketAddress( InetAddress.getByName( "localhost" ), port ) );
 		
 	}
 
