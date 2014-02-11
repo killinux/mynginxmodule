@@ -1,0 +1,16 @@
+$ cat >> test.c
+#include <stdio.h>
+int main()
+{
+  printf("Hello World\n");
+  return 0;
+}
+<ctld-d>
+$ gcc -Wl,-Map=test.map -g -o test test.c
+$ grep main test.map
+  0x08048258			__libc_start_main@@GLIBC_2.0
+  0x08048258					main
+$ addr2line 0x08048258 -e test -f
+main
+/home/mtj/test/test.c:4
+$

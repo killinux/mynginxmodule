@@ -264,3 +264,86 @@ write(10): {?bbbbbbbb}
 send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:8, payload:[B@bc92535}
 write(10): {?bbbbbbbb}
 org.java_websocket.WebSocket@152c7568: bbbbbbbb
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: A6rG9MWg+5hu3oU4alMnVg==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@16a4e743}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@244aeb52}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@329f671b}
+write(5): {?new}
+org.java_websocket.WebSocket@7f2a3793 entered the room!
+process(9): {??????a?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2ca6d51e}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@7cf1bb78}
+write(5): {?sss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@624b035d}
+write(5): {?sss}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2aca0115}
+write(5): {?sss}
+org.java_websocket.WebSocket@7f2a3793: sss
+process(444): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://nginx.mobi
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: w8dJr0jSfAkjQ6n9Y9JSWA==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@4998a455}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@444cee32}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@16aa37a6}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@12b7eea}
+write(5): {?new}
+org.java_websocket.WebSocket@4e99353f entered the room!
+process(9): {??e>??Z?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2c76e369}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@314c194d}
+write(5): {?ddd}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@7b112783}
+write(5): {?ddd}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@23394894}
+write(5): {?ddd}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@5cbfe9d}
+write(5): {?ddd}
+org.java_websocket.WebSocket@4e99353f: ddd
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@13b8f864}
+write(58): {?8org.java_websocket.WebSocket@152c7568 has left the room!}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@54bb7759}
+write(58): {?8org.java_websocket.WebSocket@152c7568 has left the room!}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@5f989f84}
+write(58): {?8org.java_websocket.WebSocket@152c7568 has left the room!}
+org.java_websocket.WebSocket@152c7568 has left the room!
+process(8): {??h\q?k?}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@37bd2664}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@63238bd2}code: 1005
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@32b0bad7}
+write(58): {?8org.java_websocket.WebSocket@7f2a3793 has left the room!}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@70ba9340}
+write(58): {?8org.java_websocket.WebSocket@7f2a3793 has left the room!}
+org.java_websocket.WebSocket@7f2a3793 has left the room!
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@b551d7f}
+write(58): {?8org.java_websocket.WebSocket@4e99353f has left the room!}
+org.java_websocket.WebSocket@4e99353f has left the room!
+org.java_websocket.WebSocket@442a15cd has left the room!

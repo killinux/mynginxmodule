@@ -79,7 +79,9 @@ unset -f pathmunge
 export JAVA_HOME=/usr/local/java/jdk1.6.0_45
 export CLASSPATH=/usr/local/java/jdk1.6.0_45/jre/lib/rt.jar:.
 export HBASE_HOME=/data/hbase/hbase-install/hbase-0.94.13
-export PATH=/usr/local/java/jdk1.6.0_45/bin:$HBASE_HOME/bin:$PATH
+export PATH=/usr/local/java/jdk1.6.0_45/bin:$HBASE_HOME/bin:$PATH:/usr/local/nodejs/bin
 #mount  /dev/xvdb2 /mnt/mydata/
-export HAO=/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6
+export hao=/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6
 
+export mm=/data/haoning/mygit/mynginxmodule/
+exprot nn=/usr/local/nginx_upstream/sbin

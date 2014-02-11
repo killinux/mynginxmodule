@@ -1,3 +1,6 @@
+yum install cscope
+
+
 /data/haoning/mygit/mynginxmodule/edit/emacs-plugins/graphviz-dot-mode
 是画图的插件
 weibo.emacs-master

@@ -27,6 +27,8 @@
 
 ;; ----- ido-dir-file-cache -----
 (
+ ("/data/haoning/mygit/mynginxmodule/fprintf/" (21240 42288) "arraytest.c" "a.out" "structtest.c" "cflow/" "TAGS" "socketpair/" "test.c" "./" "test1.c" "watchpoint.c" "../" "test.cpp" "shuoming.txt")
+
  ("/data/haoning/mygit/mynginxmodule/nginx_release/nginx-1.5.6/mymodule/chapter5/upstream/" (21231 39879) "./" "nginx.conf" "../" "config" "ngx_http_mytest_module.c")
 
  ("/root/" (21236 37998) "del.txt" ".gccrec" "a/" ".emacs.bmk" ".ssh/" ".bashrc" ".viminfo" ".ido.last~" ".gitconfig" "linode.sh" ".eshell/" "test.c" "redhatlige.sh" "a.txt" "emacs.txt" "kvm_demo/" "test.c~" ".cshrc" ".projects.ede" "taglist_46.zip" "ace.rar" ".bash_profile" ".vimrc" ".gem/" ".rediscli_history" ".t.weibo.emacs.d/" ".tcshrc" "../" ".mysql_history" "./" "myemacs/" ".autopch/" ".pip/" ".ecb-tip-of-day.el" "#back.emacs#" "test" ".bash_history" ".emacs" ".python-eggs/" ".emacs~" ".ido.last" "#copyemacs.sh#" "fanfan.sh" "copyemacs.sh" "back.emacs" ".w3m/" ".pki/" "aaa.txt" ".emacs.before_ecb_2.40" ".subversion/" ".vim/" "hosts" ".emacs.d/")
