@@ -137,10 +137,17 @@ ngx_event_accept(ngx_event_t *ev)
 #if (NGX_STAT_STUB)
         (void) ngx_atomic_fetch_add(ngx_stat_accepted, 1);
 #endif
-
+        /*
+		   accept到一个新的连接后，就重新计算ngx_accept_disabled的值，
+		   它主要是用来做负载均衡，之前有提过。
+		   这里，我们可以看到他的就只方式
+		   “总连接数的八分之一   -   剩余的连接数“
+		   总连接指每个进程设定的最大连接数，这个数字可以再配置文件中指定。
+		   所以每个进程到总连接数的7/8后，ngx_accept_disabled就大于零，连接超载了
+		   */
         ngx_accept_disabled = ngx_cycle->connection_n / 8
                               - ngx_cycle->free_connection_n;
-
+        //获取一个connection
         c = ngx_get_connection(s, ev->log);
 
         if (c == NULL) {
@@ -155,7 +162,8 @@ ngx_event_accept(ngx_event_t *ev)
 #if (NGX_STAT_STUB)
         (void) ngx_atomic_fetch_add(ngx_stat_active, 1);
 #endif
-
+        //为新的链接创建起一个memory pool
+		//连接关闭的时候，才释放pool
         c->pool = ngx_create_pool(ls->pool_size, ev->log);
         if (c->pool == NULL) {
             ngx_close_accepted_connection(c);
@@ -189,6 +197,7 @@ ngx_event_accept(ngx_event_t *ev)
             }
 
         } else {
+        	//我们使用epoll模型，这里我们设置连接为nonblocking
             if (!(ngx_event_flags & (NGX_USE_AIO_EVENT|NGX_USE_RTSIG_EVENT))) {
                 if (ngx_nonblocking(s) == -1) {
                     ngx_log_error(NGX_LOG_ALERT, ev->log, ngx_socket_errno,
@@ -200,7 +209,7 @@ ngx_event_accept(ngx_event_t *ev)
         }
 
         *log = ls->log;
-
+        //初始化新的连接
         c->recv = ngx_recv;
         c->send = ngx_send;
         c->recv_chain = ngx_recv_chain;
@@ -354,7 +363,11 @@ ngx_event_accept(ngx_event_t *ev)
 
         log->data = NULL;
         log->handler = NULL;
-
+        /* hao ning haohaohaohao
+		   这里listen handler很重要，它将完成新连接的最后初始化工作，
+		   同时将accept到的新的连接放入epoll中；挂在这个handler上的函数，
+		   就是ngx_http_init_connection 在之后http模块中在详细介绍
+		   */
         ls->handler(c);
 
         if (ngx_event_flags & NGX_USE_KQUEUE_EVENT) {

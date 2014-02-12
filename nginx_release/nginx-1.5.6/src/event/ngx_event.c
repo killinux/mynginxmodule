@@ -238,14 +238,29 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
             ngx_accept_disabled--;
 
         } else {
+        	 /*
+			尝试锁accept mutex，只有成功获取锁的进程，才会将listen套接字放到epoll中。
+			因此，这就保证了只有一个进程拥有监听套接口，故所有进程阻塞在epoll_wait时，
+			才不会惊群现象。
+			*/
             if (ngx_trylock_accept_mutex(cycle) == NGX_ERROR) {
                 return;
             }
 
             if (ngx_accept_mutex_held) {
+            	 /*
+				如果进程获得了锁，将添加一个 NGX_POST_EVENTS 标志。
+				这个标志的作用是将所有产生的事件放入一个队列中，等释放后，在慢慢来处理事件。
+				因为，处理时间可能会很耗时，如果不先施放锁再处理的话，该进程就长时间霸占了锁，
+				导致其他进程无法获取锁，这样accept的效率就低了。
+				*/
                 flags |= NGX_POST_EVENTS;
 
             } else {
+            	/*
+				没有获得所得进程，当然不需要NGX_POST_EVENTS标志。
+				但需要设置延时多长时间，再去争抢锁。
+				*/
                 if (timer == NGX_TIMER_INFINITE
                     || timer > ngx_accept_mutex_delay)
                 {
@@ -256,29 +271,41 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
     }
 
     delta = ngx_current_msec;
+    /*接下来，epoll要开始wait事件，
+	ngx_process_events的具体实现是对应到epoll模块中的ngx_epoll_process_events函数
 
+	*/
     (void) ngx_process_events(cycle, timer, flags);//hao ning where ?
-
+    //统计本次wait事件的耗时
     delta = ngx_current_msec - delta;
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
                    "timer delta: %M", delta);
-
+    /*
+       ngx_posted_accept_events是一个事件队列，暂存epoll从监听套接口wait到的accept事件。
+       前文提到的NGX_POST_EVENTS标志被使用后，会将所有的accept事件暂存到这个队列
+       */
     if (ngx_posted_accept_events) {
         ngx_event_process_posted(cycle, &ngx_posted_accept_events);
     }
-
+    //所有accept事件处理完之后，如果持有锁的话，就释放掉。
     if (ngx_accept_mutex_held) {
         ngx_shmtx_unlock(&ngx_accept_mutex);
     }
-
+    /*
+       delta是之前统计的耗时，存在毫秒级的耗时，就对所有时间的timer进行检查，
+       如果timeout 就从time rbtree中删除到期的timer，同时调用相应事件的handler函数处理
+       */
     if (delta) {
         ngx_event_expire_timers();
     }
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
                    "posted events %p", ngx_posted_events);
-
+    /*
+       处理普通事件(连接上获得的读写事件)，
+       因为每个事件都有自己的handler方法，
+       */
     if (ngx_posted_events) {
         if (ngx_threaded) {
             ngx_wakeup_worker_thread(cycle);
