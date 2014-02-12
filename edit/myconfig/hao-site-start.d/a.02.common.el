@@ -8,7 +8,8 @@
 (global-set-key (kbd "C-z C-z") 'linum-mode)
 (global-set-key (kbd "C-z C-f") 'goto-line)
 
-;括号匹配                                                                                                                                                                                                     (global-set-key "%" 'match-paren)   
+;括号匹配
+(global-set-key "%" 'match-paren)   
 (defun match-paren (arg)   
   "Go to the matching paren if on a paren; otherwise insert %."   
   (interactive "p")   
