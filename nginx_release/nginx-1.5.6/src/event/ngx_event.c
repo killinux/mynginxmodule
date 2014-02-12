@@ -221,8 +221,19 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
 
 #endif
     }
-
+    /* hao
+	  ngx_use_accept_mutex变量代表是否使用accept互斥体
+	  默认是使用，可以通过accept_mutex off;指令关闭；
+	  accept mutex 的作用就是避免惊群，同时实现负载均衡
+   */
     if (ngx_use_accept_mutex) {
+    	 /*
+		ngx_accept_disabled变量在ngx_event_accept函数中计算。
+		如果ngx_accept_disabled大于0，就表示该进程接受的链接过多，
+		因此放弃一次争抢accept mutex的机会，同时将自己减一。
+		然后，继续处理已有连接上的事件。
+		nginx就利用这一点实现了继承关于连接的基本负载均衡。
+		*/
         if (ngx_accept_disabled > 0) {
             ngx_accept_disabled--;
 
@@ -246,7 +257,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
 
     delta = ngx_current_msec;
 
-    (void) ngx_process_events(cycle, timer, flags);
+    (void) ngx_process_events(cycle, timer, flags);//hao ning where ?
 
     delta = ngx_current_msec - delta;
 

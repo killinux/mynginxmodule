@@ -195,7 +195,7 @@ ngx_spawn_process(ngx_cycle_t *cycle, ngx_spawn_proc_pt proc, void *data,
 
     case 0:
         ngx_pid = ngx_getpid();
-        proc(cycle, data);
+        proc(cycle, data);//hao ning  zhixing work process
         break;
 
     default:
