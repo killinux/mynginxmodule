@@ -347,3 +347,114 @@ send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@b551
 write(58): {?8org.java_websocket.WebSocket@4e99353f has left the room!}
 org.java_websocket.WebSocket@4e99353f has left the room!
 org.java_websocket.WebSocket@442a15cd has left the room!
+nohup: ignoring input
+ChatServer started on port: 8887
+Exception in thread "main" java.io.IOException: Bad file descriptor
+   at gnu.java.nio.channels.FileChannelImpl.read(libgcj.so.10)
+   at java.io.FileInputStream.read(libgcj.so.10)
+   at java.io.BufferedInputStream.refill(libgcj.so.10)
+   at java.io.InputStreamReader.refill(libgcj.so.10)
+   at java.io.InputStreamReader.read(libgcj.so.10)
+   at java.io.BufferedReader.fill(libgcj.so.10)
+   at java.io.BufferedReader.readLine(libgcj.so.10)
+   at ChatServer.main(ChatServer.java:87)
+nohup: ignoring input
+ChatServer started on port: 8887
+Exception in thread "main" java.io.IOException: Bad file descriptor
+   at gnu.java.nio.channels.FileChannelImpl.read(libgcj.so.10)
+   at java.io.FileInputStream.read(libgcj.so.10)
+   at java.io.BufferedInputStream.refill(libgcj.so.10)
+   at java.io.InputStreamReader.refill(libgcj.so.10)
+   at java.io.InputStreamReader.read(libgcj.so.10)
+   at java.io.BufferedReader.fill(libgcj.so.10)
+   at java.io.BufferedReader.readLine(libgcj.so.10)
+   at ChatServer.main(ChatServer.java:87)
+nohup: ignoring input
+ChatServer started on port: 8887
+Exception in thread "main" java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:220)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:256)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:317)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at ChatServer.main(ChatServer.java:87)
+nohup: ignoring input
+ChatServer started on port: 8887
+Exception in thread "main" java.io.IOException: Bad file descriptor
+	at java.io.FileInputStream.readBytes(Native Method)
+	at java.io.FileInputStream.read(FileInputStream.java:220)
+	at java.io.BufferedInputStream.read1(BufferedInputStream.java:256)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:317)
+	at sun.nio.cs.StreamDecoder.readBytes(StreamDecoder.java:264)
+	at sun.nio.cs.StreamDecoder.implRead(StreamDecoder.java:306)
+	at sun.nio.cs.StreamDecoder.read(StreamDecoder.java:158)
+	at java.io.InputStreamReader.read(InputStreamReader.java:167)
+	at java.io.BufferedReader.fill(BufferedReader.java:136)
+	at java.io.BufferedReader.readLine(BufferedReader.java:299)
+	at java.io.BufferedReader.readLine(BufferedReader.java:362)
+	at ChatServer.main(ChatServer.java:87)
+process(446): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://killinux.com
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: nDNNzcLWEiGWeEc2QPmRew==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@17dfafd1}
+write(5): {?new}
+org.java_websocket.WebSocket@5e8fce95 entered the room!
+process(11): {??h?? ??}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:5, payload:[B@272d7a10}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:5, payload:[B@1aa8c488}
+write(7): {?hello}
+org.java_websocket.WebSocket@5e8fce95: hello
+process(446): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://killinux.com
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: 2bgobmYz8yrcYC2N30BVjg==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@c3bb2b8}
+write(5): {?new}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2352544e}
+write(5): {?new}
+org.java_websocket.WebSocket@721cdeff entered the room!
+process(15): {??+	????!^??S?}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:9, payload:[B@457471e0}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:9, payload:[B@5fe04cbf}
+write(11): {?	?????????}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:9, payload:[B@7ecec0c5}
+write(11): {?	?????????}
+org.java_websocket.WebSocket@721cdeff: ???
+process(13): {?????????????}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@37d2068d}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@3dac2f9c}
+write(9): {?haoning}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:7, payload:[B@7369ca65}
+write(9): {?haoning}
+org.java_websocket.WebSocket@5e8fce95: haoning
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:56, payload:[B@2666e815}
+write(58): {?8org.java_websocket.WebSocket@5e8fce95 has left the room!}
+org.java_websocket.WebSocket@5e8fce95 has left the room!
+org.java_websocket.WebSocket@721cdeff has left the room!

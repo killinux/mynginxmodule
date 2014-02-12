@@ -1,0 +1,122 @@
+/* 代码整理：懒人之家 lanrenzhijia.com */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, del, dfn, em, img, ins, kbd, q, samp, small, strong, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, table, tbody, tfoot, thead, tr, th, td, article, aside, footer, header, nav, section {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display:block;
+}
+a:hover, a:active {
+	outline:none;
+}
+select, input, textarea, button {
+	font:99% sans-serif;
+}
+input, select {
+	vertical-align:middle;
+}
+ul, ol, li {
+	list-style:none;
+}
+img {
+	border:0;
+	max-width:100%;
+}
+hr {
+	display:block;
+	height:1px;
+	border:0;
+	border-top:1px solid #ccc;
+	margin:1em 0;
+	padding:0;
+}
+.nocallout {
+	-webkit-touch-callout: none;
+} /* prevent callout */
+table {
+	margin:0;
+	padding:0;
+	clear:left;
+	width:100%;
+	border-collapse:collapse;
+	border-spacing:0;
+}
+table td {
+	vertical-align:top;
+	margin:0;
+}
+html {
+	height:100%;
+}
+body {
+	font:13px/1.4 sans-serif;
+*font-size: small;
+	word-wrap:break-word;
+	margin:0 auto;
+	-webkit-text-size-adjust: none;
+	color:#3c3c3c;
+	font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, sans-serif;
+	height:100%;
+}
+a {
+	color:#1191C3;
+	text-decoration:none;
+}
+p {
+	margin-bottom:1em;
+}
+.lanrenzhijia {
+	width:320px;
+	border:2px solid #ccc;
+	position:relative;
+	margin:0 auto;
+	height:380px;
+	margin-bottom:40px;
+}
+#wrapper, #wrapper2 {
+	position:absolute;
+	z-index:1;
+	top:15px;
+	bottom:0;
+	left:0;
+	width:100%;
+	background:#aaa;
+	overflow:auto;
+	overflow: hidden;
+	border:0;
+	width:100%;
+	height:380px;
+}
+#scroller {
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	width:100%;
+}
+#scroller ul {
+	width:100%;
+	text-align:left;
+}
+#scroller li {
+	padding:5px 1%;
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #fff;
+	background-color:#fafafa;
+	font-size:14px;
+	width:98%;
+	float:left;
+}
+#scroller li img {
+	float:left;
+	width:111px;
+	height:83px;
+}
+#scroller li span {
+	float:left;
+	padding:30px 0 0 6px;
+	width:60%;
+}
+/* 代码整理：懒人之家 lanrenzhijia.com */
