@@ -574,8 +574,8 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
     /* NGX_TIMER_INFINITE == INFTIM */
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
-                   "epoll timer: %M", timer);
-
+                   "epoll timer: %M", timer);//hao
+    /* 等待事件发生。最长等待事件为timer；nginx通过红黑树专门维护了一个计时器*/
     events = epoll_wait(ep, event_list, (int) nevents, timer);
 
     err = (events == -1) ? ngx_errno : 0;
@@ -584,7 +584,7 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
         ngx_time_update();
     }
 
-    if (err) {
+    if (err) { /*处理wait错误*/
         if (err == NGX_EINTR) {
 
             if (ngx_event_timer_alarm) {
