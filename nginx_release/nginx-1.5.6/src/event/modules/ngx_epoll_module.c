@@ -165,7 +165,7 @@ ngx_event_module_t  ngx_epoll_module_ctx = {
         ngx_epoll_add_connection,        /* add an connection */
         ngx_epoll_del_connection,        /* delete an connection */
         NULL,                            /* process the changes */
-        ngx_epoll_process_events,        /* process the events */
+        ngx_epoll_process_events,        /* process the events hao */
         ngx_epoll_init,                  /* init the events */
         ngx_epoll_done,                  /* done the events */
     }
@@ -560,9 +560,7 @@ ngx_epoll_del_connection(ngx_connection_t *c, ngx_uint_t flags)
 }
 
 
-static ngx_int_t
-ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
-{
+static ngx_int_t ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags){//hao
     int                events;
     uint32_t           revents;
     ngx_int_t          instance, i;

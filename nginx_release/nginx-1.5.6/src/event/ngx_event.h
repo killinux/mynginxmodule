@@ -228,15 +228,14 @@ typedef struct {
     ngx_int_t  (*del_conn)(ngx_connection_t *c, ngx_uint_t flags);
 
     ngx_int_t  (*process_changes)(ngx_cycle_t *cycle, ngx_uint_t nowait);
-    ngx_int_t  (*process_events)(ngx_cycle_t *cycle, ngx_msec_t timer,
-                   ngx_uint_t flags);
+    ngx_int_t  (*process_events)(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags);//hao ngx_process_events ngx_epoll_process_events
 
     ngx_int_t  (*init)(ngx_cycle_t *cycle, ngx_msec_t timer);
     void       (*done)(ngx_cycle_t *cycle);
 } ngx_event_actions_t;
 
 
-extern ngx_event_actions_t   ngx_event_actions;
+extern ngx_event_actions_t   ngx_event_actions;//hao-ngx_event_actions
 
 
 /*
@@ -442,6 +441,8 @@ extern ngx_event_actions_t   ngx_event_actions;
 
 #define ngx_process_changes  ngx_event_actions.process_changes
 #define ngx_process_events   ngx_event_actions.process_events
+//hao ngx_process_events --->ngx_event_actions.process_events --->ngx_epoll_process_events
+//hao ngx_event.h: extern ngx_event_actions_t   ngx_event_actions;
 #define ngx_done_events      ngx_event_actions.done
 
 #define ngx_add_event        ngx_event_actions.add

@@ -14,22 +14,22 @@ static void *ngx_palloc_large(ngx_pool_t *pool, size_t size);
 
 
 ngx_pool_t *
-ngx_create_pool(size_t size, ngx_log_t *log)
-{
+ngx_create_pool(size_t size, ngx_log_t *log){//hao
     ngx_pool_t  *p;
 
-    p = ngx_memalign(NGX_POOL_ALIGNMENT, size, log);
+    p = ngx_memalign(NGX_POOL_ALIGNMENT, size, log);//创建对齐空间
     if (p == NULL) {
         return NULL;
     }
 
-    p->d.last = (u_char *) p + sizeof(ngx_pool_t);
-    p->d.end = (u_char *) p + size;
-    p->d.next = NULL;
+    p->d.last = (u_char *) p + sizeof(ngx_pool_t);/初始指向ngx_pool_t结构体后面
+    p->d.end = (u_char *) p + size;//整个结构体的结尾
+    p->d.next = NULL;//没有next
     p->d.failed = 0;
 
-    size = size - sizeof(ngx_pool_t);
-    p->max = (size < NGX_MAX_ALLOC_FROM_POOL) ? size : NGX_MAX_ALLOC_FROM_POOL;
+    size = size - sizeof(ngx_pool_t);//剩余大小
+    p->max = (size < NGX_MAX_ALLOC_FROM_POOL) ? size : NGX_MAX_ALLOC_FROM_POOL;//最大不超过NGX_MAX_ALLOC_FROM_POOL
+    //#define NGX_MAX_ALLOC_FROM_POOL  (ngx_pagesize - 1)
 
     p->current = p;
     p->chain = NULL;
@@ -48,7 +48,7 @@ ngx_destroy_pool(ngx_pool_t *pool)
     ngx_pool_large_t    *l;
     ngx_pool_cleanup_t  *c;
 
-    for (c = pool->cleanup; c; c = c->next) {
+    for (c = pool->cleanup; c; c = c->next) {//如果注册了clenup(一种链表结构)，会依次调用clenup的handler进行清理
         if (c->handler) {
             ngx_log_debug1(NGX_LOG_DEBUG_ALLOC, pool->log, 0,
                            "run cleanup: %p", c);
@@ -56,7 +56,7 @@ ngx_destroy_pool(ngx_pool_t *pool)
         }
     }
 
-    for (l = pool->large; l; l = l->next) {
+    for (l = pool->large; l; l = l->next) {//遍历链表，释放所有large内存
 
         ngx_log_debug1(NGX_LOG_DEBUG_ALLOC, pool->log, 0, "free: %p", l->alloc);
 
@@ -83,7 +83,7 @@ ngx_destroy_pool(ngx_pool_t *pool)
 
 #endif
 
-    for (p = pool, n = pool->d.next; /* void */; p = n, n = n->d.next) {
+    for (p = pool, n = pool->d.next; /* void */; p = n, n = n->d.next) {//遍历链表 ，释放内存空间
         ngx_free(p);
 
         if (n == NULL) {
@@ -99,7 +99,7 @@ ngx_reset_pool(ngx_pool_t *pool)
     ngx_pool_t        *p;
     ngx_pool_large_t  *l;
 
-    for (l = pool->large; l; l = l->next) {
+    for (l = pool->large; l; l = l->next) {//释放掉所有large段内存
         if (l->alloc) {
             ngx_free(l->alloc);
         }
