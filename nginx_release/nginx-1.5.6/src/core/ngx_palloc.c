@@ -22,7 +22,7 @@ ngx_create_pool(size_t size, ngx_log_t *log){//hao
         return NULL;
     }
 
-    p->d.last = (u_char *) p + sizeof(ngx_pool_t);/初始指向ngx_pool_t结构体后面
+    p->d.last = (u_char *) p + sizeof(ngx_pool_t);//初始指向ngx_pool_t结构体后面
     p->d.end = (u_char *) p + size;//整个结构体的结尾
     p->d.next = NULL;//没有next
     p->d.failed = 0;
