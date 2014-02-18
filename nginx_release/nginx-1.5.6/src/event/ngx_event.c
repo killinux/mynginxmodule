@@ -275,7 +275,7 @@ ngx_process_events_and_timers(ngx_cycle_t *cycle)
 	ngx_process_events的具体实现是对应到epoll模块中的ngx_epoll_process_events函数
 
 	*/
-    (void) ngx_process_events(cycle, timer, flags);//hao ning where ?
+    (void) ngx_process_events(cycle, timer, flags);//hao ning --->ngx_event.h:
     //统计本次wait事件的耗时
     delta = ngx_current_msec - delta;
 

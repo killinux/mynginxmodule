@@ -165,7 +165,7 @@ ngx_event_module_t  ngx_epoll_module_ctx = {
         ngx_epoll_add_connection,        /* add an connection */
         ngx_epoll_del_connection,        /* delete an connection */
         NULL,                            /* process the changes */
-        ngx_epoll_process_events,        /* process the events */
+        ngx_epoll_process_events,        /* process the events hao */
         ngx_epoll_init,                  /* init the events */
         ngx_epoll_done,                  /* done the events */
     }
@@ -560,9 +560,7 @@ ngx_epoll_del_connection(ngx_connection_t *c, ngx_uint_t flags)
 }
 
 
-static ngx_int_t
-ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
-{
+static ngx_int_t ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags){//hao
     int                events;
     uint32_t           revents;
     ngx_int_t          instance, i;
@@ -574,8 +572,8 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
     /* NGX_TIMER_INFINITE == INFTIM */
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
-                   "epoll timer: %M", timer);
-
+                   "epoll timer: %M", timer);//hao
+    /* 等待事件发生。最长等待事件为timer；nginx通过红黑树专门维护了一个计时器*/
     events = epoll_wait(ep, event_list, (int) nevents, timer);
 
     err = (events == -1) ? ngx_errno : 0;
@@ -584,7 +582,7 @@ ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, ngx_uint_t flags)
         ngx_time_update();
     }
 
-    if (err) {
+    if (err) { /*处理wait错误*/
         if (err == NGX_EINTR) {
 
             if (ngx_event_timer_alarm) {
