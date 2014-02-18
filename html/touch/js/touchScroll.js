@@ -1,4 +1,3 @@
-/* 代码整理：懒人之家 lanrenzhijia.com */
 
 function TouchScroll(cfg){
 	this.cfg=this.parseArgs(cfg);
@@ -516,4 +515,3 @@ TouchScroll.prototype={
 
 window.TouchScroll=TouchScroll;
 
-/* 代码整理：懒人之家 lanrenzhijia.com */
