@@ -9,3 +9,13 @@ let g:winManagerWindowLayout = "TagList|FileExplorer"
 let g:winManagerWidth = 30
 nmap <silent> <F8> :WMToggle<cr>
 nmap <silent> <F7> :BufExplorer<cr>
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set nu
+set cursorline
+set fileformats=unix,dos
+set ignorecase
+set smartcase
+set showmatch
+highlight Comment ctermfg=LightCyan
