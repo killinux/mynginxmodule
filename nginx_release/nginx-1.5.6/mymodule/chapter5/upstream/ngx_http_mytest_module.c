@@ -100,17 +100,17 @@ static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf)
         return NULL;
     }
 
-    //ÒÔÏÂ¼òµ¥µÄÓ²±àÂëngx_http_upstream_conf_t½á¹¹ÖĞµÄ¸÷³ÉÔ±£¬ÀıÈç
-//³¬Ê±Ê±¼ä¶¼ÉèÎª1·ÖÖÓ¡£ÕâÒ²ÊÇhttp·´Ïò´úÀíÄ£¿éµÄÄ¬ÈÏÖµ
+    //ä»¥ä¸‹ç®€å•çš„ç¡¬ç¼–ç ngx_http_upstream_conf_tç»“æ„ä¸­çš„å„æˆå‘˜ï¼Œä¾‹å¦‚
+//è¶…æ—¶æ—¶é—´éƒ½è®¾ä¸º1åˆ†é’Ÿã€‚è¿™ä¹Ÿæ˜¯httpåå‘ä»£ç†æ¨¡å—çš„é»˜è®¤å€¼
     mycf->upstream.connect_timeout = 60000;
     mycf->upstream.send_timeout = 60000;
     mycf->upstream.read_timeout = 60000;
     mycf->upstream.store_access = 0600;
-    //Êµ¼ÊÉÏbufferingÒÑ¾­¾ö¶¨ÁË½«ÒÔ¹Ì¶¨´óĞ¡µÄÄÚ´æ×÷Îª»º³åÇøÀ´×ª·¢ÉÏÓÎµÄ
-//ÏìÓ¦°üÌå£¬Õâ¿é¹Ì¶¨»º³åÇøµÄ´óĞ¡¾ÍÊÇbuffer_size¡£Èç¹ûbufferingÎª1
-//¾Í»áÊ¹ÓÃ¸ü¶àµÄÄÚ´æ»º´æÀ´²»¼°·¢ÍùÏÂÓÎµÄÏìÓ¦£¬ÀıÈç×î¶àÊ¹ÓÃbufs.num¸ö
-//»º³åÇø¡¢Ã¿¸ö»º³åÇø´óĞ¡Îªbufs.size£¬ÁíÍâ»¹»áÊ¹ÓÃÁÙÊ±ÎÄ¼ş£¬ÁÙÊ±ÎÄ¼şµÄ
-//×î´ó³¤¶ÈÎªmax_temp_file_size
+    //å®é™…ä¸Šbufferingå·²ç»å†³å®šäº†å°†ä»¥å›ºå®šå¤§å°çš„å†…å­˜ä½œä¸ºç¼“å†²åŒºæ¥è½¬å‘ä¸Šæ¸¸çš„
+//å“åº”åŒ…ä½“ï¼Œè¿™å—å›ºå®šç¼“å†²åŒºçš„å¤§å°å°±æ˜¯buffer_sizeã€‚å¦‚æœbufferingä¸º1
+//å°±ä¼šä½¿ç”¨æ›´å¤šçš„å†…å­˜ç¼“å­˜æ¥ä¸åŠå‘å¾€ä¸‹æ¸¸çš„å“åº”ï¼Œä¾‹å¦‚æœ€å¤šä½¿ç”¨bufs.numä¸ª
+//ç¼“å†²åŒºã€æ¯ä¸ªç¼“å†²åŒºå¤§å°ä¸ºbufs.sizeï¼Œå¦å¤–è¿˜ä¼šä½¿ç”¨ä¸´æ—¶æ–‡ä»¶ï¼Œä¸´æ—¶æ–‡ä»¶çš„
+//æœ€å¤§é•¿åº¦ä¸ºmax_temp_file_size
     mycf->upstream.buffering = 0;
     mycf->upstream.bufs.num = 8;
     mycf->upstream.bufs.size = ngx_pagesize;
@@ -119,13 +119,13 @@ static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf)
     mycf->upstream.temp_file_write_size = 2 * ngx_pagesize;
     mycf->upstream.max_temp_file_size = 1024 * 1024 * 1024;
 
-    //upstreamÄ£¿éÒªÇóhide_headers³ÉÔ±±ØĞëÒª³õÊ¼»¯£¨upstreamÔÚ½âÎö
-//ÍêÉÏÓÎ·şÎñÆ÷·µ»ØµÄ°üÍ·Ê±£¬»áµ÷ÓÃ
-//ngx_http_upstream_process_headers·½·¨°´ÕÕhide_headers³ÉÔ±½«
-//±¾Ó¦×ª·¢¸øÏÂÓÎµÄÒ»Ğ©httpÍ·²¿Òş²Ø£©£¬ÕâÀï½«Ëü¸³Îª
-//NGX_CONF_UNSET_PTR £¬ÊÇÎªÁËÔÚmergeºÏ²¢ÅäÖÃÏî·½·¨ÖĞÊ¹ÓÃ
-//upstreamÄ£¿éÌá¹©µÄngx_http_upstream_hide_headers_hash
-//·½·¨³õÊ¼»¯hide_headers ³ÉÔ±
+    //upstreamæ¨¡å—è¦æ±‚hide_headersæˆå‘˜å¿…é¡»è¦åˆå§‹åŒ–ï¼ˆupstreamåœ¨è§£æ
+//å®Œä¸Šæ¸¸æœåŠ¡å™¨è¿”å›çš„åŒ…å¤´æ—¶ï¼Œä¼šè°ƒç”¨
+//ngx_http_upstream_process_headersæ–¹æ³•æŒ‰ç…§hide_headersæˆå‘˜å°†
+//æœ¬åº”è½¬å‘ç»™ä¸‹æ¸¸çš„ä¸€äº›httpå¤´éƒ¨éšè—ï¼‰ï¼Œè¿™é‡Œå°†å®ƒèµ‹ä¸º
+//NGX_CONF_UNSET_PTR ï¼Œæ˜¯ä¸ºäº†åœ¨mergeåˆå¹¶é…ç½®é¡¹æ–¹æ³•ä¸­ä½¿ç”¨
+//upstreamæ¨¡å—æä¾›çš„ngx_http_upstream_hide_headers_hash
+//æ–¹æ³•åˆå§‹åŒ–hide_headers æˆå‘˜
     mycf->upstream.hide_headers = NGX_CONF_UNSET_PTR;
     mycf->upstream.pass_headers = NGX_CONF_UNSET_PTR;
 
@@ -156,38 +156,38 @@ static char *ngx_http_mytest_merge_loc_conf(ngx_conf_t *cf, void *parent, void *
 static ngx_int_t
 mytest_upstream_create_request(ngx_http_request_t *r)
 {
-    //·¢ÍùgoogleÉÏÓÎ·şÎñÆ÷µÄÇëÇóºÜ¼òµ¥£¬¾ÍÊÇÄ£·ÂÕı³£µÄËÑË÷ÇëÇó£¬
-//ÒÔ/search?q=¡­µÄURLÀ´·¢ÆğËÑË÷ÇëÇó¡£backendQueryLineÖĞµÄ%VµÈ×ª»¯
-//¸ñÊ½µÄÓÃ·¨£¬Çë²Î¼û4.4½ÚÖĞµÄ±í4-7
+    //å‘å¾€googleä¸Šæ¸¸æœåŠ¡å™¨çš„è¯·æ±‚å¾ˆç®€å•ï¼Œå°±æ˜¯æ¨¡ä»¿æ­£å¸¸çš„æœç´¢è¯·æ±‚ï¼Œ
+//ä»¥/search?q=â€¦çš„URLæ¥å‘èµ·æœç´¢è¯·æ±‚ã€‚backendQueryLineä¸­çš„%Vç­‰è½¬åŒ–
+//æ ¼å¼çš„ç”¨æ³•ï¼Œè¯·å‚è§4.4èŠ‚ä¸­çš„è¡¨4-7
     static ngx_str_t backendQueryLine =
         ngx_string("GET /search?q=%V HTTP/1.1\r\nHost: www.google.com\r\nConnection: close\r\n\r\n");
     ngx_int_t queryLineLen = backendQueryLine.len + r->args.len - 2;
-    //±ØĞëÓÉÄÚ´æ³ØÖĞÉêÇëÄÚ´æ£¬ÕâÓĞÁ½µãºÃ´¦£ºÔÚÍøÂçÇé¿ö²»¼ÑµÄÇé¿öÏÂ£¬ÏòÉÏÓÎ
-//·şÎñÆ÷·¢ËÍÇëÇóÊ±£¬¿ÉÄÜĞèÒªepoll¶à´Îµ÷¶Èsend·¢ËÍ²ÅÄÜÍê³É£¬
-//ÕâÊ±±ØĞë±£Ö¤Õâ¶ÎÄÚ´æ²»»á±»ÊÍ·Å£»ÇëÇó½áÊøÊ±£¬Õâ¶ÎÄÚ´æ»á±»×Ô¶¯ÊÍ·Å£¬
-//½µµÍÄÚ´æĞ¹Â©µÄ¿ÉÄÜ
+    //å¿…é¡»ç”±å†…å­˜æ± ä¸­ç”³è¯·å†…å­˜ï¼Œè¿™æœ‰ä¸¤ç‚¹å¥½å¤„ï¼šåœ¨ç½‘ç»œæƒ…å†µä¸ä½³çš„æƒ…å†µä¸‹ï¼Œå‘ä¸Šæ¸¸
+//æœåŠ¡å™¨å‘é€è¯·æ±‚æ—¶ï¼Œå¯èƒ½éœ€è¦epollå¤šæ¬¡è°ƒåº¦sendå‘é€æ‰èƒ½å®Œæˆï¼Œ
+//è¿™æ—¶å¿…é¡»ä¿è¯è¿™æ®µå†…å­˜ä¸ä¼šè¢«é‡Šæ”¾ï¼›è¯·æ±‚ç»“æŸæ—¶ï¼Œè¿™æ®µå†…å­˜ä¼šè¢«è‡ªåŠ¨é‡Šæ”¾ï¼Œ
+//é™ä½å†…å­˜æ³„æ¼çš„å¯èƒ½
     ngx_buf_t* b = ngx_create_temp_buf(r->pool, queryLineLen);
     if (b == NULL)
         return NGX_ERROR;
-    //lastÒªÖ¸ÏòÇëÇóµÄÄ©Î²
+    //lastè¦æŒ‡å‘è¯·æ±‚çš„æœ«å°¾
     b->last = b->pos + queryLineLen;
 
-    //×÷ÓÃÏàµ±ÓÚsnprintf£¬Ö»ÊÇËüÖ§³Ö4.4½ÚÖĞµÄ±í4-7ÁĞ³öµÄËùÓĞ×ª»»¸ñÊ½
+    //ä½œç”¨ç›¸å½“äºsnprintfï¼Œåªæ˜¯å®ƒæ”¯æŒ4.4èŠ‚ä¸­çš„è¡¨4-7åˆ—å‡ºçš„æ‰€æœ‰è½¬æ¢æ ¼å¼
     ngx_snprintf(b->pos, queryLineLen ,
                  (char*)backendQueryLine.data, &r->args);
-    // r->upstream->request_bufsÊÇÒ»¸öngx_chain_t½á¹¹£¬Ëü°üº¬×ÅÒª
-//·¢ËÍ¸øÉÏÓÎ·şÎñÆ÷µÄÇëÇó
+    // r->upstream->request_bufsæ˜¯ä¸€ä¸ªngx_chain_tç»“æ„ï¼Œå®ƒåŒ…å«ç€è¦
+//å‘é€ç»™ä¸Šæ¸¸æœåŠ¡å™¨çš„è¯·æ±‚
     r->upstream->request_bufs = ngx_alloc_chain_link(r->pool);
     if (r->upstream->request_bufs == NULL)
         return NGX_ERROR;
 
-    // request_bufsÕâÀïÖ»°üº¬1¸öngx_buf_t»º³åÇø
+    // request_bufsè¿™é‡ŒåªåŒ…å«1ä¸ªngx_buf_tç¼“å†²åŒº
     r->upstream->request_bufs->buf = b;
     r->upstream->request_bufs->next = NULL;
 
     r->upstream->request_sent = 0;
     r->upstream->header_sent = 0;
-    // header_hash²»¿ÉÒÔÎª0
+    // header_hashä¸å¯ä»¥ä¸º0
     r->header_hash = 1;
     return NGX_OK;
 }
@@ -199,7 +199,7 @@ mytest_process_status_line(ngx_http_request_t *r)
     ngx_int_t              rc;
     ngx_http_upstream_t   *u;
 
-    //ÉÏÏÂÎÄÖĞ²Å»á±£´æ¶à´Î½âÎöhttpÏìÓ¦ĞĞµÄ×´Ì¬£¬Ê×ÏÈÈ¡³öÇëÇóµÄÉÏÏÂÎÄ
+    //ä¸Šä¸‹æ–‡ä¸­æ‰ä¼šä¿å­˜å¤šæ¬¡è§£æhttpå“åº”è¡Œçš„çŠ¶æ€ï¼Œé¦–å…ˆå–å‡ºè¯·æ±‚çš„ä¸Šä¸‹æ–‡
     ngx_http_mytest_ctx_t* ctx = ngx_http_get_module_ctx(r, ngx_http_mytest_module);
     if (ctx == NULL)
     {
@@ -208,16 +208,16 @@ mytest_process_status_line(ngx_http_request_t *r)
 
     u = r->upstream;
 
-    //http¿ò¼ÜÌá¹©µÄngx_http_parse_status_line·½·¨¿ÉÒÔ½âÎöhttp
-//ÏìÓ¦ĞĞ£¬ËüµÄÊäÈë¾ÍÊÇÊÕµ½µÄ×Ö·ûÁ÷ºÍÉÏÏÂÎÄÖĞµÄngx_http_status_t½á¹¹
+    //httpæ¡†æ¶æä¾›çš„ngx_http_parse_status_lineæ–¹æ³•å¯ä»¥è§£æhttp
+//å“åº”è¡Œï¼Œå®ƒçš„è¾“å…¥å°±æ˜¯æ”¶åˆ°çš„å­—ç¬¦æµå’Œä¸Šä¸‹æ–‡ä¸­çš„ngx_http_status_tç»“æ„
     rc = ngx_http_parse_status_line(r, &u->buffer, &ctx->status);
-    //·µ»ØNGX_AGAIN±íÊ¾»¹Ã»ÓĞ½âÎö³öÍêÕûµÄhttpÏìÓ¦ĞĞ£¬ĞèÒª½ÓÊÕ¸ü¶àµÄ
-//×Ö·ûÁ÷ÔÙÀ´½âÎö
+    //è¿”å›NGX_AGAINè¡¨ç¤ºè¿˜æ²¡æœ‰è§£æå‡ºå®Œæ•´çš„httpå“åº”è¡Œï¼Œéœ€è¦æ¥æ”¶æ›´å¤šçš„
+//å­—ç¬¦æµå†æ¥è§£æ
     if (rc == NGX_AGAIN)
     {
         return rc;
     }
-    //·µ»ØNGX_ERRORÔòÃ»ÓĞ½ÓÊÕµ½ºÏ·¨µÄhttpÏìÓ¦ĞĞ
+    //è¿”å›NGX_ERRORåˆ™æ²¡æœ‰æ¥æ”¶åˆ°åˆæ³•çš„httpå“åº”è¡Œ
     if (rc == NGX_ERROR)
     {
         ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
@@ -229,14 +229,14 @@ mytest_process_status_line(ngx_http_request_t *r)
         return NGX_OK;
     }
 
-    //ÒÔÏÂ±íÊ¾½âÎöµ½ÍêÕûµÄhttpÏìÓ¦ĞĞ£¬ÕâÊ±»á×öÒ»Ğ©¼òµ¥µÄ¸³Öµ²Ù×÷£¬½«½âÎö³ö
-//µÄĞÅÏ¢ÉèÖÃµ½r->upstream->headers_in½á¹¹ÌåÖĞ£¬upstream½âÎöÍêËù
-//ÓĞµÄ°üÍ·Ê±£¬¾Í»á°Ñheaders_inÖĞµÄ³ÉÔ±ÉèÖÃµ½½«ÒªÏòÏÂÓÎ·¢ËÍµÄ
-//r->headers_out½á¹¹ÌåÖĞ£¬Ò²¾ÍÊÇËµ£¬ÏÖÔÚÎÒÃÇÏòheaders_inÖĞÉèÖÃµÄ
-//ĞÅÏ¢£¬×îÖÕ¶¼»á·¢ÍùÏÂÓÎ¿Í»§¶Ë¡£ÎªÊ²Ã´²»ÊÇÖ±½ÓÉèÖÃr->headers_out¶øÒª
-//ÕâÑù¶à´ËÒ»¾ÙÄØ£¿ÕâÊÇÒòÎªupstreamÏ£ÍûÄÜ¹»°´ÕÕ
-//ngx_http_upstream_conf_tÅäÖÃ½á¹¹ÌåÖĞµÄhide_headersµÈ³ÉÔ±¶Ô
-//·¢ÍùÏÂÓÎµÄÏìÓ¦Í·²¿×öÍ³Ò»´¦Àí
+    //ä»¥ä¸‹è¡¨ç¤ºè§£æåˆ°å®Œæ•´çš„httpå“åº”è¡Œï¼Œè¿™æ—¶ä¼šåšä¸€äº›ç®€å•çš„èµ‹å€¼æ“ä½œï¼Œå°†è§£æå‡º
+//çš„ä¿¡æ¯è®¾ç½®åˆ°r->upstream->headers_inç»“æ„ä½“ä¸­ï¼Œupstreamè§£æå®Œæ‰€
+//æœ‰çš„åŒ…å¤´æ—¶ï¼Œå°±ä¼šæŠŠheaders_inä¸­çš„æˆå‘˜è®¾ç½®åˆ°å°†è¦å‘ä¸‹æ¸¸å‘é€çš„
+//r->headers_outç»“æ„ä½“ä¸­ï¼Œä¹Ÿå°±æ˜¯è¯´ï¼Œç°åœ¨æˆ‘ä»¬å‘headers_inä¸­è®¾ç½®çš„
+//ä¿¡æ¯ï¼Œæœ€ç»ˆéƒ½ä¼šå‘å¾€ä¸‹æ¸¸å®¢æˆ·ç«¯ã€‚ä¸ºä»€ä¹ˆä¸æ˜¯ç›´æ¥è®¾ç½®r->headers_outè€Œè¦
+//è¿™æ ·å¤šæ­¤ä¸€ä¸¾å‘¢ï¼Ÿè¿™æ˜¯å› ä¸ºupstreamå¸Œæœ›èƒ½å¤ŸæŒ‰ç…§
+//ngx_http_upstream_conf_té…ç½®ç»“æ„ä½“ä¸­çš„hide_headersç­‰æˆå‘˜å¯¹
+//å‘å¾€ä¸‹æ¸¸çš„å“åº”å¤´éƒ¨åšç»Ÿä¸€å¤„ç†
     if (u->state)
     {
         u->state->status = ctx->status.code;
@@ -255,13 +255,13 @@ mytest_process_status_line(ngx_http_request_t *r)
 
     ngx_memcpy(u->headers_in.status_line.data, ctx->status.start, len);
 
-    //ÏÂÒ»²½½«¿ªÊ¼½âÎöhttpÍ·²¿£¬ÉèÖÃprocess_header»Øµ÷·½·¨Îª
-//mytest_upstream_process_header£¬
-//Ö®ºóÔÙÊÕµ½µÄĞÂ×Ö·ûÁ÷½«ÓÉmytest_upstream_process_header½âÎö
+    //ä¸‹ä¸€æ­¥å°†å¼€å§‹è§£æhttpå¤´éƒ¨ï¼Œè®¾ç½®process_headerå›è°ƒæ–¹æ³•ä¸º
+//mytest_upstream_process_headerï¼Œ
+//ä¹‹åå†æ”¶åˆ°çš„æ–°å­—ç¬¦æµå°†ç”±mytest_upstream_process_headerè§£æ
     u->process_header = mytest_upstream_process_header;
 
-    //Èç¹û±¾´ÎÊÕµ½µÄ×Ö·ûÁ÷³ıÁËhttpÏìÓ¦ĞĞÍâ£¬»¹ÓĞ¶àÓàµÄ×Ö·û£¬
-//½«ÓÉmytest_upstream_process_header·½·¨½âÎö
+    //å¦‚æœæœ¬æ¬¡æ”¶åˆ°çš„å­—ç¬¦æµé™¤äº†httpå“åº”è¡Œå¤–ï¼Œè¿˜æœ‰å¤šä½™çš„å­—ç¬¦ï¼Œ
+//å°†ç”±mytest_upstream_process_headeræ–¹æ³•è§£æ
     return mytest_upstream_process_header(r);
 }
 
@@ -274,32 +274,32 @@ mytest_upstream_process_header(ngx_http_request_t *r)
     ngx_http_upstream_header_t     *hh;
     ngx_http_upstream_main_conf_t  *umcf;
 
-    //ÕâÀï½«upstreamÄ£¿éÅäÖÃÏîngx_http_upstream_main_conf_tÈ¡ÁË
-//³öÀ´£¬Ä¿µÄÖ»ÓĞ1¸ö£¬¶Ô½«Òª×ª·¢¸øÏÂÓÎ¿Í»§¶ËµÄhttpÏìÓ¦Í·²¿×÷Í³Ò»
-//´¦Àí¡£¸Ã½á¹¹ÌåÖĞ´æ´¢ÁËĞèÒª×öÍ³Ò»´¦ÀíµÄhttpÍ·²¿Ãû³ÆºÍ»Øµ÷·½·¨
+    //è¿™é‡Œå°†upstreamæ¨¡å—é…ç½®é¡¹ngx_http_upstream_main_conf_tå–äº†
+//å‡ºæ¥ï¼Œç›®çš„åªæœ‰1ä¸ªï¼Œå¯¹å°†è¦è½¬å‘ç»™ä¸‹æ¸¸å®¢æˆ·ç«¯çš„httpå“åº”å¤´éƒ¨ä½œç»Ÿä¸€
+//å¤„ç†ã€‚è¯¥ç»“æ„ä½“ä¸­å­˜å‚¨äº†éœ€è¦åšç»Ÿä¸€å¤„ç†çš„httpå¤´éƒ¨åç§°å’Œå›è°ƒæ–¹æ³•
     umcf = ngx_http_get_module_main_conf(r, ngx_http_upstream_module);
 
-    //Ñ­»·µÄ½âÎöËùÓĞµÄhttpÍ·²¿
+    //å¾ªç¯çš„è§£ææ‰€æœ‰çš„httpå¤´éƒ¨
     for ( ;; )
     {
-        // http¿ò¼ÜÌá¹©ÁË»ù´¡ĞÔµÄngx_http_parse_header_line
-//·½·¨£¬ËüÓÃÓÚ½âÎöhttpÍ·²¿
+        // httpæ¡†æ¶æä¾›äº†åŸºç¡€æ€§çš„ngx_http_parse_header_line
+//æ–¹æ³•ï¼Œå®ƒç”¨äºè§£æhttpå¤´éƒ¨
         rc = ngx_http_parse_header_line(r, &r->upstream->buffer, 1);
-        //·µ»ØNGX_OK±íÊ¾½âÎö³öÒ»ĞĞhttpÍ·²¿
+        //è¿”å›NGX_OKè¡¨ç¤ºè§£æå‡ºä¸€è¡Œhttpå¤´éƒ¨
         if (rc == NGX_OK)
         {
-            //Ïòheaders_in.headersÕâ¸öngx_list_tÁ´±íÖĞÌí¼ÓhttpÍ·²¿
+            //å‘headers_in.headersè¿™ä¸ªngx_list_té“¾è¡¨ä¸­æ·»åŠ httpå¤´éƒ¨
             h = ngx_list_push(&r->upstream->headers_in.headers);
             if (h == NULL)
             {
                 return NGX_ERROR;
             }
-            //ÒÔÏÂ¿ªÊ¼¹¹Ôì¸Õ¸ÕÌí¼Óµ½headersÁ´±íÖĞµÄhttpÍ·²¿
+            //ä»¥ä¸‹å¼€å§‹æ„é€ åˆšåˆšæ·»åŠ åˆ°headersé“¾è¡¨ä¸­çš„httpå¤´éƒ¨
             h->hash = r->header_hash;
 
             h->key.len = r->header_name_end - r->header_name_start;
             h->value.len = r->header_end - r->header_start;
-            //±ØĞëÓÉÄÚ´æ³ØÖĞ·ÖÅä´æ·ÅhttpÍ·²¿µÄÄÚ´æ
+            //å¿…é¡»ç”±å†…å­˜æ± ä¸­åˆ†é…å­˜æ”¾httpå¤´éƒ¨çš„å†…å­˜
             h->key.data = ngx_pnalloc(r->pool,
                                       h->key.len + 1 + h->value.len + 1 + h->key.len);
             if (h->key.data == NULL)
@@ -324,7 +324,7 @@ mytest_upstream_process_header(ngx_http_request_t *r)
                 ngx_strlow(h->lowcase_key, h->key.data, h->key.len);
             }
 
-            //upstreamÄ£¿é»á¶ÔÒ»Ğ©httpÍ·²¿×öÌØÊâ´¦Àí
+            //upstreamæ¨¡å—ä¼šå¯¹ä¸€äº›httpå¤´éƒ¨åšç‰¹æ®Šå¤„ç†
             hh = ngx_hash_find(&umcf->headers_in_hash, h->hash,
                                h->lowcase_key, h->key.len);
 
@@ -336,12 +336,12 @@ mytest_upstream_process_header(ngx_http_request_t *r)
             continue;
         }
 
-        //·µ»ØNGX_HTTP_PARSE_HEADER_DONE±íÊ¾ÏìÓ¦ÖĞËùÓĞµÄhttpÍ·²¿¶¼½âÎö
-//Íê±Ï£¬½ÓÏÂÀ´ÔÙ½ÓÊÕµ½µÄ¶¼½«ÊÇhttp°üÌå
+        //è¿”å›NGX_HTTP_PARSE_HEADER_DONEè¡¨ç¤ºå“åº”ä¸­æ‰€æœ‰çš„httpå¤´éƒ¨éƒ½è§£æ
+//å®Œæ¯•ï¼Œæ¥ä¸‹æ¥å†æ¥æ”¶åˆ°çš„éƒ½å°†æ˜¯httpåŒ…ä½“
         if (rc == NGX_HTTP_PARSE_HEADER_DONE)
         {
-            //Èç¹ûÖ®Ç°½âÎöhttpÍ·²¿Ê±Ã»ÓĞ·¢ÏÖserverºÍdateÍ·²¿£¬ÒÔÏÂ»á
-            //¸ù¾İhttpĞ­ÒéÌí¼ÓÕâÁ½¸öÍ·²¿
+            //å¦‚æœä¹‹å‰è§£æhttpå¤´éƒ¨æ—¶æ²¡æœ‰å‘ç°serverå’Œdateå¤´éƒ¨ï¼Œä»¥ä¸‹ä¼š
+            //æ ¹æ®httpåè®®æ·»åŠ è¿™ä¸¤ä¸ªå¤´éƒ¨
             if (r->upstream->headers_in.server == NULL)
             {
                 h = ngx_list_push(&r->upstream->headers_in.headers);
@@ -376,15 +376,15 @@ mytest_upstream_process_header(ngx_http_request_t *r)
             return NGX_OK;
         }
 
-        //Èç¹û·µ»ØNGX_AGAINÔò±íÊ¾×´Ì¬»ú»¹Ã»ÓĞ½âÎöµ½ÍêÕûµÄhttpÍ·²¿£¬
-//ÒªÇóupstreamÄ£¿é¼ÌĞø½ÓÊÕĞÂµÄ×Ö·ûÁ÷ÔÙ½»ÓÉprocess_header
-//»Øµ÷·½·¨½âÎö
+        //å¦‚æœè¿”å›NGX_AGAINåˆ™è¡¨ç¤ºçŠ¶æ€æœºè¿˜æ²¡æœ‰è§£æåˆ°å®Œæ•´çš„httpå¤´éƒ¨ï¼Œ
+//è¦æ±‚upstreamæ¨¡å—ç»§ç»­æ¥æ”¶æ–°çš„å­—ç¬¦æµå†äº¤ç”±process_header
+//å›è°ƒæ–¹æ³•è§£æ
         if (rc == NGX_AGAIN)
         {
             return NGX_AGAIN;
         }
 
-        //ÆäËû·µ»ØÖµ¶¼ÊÇ·Ç·¨µÄ
+        //å…¶ä»–è¿”å›å€¼éƒ½æ˜¯éæ³•çš„
         ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
                       "upstream sent invalid header");
 
@@ -405,14 +405,14 @@ ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
     ngx_http_core_loc_conf_t  *clcf;
 
-    //Ê×ÏÈÕÒµ½mytestÅäÖÃÏîËùÊôµÄÅäÖÃ¿é£¬clcfÃ²ËÆÊÇlocation¿éÄÚµÄÊı¾İ
-//½á¹¹£¬ÆäÊµ²»È»£¬Ëü¿ÉÒÔÊÇmain¡¢srv»òÕßloc¼¶±ğÅäÖÃÏî£¬Ò²¾ÍÊÇËµÔÚÃ¿¸ö
-//http{}ºÍserver{}ÄÚÒ²¶¼ÓĞÒ»¸öngx_http_core_loc_conf_t½á¹¹Ìå
+    //é¦–å…ˆæ‰¾åˆ°mytesté…ç½®é¡¹æ‰€å±çš„é…ç½®å—ï¼Œclcfè²Œä¼¼æ˜¯locationå—å†…çš„æ•°æ®
+//ç»“æ„ï¼Œå…¶å®ä¸ç„¶ï¼Œå®ƒå¯ä»¥æ˜¯mainã€srvæˆ–è€…locçº§åˆ«é…ç½®é¡¹ï¼Œä¹Ÿå°±æ˜¯è¯´åœ¨æ¯ä¸ª
+//http{}å’Œserver{}å†…ä¹Ÿéƒ½æœ‰ä¸€ä¸ªngx_http_core_loc_conf_tç»“æ„ä½“
     clcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_core_module);
 
-    //http¿ò¼ÜÔÚ´¦ÀíÓÃ»§ÇëÇó½øĞĞµ½NGX_HTTP_CONTENT_PHASE½×¶ÎÊ±£¬Èç¹û
-//ÇëÇóµÄÖ÷»úÓòÃû¡¢URIÓëmytestÅäÖÃÏîËùÔÚµÄÅäÖÃ¿éÏàÆ¥Åä£¬¾Í½«µ÷ÓÃÎÒÃÇ
-//ÊµÏÖµÄngx_http_mytest_handler·½·¨´¦ÀíÕâ¸öÇëÇó
+    //httpæ¡†æ¶åœ¨å¤„ç†ç”¨æˆ·è¯·æ±‚è¿›è¡Œåˆ°NGX_HTTP_CONTENT_PHASEé˜¶æ®µæ—¶ï¼Œå¦‚æœ
+//è¯·æ±‚çš„ä¸»æœºåŸŸåã€URIä¸mytesté…ç½®é¡¹æ‰€åœ¨çš„é…ç½®å—ç›¸åŒ¹é…ï¼Œå°±å°†è°ƒç”¨æˆ‘ä»¬
+//å®ç°çš„ngx_http_mytest_handleræ–¹æ³•å¤„ç†è¿™ä¸ªè¯·æ±‚
     clcf->handler = ngx_http_mytest_handler;
 
     return NGX_CONF_OK;
@@ -423,7 +423,7 @@ static ngx_int_t
 ngx_http_mytest_handler(ngx_http_request_t *r)
 {
     fprintf(stderr, "haoning ngx_http_mytest_handler:%s\r\n","ningning");
-    //Ê×ÏÈ½¨Á¢httpÉÏÏÂÎÄ½á¹¹Ìångx_http_mytest_ctx_t
+    //é¦–å…ˆå»ºç«‹httpä¸Šä¸‹æ–‡ç»“æ„ä½“ngx_http_mytest_ctx_t
     ngx_http_mytest_ctx_t* myctx = ngx_http_get_module_ctx(r, ngx_http_mytest_module);
     if (myctx == NULL)
     {
@@ -432,26 +432,26 @@ ngx_http_mytest_handler(ngx_http_request_t *r)
         {
             return NGX_ERROR;
         }
-        //½«ĞÂ½¨µÄÉÏÏÂÎÄÓëÇëÇó¹ØÁªÆğÀ´
+        //å°†æ–°å»ºçš„ä¸Šä¸‹æ–‡ä¸è¯·æ±‚å…³è”èµ·æ¥
         ngx_http_set_ctx(r, myctx, ngx_http_mytest_module);
     }
-    //¶ÔÃ¿1¸öÒªÊ¹ÓÃupstreamµÄÇëÇó£¬±ØĞëµ÷ÓÃÇÒÖ»ÄÜµ÷ÓÃ1´Î
-//ngx_http_upstream_create·½·¨£¬Ëü»á³õÊ¼»¯r->upstream³ÉÔ±
+    //å¯¹æ¯1ä¸ªè¦ä½¿ç”¨upstreamçš„è¯·æ±‚ï¼Œå¿…é¡»è°ƒç”¨ä¸”åªèƒ½è°ƒç”¨1æ¬¡
+//ngx_http_upstream_createæ–¹æ³•ï¼Œå®ƒä¼šåˆå§‹åŒ–r->upstreamæˆå‘˜
     if (ngx_http_upstream_create(r) != NGX_OK)
     {
         ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "ngx_http_upstream_create() failed");
         return NGX_ERROR;
     }
 
-    //µÃµ½ÅäÖÃ½á¹¹Ìångx_http_mytest_conf_t
+    //å¾—åˆ°é…ç½®ç»“æ„ä½“ngx_http_mytest_conf_t
     ngx_http_mytest_conf_t  *mycf = (ngx_http_mytest_conf_t  *) ngx_http_get_module_loc_conf(r, ngx_http_mytest_module);
     ngx_http_upstream_t *u = r->upstream;
-    //ÕâÀïÓÃÅäÖÃÎÄ¼şÖĞµÄ½á¹¹ÌåÀ´¸³¸ør->upstream->conf³ÉÔ±
+    //è¿™é‡Œç”¨é…ç½®æ–‡ä»¶ä¸­çš„ç»“æ„ä½“æ¥èµ‹ç»™r->upstream->confæˆå‘˜
     u->conf = &mycf->upstream;
-    //¾ö¶¨×ª·¢°üÌåÊ±Ê¹ÓÃµÄ»º³åÇø
+    //å†³å®šè½¬å‘åŒ…ä½“æ—¶ä½¿ç”¨çš„ç¼“å†²åŒº
     u->buffering = mycf->upstream.buffering;
 
-    //ÒÔÏÂ´úÂë¿ªÊ¼³õÊ¼»¯resolved½á¹¹Ìå£¬ÓÃÀ´±£´æÉÏÓÎ·şÎñÆ÷µÄµØÖ·
+    //ä»¥ä¸‹ä»£ç å¼€å§‹åˆå§‹åŒ–resolvedç»“æ„ä½“ï¼Œç”¨æ¥ä¿å­˜ä¸Šæ¸¸æœåŠ¡å™¨çš„åœ°å€
     u->resolved = (ngx_http_upstream_resolved_t*) ngx_pcalloc(r->pool, sizeof(ngx_http_upstream_resolved_t));
     if (u->resolved == NULL)
     {
@@ -460,7 +460,7 @@ ngx_http_mytest_handler(ngx_http_request_t *r)
         return NGX_ERROR;
     }
 
-    //ÕâÀïµÄÉÏÓÎ·şÎñÆ÷¾ÍÊÇwww.google.com
+    //è¿™é‡Œçš„ä¸Šæ¸¸æœåŠ¡å™¨å°±æ˜¯www.google.com
     static struct sockaddr_in backendSockAddr;
     struct hostent *pHost = gethostbyname((char*) "www.google.com");
     if (pHost == NULL)
@@ -471,7 +471,7 @@ ngx_http_mytest_handler(ngx_http_request_t *r)
         return NGX_ERROR;
     }
 
-    //·ÃÎÊÉÏÓÎ·şÎñÆ÷µÄ80¶Ë¿Ú
+    //è®¿é—®ä¸Šæ¸¸æœåŠ¡å™¨çš„80ç«¯å£
     backendSockAddr.sin_family = AF_INET;
     backendSockAddr.sin_port = htons((in_port_t) 80);
     char* pDmsIP = inet_ntoa(*(struct in_addr*) (pHost->h_addr_list[0]));
@@ -479,21 +479,21 @@ ngx_http_mytest_handler(ngx_http_request_t *r)
     myctx->backendServer.data = (u_char*)pDmsIP;
     myctx->backendServer.len = strlen(pDmsIP);
 
-    //½«µØÖ·ÉèÖÃµ½resolved³ÉÔ±ÖĞ
+    //å°†åœ°å€è®¾ç½®åˆ°resolvedæˆå‘˜ä¸­
     u->resolved->sockaddr = (struct sockaddr *)&backendSockAddr;
     u->resolved->socklen = sizeof(struct sockaddr_in);
     u->resolved->naddrs = 1;
 
-    //ÉèÖÃÈı¸ö±ØĞëÊµÏÖµÄ»Øµ÷·½·¨£¬Ò²¾ÍÊÇ5.3.3½ÚÖÁ5.3.5½ÚÖĞÊµÏÖµÄ3¸ö·½·¨
+    //è®¾ç½®ä¸‰ä¸ªå¿…é¡»å®ç°çš„å›è°ƒæ–¹æ³•ï¼Œä¹Ÿå°±æ˜¯5.3.3èŠ‚è‡³5.3.5èŠ‚ä¸­å®ç°çš„3ä¸ªæ–¹æ³•
     u->create_request = mytest_upstream_create_request;
     u->process_header = mytest_process_status_line;
     u->finalize_request = mytest_upstream_finalize_request;
 
-    //ÕâÀï±ØĞë½«count³ÉÔ±¼Ó1£¬ÀíÓÉ¼û5.1.5½Ú
+    //è¿™é‡Œå¿…é¡»å°†countæˆå‘˜åŠ 1ï¼Œç†ç”±è§5.1.5èŠ‚
     r->main->count++;
-    //Æô¶¯upstream
+    //å¯åŠ¨upstream
     ngx_http_upstream_init(r);
-    //±ØĞë·µ»ØNGX_DONE
+    //å¿…é¡»è¿”å›NGX_DONE
     return NGX_DONE;
 }
 
