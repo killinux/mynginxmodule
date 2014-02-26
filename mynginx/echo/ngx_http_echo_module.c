@@ -67,6 +67,14 @@ ngx_http_echo_handler(ngx_http_request_t *r)
         fprintf(stderr,"haoning haohao r->request_line.data: %s\n",r->request_line.data) ;
         fprintf(stderr,"haoning haohao r->uri.data): %s\n",r->uri.data);
         fprintf(stderr,"haoning haohao r->args.data: %s\n",r->args.data);
+
+    //u_char *mycmd=(u_char *)r->args.data;                                                                                                                              
+    char *mycmd=(char *) malloc( sizeof(char) );;//=(u_char *)r->args.data;                                                                                                                              
+    strcpy( mycmd,(char *) r->args.data);
+    printf("mycmd %s",mycmd);
+    free(mycmd);
+    fprintf(stderr,"haoning haohao mycmd): %s\n",mycmd);
+
         fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
         fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
         fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
