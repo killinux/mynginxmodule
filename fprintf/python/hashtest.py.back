@@ -1,23 +1,24 @@
 #!/usr/bin/python
-import time
-#thiskey="8ddbf33ad665010b2f62beb7"
-start=time.clock()
+thiskey="8ddbf33ad665010b2f62beb7"
 def _key_hash( key) :
     hash = 5381
     length = len(key)
     for i in xrange(length) : 
         hash = ((hash << 5) + hash ) + ord(key[i])
     return hash
-r11090 ="0"#        redis.Redis(host='10.75.22.239', port=11090)
-r11091 ="1"#        redis.Redis(host='10.75.22.239', port=11091)
-r11092 ="2"#        redis.Redis(host='10.75.22.239', port=11092)
-r11093 ="3"#        redis.Redis(host='10.75.22.239', port=11093)
-r11094 ="4"#        redis.Redis(host='10.75.22.240', port=11094)
-r11095 ="5"#        redis.Redis(host='10.75.22.240', port=11095)
-r11096 ="6"#        redis.Redis(host='10.75.22.240', port=11096)
-r11097 ="7"#        redis.Redis(host='10.75.22.240', port=11097)
-file_object = open('nonefile.txt', 'w+')
+r11090 ="1"#        redis.Redis(host='10.75.22.239', port=11090)
+r11091 ="2"#        redis.Redis(host='10.75.22.239', port=11091)
+r11092 ="3"#        redis.Redis(host='10.75.22.239', port=11092)
+r11093 ="4"#        redis.Redis(host='10.75.22.239', port=11093)
+r11094 ="5"#        redis.Redis(host='10.75.22.240', port=11094)
+r11095 ="6"#        redis.Redis(host='10.75.22.240', port=11095)
+r11096 ="7"#        redis.Redis(host='10.75.22.240', port=11096)
+r11097 ="8"#        redis.Redis(host='10.75.22.240', port=11097)
+#print _key_hash(thiskey)%8
+file_object = open('thefile.txt', 'w+')
 def printkey(thiskey):
+    #operator = {'0':r11090,'1':r11091,'2':r11092,'3':r11093,'4':r11094,'5':r11095,'6':r11096,'7':r11097},
+    print thiskey
     s=_key_hash(thiskey)%8
     if(s==0):
         client=r11090
@@ -41,25 +42,21 @@ def printkey(thiskey):
     thisvalue=client#.get(thiskey)
     if(thisvalue==None):
         print "error"
-        file_object.write("error:"+thiskey+" "+thisvalue +"\n")
+        file_object.write("error:"+thiskey+" "+thisvalue);
     else:
-        file_object.write("right:"+thiskey+" "+thisvalue+"\n")
-        #pass
-#printkey(thiskey)
-f = open("bigFile.txt", "r")  
-i=0
-while True:  
-    i+=1;
-    if(i%1000==0):
-        time.sleep(0.1)
-        print i 
-    line = f.readline()  
-    if line:  
-        printkey(line.strip())
-    else:  
-        break  
-f.close()  
+        pass
+        #print "thisvalue:"+thisvalue
+    #print thisvalue 
+    #file_object.write(thisvalue);
+#    try:  
+#        i=str(s)  
+#        print "hello:"+operator.get(i)
+#    except Exception as err:  
+#        print("error:"+str(err))  
+#    finally:  
+#        print("Goodbye!")  
+printkey(thiskey)
+
 
 
 file_object.close()
-print " cost %s second"%(time.clock()-start)
