@@ -69,13 +69,18 @@ ngx_http_echo_handler(ngx_http_request_t *r)
         fprintf(stderr,"haoning haohao r->args.data: %s\n",r->args.data);
 
     //u_char *mycmd=(u_char *)r->args.data;                                                                                                                              
-    char *mycmd=(char *) malloc( sizeof(char)*255 );;//=(u_char *)r->args.data;                                                                                                                              
-    memset(mycmd,0,sizeof(char)*255);
-    strcpy( mycmd,(char *) r->args.data);
-    printf("mycmd %s",mycmd);
+    //char *urlcmd=(char *) malloc( sizeof(char)*255 );//=(u_char *)r->args.data;                                                                                                                              
+    u_char *urlcmd=(u_char *) malloc( sizeof(u_char)*255 );//=(u_char *)r->args.data;                                                                                                                              
+    memset(urlcmd,0,sizeof(char)*255);
+    strcpy( urlcmd,(u_char *) r->args.data);
+    printf("mycmd %s",urlcmd);
+    u_char *mycmd=(u_char *) malloc( sizeof(char)*255 );;                                                                                                                            
+    ngx_unescape_uri(&mycmd, &urlcmd, 255, NGX_UNESCAPE_REDIRECT);
+    fprintf(stderr,"haoning haohao urlcmd:%s\n",urlcmd);
     fprintf(stderr,"haoning haohao mycmd:%s\n",mycmd);
-
+    free(urlcmd);
     free(mycmd);
+
         fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
         fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
         fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
