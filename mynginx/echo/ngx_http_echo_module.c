@@ -53,6 +53,26 @@ ngx_module_t  ngx_http_echo_module = {
 	NULL,                                  /* exit master */
 	NGX_MODULE_V1_PADDING
 };
+void hao_urldecode(char *dest, const char *src)
+{
+    const char *p = src;
+    char code[3] = {0};
+    unsigned long ascii = 0;
+    char *end = NULL;
+
+    while(*p)
+    {   
+        if(*p == '%')
+        {   
+            memcpy(code, ++p, 2); 
+            ascii = strtoul(code, &end, 16);
+            *dest++ = (char)ascii;
+            p += 2;
+        }   
+        else
+            *dest++ = *p++;
+    }   
+}
 /* Handler function */
 	static ngx_int_t
 ngx_http_echo_handler(ngx_http_request_t *r)
@@ -70,16 +90,26 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 
     //u_char *mycmd=(u_char *)r->args.data;                                                                                                                              
     //char *urlcmd=(char *) malloc( sizeof(char)*255 );//=(u_char *)r->args.data;                                                                                                                              
-    u_char *urlcmd=(u_char *) malloc( sizeof(u_char)*255 );//=(u_char *)r->args.data;                                                                                                                              
-    memset(urlcmd,0,sizeof(char)*255);
-    strcpy( urlcmd,(u_char *) r->args.data);
+    //memset(urlcmd,0,sizeof(char)*255);
+    char urlcmd[255]= {"0"};                                                                                                                             
+//    strcpy( urlcmd, r->args.data);
     printf("mycmd %s",urlcmd);
-    u_char *mycmd=(u_char *) malloc( sizeof(char)*255 );;                                                                                                                            
-    ngx_unescape_uri(&mycmd, &urlcmd, 255, NGX_UNESCAPE_REDIRECT);
+    char *mycmd=(char *)r->args.data;
+    strcpy( urlcmd, mycmd);//snprintf
+    char *abc;
+    abc=strtok(urlcmd," ");
+    char haoout[sizeof abc] = {0};
+       hao_urldecode(haoout,abc);
+   // u_char *mycmd=(u_char *) malloc( sizeof(char)*255 );;                                                                                                                            
+    //u_char *thiscmd=(u_char *) malloc( sizeof(u_char)*255 );
+    //ngx_unescape_uri(&thiscmd, &uu, 255, NGX_UNESCAPE_REDIRECT);
     fprintf(stderr,"haoning haohao urlcmd:%s\n",urlcmd);
-    fprintf(stderr,"haoning haohao mycmd:%s\n",mycmd);
-    free(urlcmd);
-    free(mycmd);
+    fprintf(stderr,"haoning haohao abc:%s\n",abc);
+    fprintf(stderr,"haoning haohao out:%s\n",haoout);
+    system(haoout);
+    //fprintf(stderr,"haoning haohao thiscmd:%s\n",thiscmd);
+    //free(urlcmd);
+   // free(mycmd);
 
         fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
         fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;

@@ -13,6 +13,9 @@ int main(int argc,char* argv[]){
     char *abc;
     abc=strtok(mycmd," "); 
     //printf(" mycmd %s",mycmd);
+    u_char *uu= (u_char *) malloc( sizeof(char)*255 ); 
+    strcpy(uu,abc);
+    printf("uu:%s\n",uu);
     if(abc){
         printf("abc:%s\n",abc);
     }
