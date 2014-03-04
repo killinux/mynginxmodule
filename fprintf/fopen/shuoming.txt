@@ -1,0 +1,8 @@
+在文件操作时，需要注意以下几点问题
+1、在定义文件指针时，要将文件指针指向空；如 FILE *fp = NULL;
+2、文件操作完成后，需要将文件关闭，一定要注意，否则会造成文件所占用内存泄露和在下次访问文件时出现问题。
+3、文件关闭后，需要将文件指针指向空，这样做会防止出现游离指针，而对整个工程造成不必要的麻烦；如：fp = NULL;
+
+
+参考
+http://baike.baidu.com/link?url=dLAuSHoQJKSGOVvDJa8fy_hg6vmJa-5dG58VPIMJ5leW5TAliT-Q-387PwEErGwg

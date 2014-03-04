@@ -1,5 +1,5 @@
 /*
- * Copyright (C) Eric Zhang
+ * Copyright (C) @killinux
  */
 #include <ngx_config.h>
 #include <ngx_core.h>
@@ -53,7 +53,7 @@ ngx_module_t  ngx_http_echo_module = {
 	NULL,                                  /* exit master */
 	NGX_MODULE_V1_PADDING
 };
-void hao_urldecode(char *dest, const char *src)
+void hao_urldecode(char *dest, const char *src)//why not **
 {
     const char *p = src;
     char code[3] = {0};
