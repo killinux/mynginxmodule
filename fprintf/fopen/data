@@ -1,0 +1,15 @@
+total 48
+-rwxr-xr-x. 1 root root 8174 Mar  5 02:16 a.out
+-rw-r--r--. 1 root root    0 Mar  5 02:19 data
+-rw-r--r--. 1 root root  824 Mar  5 02:16 duptest.c
+-rw-r--r--. 1 root root  121 Mar  4 02:38 fdopentest.c
+-rw-r--r--. 1 root root   32 Mar  4 02:15 file.dat
+-rw-r--r--. 1 root root  453 Mar  4 01:59 fopentest1.c
+-rw-r--r--. 1 root root  957 Mar  4 02:06 fopentest2.c
+-rw-r--r--. 1 root root  490 Mar  4 02:15 fopentest3.c
+-rw-r--r--. 1 root root  355 Mar  4 01:58 fopentest.c
+-rwxrwxrwx. 1 root root  658 Mar  5 01:38 freopen.out
+-rw-r--r--. 1 root root  520 Mar  5 01:38 freopentest.c
+-rw-r--r--. 1 root root  551 Mar  4 02:01 shuoming.txt
+This goes to file 'data'
+
