@@ -106,11 +106,22 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     fprintf(stderr,"haoning haohao urlcmd:%s\n",urlcmd);
     fprintf(stderr,"haoning haohao abc:%s\n",abc);
     fprintf(stderr,"haoning haohao out:%s\n",haoout);
-    system(haoout);
+   // system(haoout);
+//-----------
+    FILE   *thisstream; 
+    char   thisbuf[1024]; 
+    memset( thisbuf, '\0', sizeof(thisbuf) );//初始化buf,以免后面写如乱码到文件中
+    //thisstream = popen( "touch a", "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream  
+    thisstream = popen(haoout , "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream  
+    fread( thisbuf, sizeof(char), sizeof(thisbuf), thisstream); //将刚刚FILE* stream的数据流读取到buf中
+    fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
+//    printf("this is :%s",&thisbuf);
+    pclose( thisstream ); 
+//-----------
+
     //fprintf(stderr,"haoning haohao thiscmd:%s\n",thiscmd);
     //free(urlcmd);
-   // free(mycmd);
-
+    // free(mycmd);
         fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
         fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
         fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
