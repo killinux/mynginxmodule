@@ -1,0 +1,286 @@
+body,p,a,td {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #cccccc;
+}
+.lh15 {
+	line-height: 15px;
+}
+.term {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #181818;
+	background: none;
+}
+.termReverse {
+	color: #eeeeee;
+	background: #222222;
+}
+
+
+.term2 {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #eeeeee;
+	background: none;
+}
+.term2 .termReverse {
+	color: #181818;
+	background: #eeeeee;
+}
+
+.term3 {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #44bb33;
+	background: none;
+}
+.term3 .termReverse {
+	color: #111111;
+	background: #44bb33;
+}
+
+.term4 {
+	font-family: courier,fixed,swiss,sans-serif;
+	font-size: 12px;
+	color: #111111;
+	background: none;
+}
+.term4 .termReverse {
+	color: #779977;
+	background: #111111;
+}
+
+/* term chrome (border styles do not really work on MSIE - so do it the hard way */
+
+.termOuterChrome {
+	background: #A2A2A2;
+	padding: 0px;
+	border-width: 2px;
+	border-top-color: #D0D0D0;
+	border-left-color: #D0D0D0;
+	border-right-color: #747474;
+	border-bottom-color: #747474;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+.termInnerChrome {
+	background: #A2A2A2;
+	padding: 0px;
+	border-width: 1px;
+	border-top-color: #747474;
+	border-left-color: #747474;
+	border-right-color: #D0D0D0;
+	border-bottom-color: #D0D0D0;
+	border-style: solid;
+	border-spacing: 0px;
+}
+.termBody {
+	background: #333333;
+	padding: 0px;
+	border-width: 0px;
+	border-style: none;
+}
+.termHeaderActive {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: #ffffff;
+	background: #000089;
+	padding: 1px;
+	padding-left: 6px;
+	border-width: 2px;
+	border-top-color: #B0B0D8;
+	border-left-color: #B0B0D8;
+	border-right-color: #0B0B55;
+	border-bottom-color: #0B0B55;
+	border-style: solid;
+}
+.termHeaderInactive {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	letter-spacing: 1px;
+	color: #dddddd;
+	background: #686868;
+	padding: 1px;
+	padding-left: 6px;
+	border-width: 2px;
+	border-top-color: #C6C6C6;
+	border-left-color: #C6C6C6;
+	border-right-color: #474747;
+	border-bottom-color: #474747;
+	border-style: solid;
+	border-spacing: 0px;
+}
+.termMenuPane {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	background: #A7A7A7;
+	padding: 2px;
+	border-width: 1px;
+	border-top-color: #DDDDDD;
+	border-left-color: #DDDDDD;
+	border-right-color: #707070;
+	border-bottom-color: #707070;
+	border-style: solid;
+	border-spacing: 0px;
+}
+
+.termMenu,.termMenu:link,.termMenu:visited  {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	background: #A7A7A7;
+	margin: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-right: 4px;
+	border-width: 1px;
+	border-color: #A7A7A7;
+	border-style: solid;
+}
+.termMenu:hover  {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	background: #dddddd;
+	margin: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-right: 4px;
+	border-width: 1px;
+	border-top-color: #f1f1f1;
+	border-left-color: #f1f1f1;
+	border-right-color: #8a8a8a;
+	border-bottom-color: #8a8a8a;
+	border-style: solid;
+}
+.termMenu:active  {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+	background: #f9f9f9;
+	margin: 1px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 3px;
+	padding-right: 4px;
+	border-width: 1px;
+	border-top-color: #c9c9c9;
+	border-left-color: #c9c9c9;
+	border-right-color: #ffffff;
+	border-bottom-color: #ffffff;
+	border-style: solid;
+}
+
+.uiButton,.uiButton:link,.uiButton:visited  {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+	background: #aaaaaa;
+	margin: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 6px;
+	padding-right: 6px;
+	border-width: 2px;
+	border-top-color: #f1f1f1;
+	border-left-color: #f1f1f1;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-style: solid;
+}
+.uiButton:hover  {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+	background: #dddddd;
+	margin: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 6px;
+	padding-right: 6px;
+	border-width: 2px;
+	border-top-color: #f1f1f1;
+	border-left-color: #f1f1f1;
+	border-right-color: #666666;
+	border-bottom-color: #666666;
+	border-style: solid;
+}
+.uiButton:active  {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+	background: #888888;
+	margin: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 6px;
+	padding-right: 6px;
+	border-width: 2px;
+	border-top-color: #666666;
+	border-left-color: #666666;
+	border-right-color: #bbbbbb;
+	border-bottom-color: #bbbbbb;
+	border-style: solid;
+}
+.settings {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+}
+.settingsLabel,.settingsLabel:link,settingsLabel:active,.settingsLabel:visited,.settingsLabel:hover {
+	font-family: arial,helvetica,sans-serif;
+	font-size: 12px;
+	color: #000000;
+	text-decoration: none;
+}
+
+.termHidden {
+	display: none;
+}
+.termShow {
+	display: block;
+}
+
+a,a:link,a:visited {
+	text-decoration: none;
+	color: #77dd11;
+}
+a:hover {
+	text-decoration: underline;
+	color: #77dd11;
+}
+a:active {
+	text-decoration: underline;
+	color: #eeeeee;
+}
+
+a.termopen,a.termopen:link,a.termopen:visited {
+	text-decoration: none;
+	color: #77dd11;
+	background: none;
+}
+a.termopen:hover {
+	text-decoration: none;
+	color: #222222;
+	background: #77dd11;
+}
+a.termopen:active {
+	text-decoration: none;
+	color: #222222;
+	background: #eeeeee;
+}

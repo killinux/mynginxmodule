@@ -1,0 +1,2 @@
+linux C程序中获取shell脚本输出(如获取system命令输出)
+http://blog.csdn.net/hjxhjh/article/details/7909518
