@@ -109,13 +109,19 @@ ngx_http_echo_handler(ngx_http_request_t *r)
    // system(haoout);
 //-----------
     FILE   *thisstream; 
-    char   thisbuf[1024]; 
-    memset( thisbuf, '\0', sizeof(thisbuf) );//初始化buf,以免后面写如乱码到文件中
-    //thisstream = popen( "touch a", "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream  
-    thisstream = popen(haoout , "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream  
-    fread( thisbuf, sizeof(char), sizeof(thisbuf), thisstream); //将刚刚FILE* stream的数据流读取到buf中
-    fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
+    //char   thisbuf[1024]; 
+   // memset( thisbuf, '\0', sizeof(thisbuf) );//初始化buf,以免后面写如乱码到文件中
+   // thisstream = popen(haoout , "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream  
+    //fread( thisbuf, sizeof(char), sizeof(thisbuf), thisstream); //将刚刚FILE* stream的数据流读取到buf中
+  //  fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
 //    printf("this is :%s",&thisbuf);
+    u_char  * thisbuf; 
+    thisbuf= (u_char *)malloc(10240);; 
+    memset( thisbuf, '\0', 10240 );//初始化buf,以免后面写如乱码到文件中
+    thisstream = popen( haoout, "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream
+    fread( thisbuf, sizeof(u_char), 10240, thisstream); //将刚刚FILE* stream的数据流读取到buf中
+    //printf("this is :%s",thisbuf);             
+    fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
     pclose( thisstream ); 
 //-----------
 
@@ -139,7 +145,8 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	r->headers_out.content_type.len = sizeof("text/html") - 1;
 	r->headers_out.content_type.data = (u_char *) "text/html";
 	r->headers_out.status = NGX_HTTP_OK;
-	r->headers_out.content_length_n = elcf->ed.len;
+	//r->headers_out.content_length_n = elcf->ed.len;
+	r->headers_out.content_length_n = 10240;//strlen(thisbuf);
 	if(r->method == NGX_HTTP_HEAD)
 	{
 		DEBUG_LOG("haoning......ngx_http_echo_handlerr---r->method == NGX_HTTP_HEAD");
@@ -157,8 +164,12 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	}
 	out.buf = b;
 	out.next = NULL;
-	b->pos = elcf->ed.data;
-	b->last = elcf->ed.data + (elcf->ed.len);
+	u_char * hh;
+    hh =(u_char *)"hello hao123";// elcf->ed.data;
+	//b->pos =hh;// elcf->ed.data;
+	b->pos =thisbuf;// elcf->ed.data;
+	//b->last = elcf->ed.data + (elcf->ed.len);
+	b->last = elcf->ed.data + 10240;
 	b->memory = 1;
 	b->last_buf = 1;
 	rc = ngx_http_send_header(r);
