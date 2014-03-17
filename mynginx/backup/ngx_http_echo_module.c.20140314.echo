@@ -77,66 +77,67 @@ void hao_urldecode(char *dest, const char *src)//why not **
 	static ngx_int_t
 ngx_http_echo_handler(ngx_http_request_t *r)
 {
-    DEBUG_LOG("haoning haohao .........ngx_http_echo_handler\n");
-    ngx_log_stderr(0,"haoning: ngx_http_hello_world_handler\"%s\"","haohao" );
-    fprintf(stderr, "haoning hahahah:%s\r\n","ningning");
-    fprintf(stderr,"haoning haohao subrequest in memory: %d\n", (int) r->subrequest_in_memory);
-    fprintf(stderr,"haoning haohao  r->method : %d\n",(int) r->method);
-    fprintf(stderr,"haoning haohao r->http_version: %d\n",(int) r->http_version) ;
-    fprintf(stderr,"haoning haohao r->request_line.data: %s\n",r->request_line.data) ;
-    fprintf(stderr,"haoning haohao r->uri.data): %s\n",r->uri.data);
-    fprintf(stderr,"haoning haohao r->args.data: %s\n",r->args.data);
+	DEBUG_LOG("haoning haohao .........ngx_http_echo_handler\n");
+	ngx_log_stderr(0,"haoning: ngx_http_hello_world_handler\"%s\"","haohao" );
+//	ngx_log_error(0,"haoning: ngx_http_hello_world_handler\"%s\"","haohao" );
+	fprintf(stderr, "haoning hahahah:%s\r\n","ningning");
+        fprintf(stderr,"haoning haohao subrequest in memory: %d\n", (int) r->subrequest_in_memory);
+        fprintf(stderr,"haoning haohao  r->method : %d\n",(int) r->method);
+        fprintf(stderr,"haoning haohao r->http_version: %d\n",(int) r->http_version) ;
+        fprintf(stderr,"haoning haohao r->request_line.data: %s\n",r->request_line.data) ;
+        fprintf(stderr,"haoning haohao r->uri.data): %s\n",r->uri.data);
+        fprintf(stderr,"haoning haohao r->args.data: %s\n",r->args.data);
 
-    char *urlcmd;                                                                                                                             
-    urlcmd=(char *)malloc(1024*sizeof(char));
-    memset(urlcmd,0,sizeof(char)*1024);
+    //u_char *mycmd=(u_char *)r->args.data;                                                                                                                              
+    //char *urlcmd=(char *) malloc( sizeof(char)*255 );//=(u_char *)r->args.data;                                                                                                                              
+    //memset(urlcmd,0,sizeof(char)*255);
+    char urlcmd[255]= {"0"};                                                                                                                             
+//    strcpy( urlcmd, r->args.data);
     printf("mycmd %s",urlcmd);
     char *mycmd=(char *)r->args.data;
     strcpy( urlcmd, mycmd);//snprintf
-    char * haoout;
-    haoout=(char *)malloc(1024*sizeof(char));
-    memset(haoout,0,sizeof(char)*1024);
     char *abc;
-    abc=(char *)malloc(1024*sizeof(char));
-    memset(abc,0,sizeof(char)*1024);
-    fprintf(stderr,"haoning haohao urlcmd:%s\n",urlcmd);
-    sscanf(urlcmd, "%[^ ]", abc);
-    free(urlcmd);
-    //char *abc;
-    //abc=strtok(urlcmd," ");
-    //char haoout[sizeof abc] = {0};
-    hao_urldecode(haoout,abc);
-    free(abc);
+    abc=strtok(urlcmd," ");
+    char haoout[sizeof abc] = {0};
+       hao_urldecode(haoout,abc);
+   // u_char *mycmd=(u_char *) malloc( sizeof(char)*255 );;                                                                                                                            
+    //u_char *thiscmd=(u_char *) malloc( sizeof(u_char)*255 );
     //ngx_unescape_uri(&thiscmd, &uu, 255, NGX_UNESCAPE_REDIRECT);
+    fprintf(stderr,"haoning haohao urlcmd:%s\n",urlcmd);
+    fprintf(stderr,"haoning haohao abc:%s\n",abc);
     fprintf(stderr,"haoning haohao out:%s\n",haoout);
+   // system(haoout);
 //-----------
     FILE   *thisstream; 
+    //char   thisbuf[1024]; 
+   // memset( thisbuf, '\0', sizeof(thisbuf) );//初始化buf,以免后面写如乱码到文件中
+   // thisstream = popen(haoout , "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream  
+    //fread( thisbuf, sizeof(char), sizeof(thisbuf), thisstream); //将刚刚FILE* stream的数据流读取到buf中
+  //  fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
+//    printf("this is :%s",&thisbuf);
     u_char  * thisbuf; 
-    thisbuf= (u_char *)malloc(10240*sizeof(u_char)); 
-    memset( thisbuf, 0, 10240*sizeof(u_char));
-    if((thisstream = popen( haoout, "r" ))==NULL){
-        fprintf(stderr,"error: %s\n",strerror(errno));
-    } 
-    fread( thisbuf, sizeof(u_char), 10240, thisstream);
+    thisbuf= (u_char *)malloc(10240);; 
+    memset( thisbuf, '\0', 10240 );//初始化buf,以免后面写如乱码到文件中
+    thisstream = popen( haoout, "r" ); //将“ls －l”命令的输出 通过管道读取（“r”参数）到FILE* stream
+    fread( thisbuf, sizeof(u_char), 10240, thisstream); //将刚刚FILE* stream的数据流读取到buf中
     //printf("this is :%s",thisbuf);             
     fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
     pclose( thisstream ); 
-   // free(haoout);
 //-----------
+
     //fprintf(stderr,"haoning haohao thiscmd:%s\n",thiscmd);
     //free(urlcmd);
-    //free(mycmd);
-    fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
-    fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
-    fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
-  //  fprintf(stderr,"haoning haohao r->exten.data: %s\n",r->exten.data);
-    fprintf(stderr,"haoning haohao -----------------: %s\n","free haoout");
+    // free(mycmd);
+        fprintf(stderr,"haoning haohao r->unparsed_uri.data: %s\n",r->unparsed_uri.data);
+        fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
+        fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
+	fprintf(stderr,"haoning haohao r->exten.data: %s\n",r->exten.data);
+        fprintf(stderr,"haoning haohao -----------------: %s\n","end");
 	ngx_int_t rc;
 	ngx_buf_t *b;
 	ngx_chain_t out;
 	ngx_http_echo_loc_conf_t *elcf;
 	elcf = ngx_http_get_module_loc_conf(r, ngx_http_echo_module);
-    fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_http_get_module_loc_conf");
 	if(!(r->method & (NGX_HTTP_HEAD|NGX_HTTP_GET|NGX_HTTP_POST)))
 	{
 		return NGX_HTTP_NOT_ALLOWED;
@@ -145,8 +146,7 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	r->headers_out.content_type.data = (u_char *) "text/html";
 	r->headers_out.status = NGX_HTTP_OK;
 	//r->headers_out.content_length_n = elcf->ed.len;
-	r->headers_out.content_length_n = 10240*sizeof(u_char);//strlen(thisbuf);
-    fprintf(stderr,"haoning haohao -----------------: %s\n","headers_out");
+	r->headers_out.content_length_n = 10240;//strlen(thisbuf);
 	if(r->method == NGX_HTTP_HEAD)
 	{
 		DEBUG_LOG("haoning......ngx_http_echo_handlerr---r->method == NGX_HTTP_HEAD");
@@ -157,7 +157,6 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 		}
 	}
 	b = ngx_pcalloc(r->pool, sizeof(ngx_buf_t));
-    fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_pcalloc");
 	if(b == NULL)
 	{
 		ngx_log_error(NGX_LOG_ERR, r->connection->log, 0, "Failed to allocate response buffer.");
@@ -170,17 +169,15 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	//b->pos =hh;// elcf->ed.data;
 	b->pos =thisbuf;// elcf->ed.data;
 	//b->last = elcf->ed.data + (elcf->ed.len);
-	b->last = elcf->ed.data + 10240*sizeof(u_char);
+	b->last = elcf->ed.data + 10240;
 	b->memory = 1;
 	b->last_buf = 1;
 	rc = ngx_http_send_header(r);
-    fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_http_send_header");
 	if(rc != NGX_OK)
 	{
 		return rc;
 	}
-    fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_http_output_filter end");
-	//DEBUG_LOG("haoning......ngx_http_output_filter");
+	DEBUG_LOG("haoning......ngx_http_output_filter");
 	return ngx_http_output_filter(r, &out);
 }
 	static char *

@@ -306,7 +306,7 @@ ngx_linux_sendfile_chain(ngx_connection_t *c, ngx_chain_t *in, off_t limit)
 
                 default:
                     wev->error = 1;
-                    ngx_connection_error(c, err, "writev() failed");
+                    ngx_connection_error(c, err, "writev() failed hao src/os/unix/ngx_linux_sendfile_chain.c");
                     return NGX_CHAIN_ERROR;
                 }
 

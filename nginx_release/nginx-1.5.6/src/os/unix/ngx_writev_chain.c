@@ -125,7 +125,7 @@ ngx_writev_chain(ngx_connection_t *c, ngx_chain_t *in, off_t limit)
 
             default:
                 wev->error = 1;
-                (void) ngx_connection_error(c, err, "writev() failed");
+                (void) ngx_connection_error(c, err, "writev() failed ngx_writev_chain.c hao");
                 return NGX_CHAIN_ERROR;
             }
 
