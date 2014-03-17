@@ -41,9 +41,9 @@ int mysystem(char* cmdstring, char* buf, int len)
       return 0;
 }
 int main(){
-   char * aa;
+    char * aa;
     aa=(char *)malloc(1024*sizeof(char));
-   mysystem("ls -l", aa,1024);
+    mysystem("ls -l", aa,1024);
     printf("this is :%s",aa);
 
 }
