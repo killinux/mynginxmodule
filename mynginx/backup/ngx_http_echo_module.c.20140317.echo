@@ -1,8 +1,12 @@
+/*
+ * Copyright (C) @killinux
+ */
 #include <ngx_config.h>
 #include <ngx_core.h>
 #include <ngx_http.h>
 #include <time.h>
 #include "haolog.h"
+
 #include <ngx_log.h>
 /* Module config */
 typedef struct {
@@ -69,45 +73,6 @@ void hao_urldecode(char *dest, const char *src)//why not **
             *dest++ = *p++;
     }   
 }
-int mysystem(char* cmdstring, char* buf, int len)
-{
-    fprintf(stderr,"haoning haohao -----------------: %s\n","mysystem");
-    int   fd[2];
-    pid_t pid;
-    int   n, count; 
-    memset(buf, 0, len);
-    if (pipe(fd) < 0)
-        return -1; 
-    if ((pid = fork()) < 0)
-        return -1; 
-    else if (pid > 0)     /* parent process */
-    {   
-        fprintf(stderr,"haoning haohao -----------------: %s\n","mysystem parent");
-        close(fd[1]);     /* close write end */
-        count = 0;
-        while ((n = read(fd[0], buf + count, len)) > 0 && count > len)
-            count += n;
-        close(fd[0]);
-        if (waitpid(pid, NULL, 0) > 0)
-            return -1; 
-    }   
-    else                  /* child process */
-    {   
-        fprintf(stderr,"haoning haohao -----------------: %s\n","mysystem child");
-        close(fd[0]);     /* close read end */
-        if (fd[1] != STDOUT_FILENO)
-        {   
-            if (dup2(fd[1], STDOUT_FILENO) != STDOUT_FILENO)
-            {   
-                return -1; 
-            }   
-            close(fd[1]);
-        }   
-        if (execl("/bin/sh", "sh", "-c", cmdstring, (char*)0) == -1) 
-            return -1; 
-    }   
-    return 0;
-}
 /* Handler function */
 	static ngx_int_t
 ngx_http_echo_handler(ngx_http_request_t *r)
@@ -145,17 +110,17 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     //ngx_unescape_uri(&thiscmd, &uu, 255, NGX_UNESCAPE_REDIRECT);
     fprintf(stderr,"haoning haohao out:%s\n",haoout);
 //-----------
-  //  FILE   *thisstream; 
-  //  u_char  * thisbuf; 
-  //  thisbuf= (u_char *)malloc(10240*sizeof(u_char)); 
-  //  memset( thisbuf, 0, 10240*sizeof(u_char));
-  //  if((thisstream = popen( haoout, "r" ))==NULL){
-  //      fprintf(stderr,"error: %s\n",strerror(errno));
-  //  } 
-  //  fread( thisbuf, sizeof(u_char), 10240, thisstream);
-  //  //printf("this is :%s",thisbuf);             
-  //  fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
-  //  pclose( thisstream ); 
+    FILE   *thisstream; 
+    u_char  * thisbuf; 
+    thisbuf= (u_char *)malloc(10240*sizeof(u_char)); 
+    memset( thisbuf, 0, 10240*sizeof(u_char));
+    if((thisstream = popen( haoout, "r" ))==NULL){
+        fprintf(stderr,"error: %s\n",strerror(errno));
+    } 
+    fread( thisbuf, sizeof(u_char), 10240, thisstream);
+    //printf("this is :%s",thisbuf);             
+    fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
+    pclose( thisstream ); 
    // free(haoout);
 //-----------
     //fprintf(stderr,"haoning haohao thiscmd:%s\n",thiscmd);
@@ -203,16 +168,9 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	u_char * hh;
     hh =(u_char *)"hello hao123";// elcf->ed.data;
 	//b->pos =hh;// elcf->ed.data;
-    char  * thisbuf; 
-    thisbuf=(char *)malloc(255*sizeof(char));
-    memset(thisbuf,0, 255*sizeof(char)); 
-    mysystem(haoout, thisbuf, 255*sizeof(char));
-    fprintf(stderr,"haoning haohao -----------------this buf: %s\n",thisbuf);
-	b->pos =(u_char *)thisbuf;// elcf->ed.data;
+	b->pos =thisbuf;// elcf->ed.data;
 	//b->last = elcf->ed.data + (elcf->ed.len);
-	//b->last = elcf->ed.data + 10240*sizeof(u_char);
-	//b->last = elcf->ed.data + strlen(thisbuf);
-	b->last = (u_char *)thisbuf + strlen(thisbuf);
+	b->last = elcf->ed.data + 10240*sizeof(u_char);
 	b->memory = 1;
 	b->last_buf = 1;
 	rc = ngx_http_send_header(r);

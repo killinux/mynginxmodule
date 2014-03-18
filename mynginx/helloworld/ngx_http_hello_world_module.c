@@ -57,12 +57,12 @@ static ngx_int_t ngx_http_hello_world_handler(ngx_http_request_t *r)
 	ngx_log_stderr(0,"haoning haohao  r->method : %d",(int) r->method);
 	ngx_log_stderr(0,"haoning haohao r->http_version: %d",(int) r->http_version) ;
 	ngx_log_stderr(0,"haoning haohao r->request_line.data: %s",r->request_line.data) ;
-	ngx_log_stderr(0,"haoning haohao r->uri.data): %s",r->uri.data);
-	ngx_log_stderr(0,"haoning haohao r->args.data: %s",r->args.data);
-	ngx_log_stderr(0,"haoning haohao r->unparsed_uri.data: %s",r->unparsed_uri.data);
-	ngx_log_stderr(0,"haoning haohao r->method_name.data: %s",r->method_name.data)  ;
-	ngx_log_stderr(0,"haoning haohao r->http_protocol.data: %s",r->http_protocol.data);
-	ngx_log_stderr(0,"haoning haohao r->exten.data: %s",r->exten.data);
+//	ngx_log_stderr(0,"haoning haohao r->uri.data): %s",r->uri.data);
+//	ngx_log_stderr(0,"haoning haohao r->args.data: %s",r->args.data);
+//	ngx_log_stderr(0,"haoning haohao r->unparsed_uri.data: %s",r->unparsed_uri.data);
+//	ngx_log_stderr(0,"haoning haohao r->method_name.data: %s",r->method_name.data)  ;
+//	ngx_log_stderr(0,"haoning haohao r->http_protocol.data: %s",r->http_protocol.data);
+//	ngx_log_stderr(0,"haoning haohao r->exten.data: %s",r->exten.data);
 	ngx_buf_t *b; 
 	ngx_chain_t out; 
 

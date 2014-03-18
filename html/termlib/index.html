@@ -11,10 +11,11 @@
 function ajaxtest(){
         $.ajax({
             type: "GET",
-            url: "http://haoning.net:8091/",
+            //url: "http://haoning.net:8091/",
+            url: "http://haoning.net:8091/a.html",
         //    data: "{}",
            // contentType: "application/json; charset=utf-8",
-           // dataType: "json",
+            //dataType: "jsonp",
             success: function (data) {
                 // Play with returned data in JSON format
               //  alert("this data:"+data);
