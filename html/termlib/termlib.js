@@ -380,7 +380,7 @@ setTextColor: function(v) {
 	}
 },
 
-// main output methods
+// main output methods hao
 
 type: function(text,style) {
 	for (var i=0; i<text.length; i++) {

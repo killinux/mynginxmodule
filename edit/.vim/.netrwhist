@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/root'
 let g:netrw_dirhist_2='/root/.cache'
 let g:netrw_dirhist_3='/root'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/root/.cache'
 let g:netrw_dirhist_5='/root'
 let g:netrw_dirhist_6='/root/.config'
 let g:netrw_dirhist_7='/mnt/mydata/haoning/mygit/mynginxmodule/fprintf'
+let g:netrw_dirhist_8='/mnt/mydata/haoning/mygit/mynginxmodule/html/termlib'

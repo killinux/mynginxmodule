@@ -143,7 +143,7 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     hao_urldecode(haoout,abc);
     free(abc);
     //ngx_unescape_uri(&thiscmd, &uu, 255, NGX_UNESCAPE_REDIRECT);
-    fprintf(stderr,"haoning haohao haoout:%s\n",haoout);
+    fprintf(stderr,"haoning haohao out:%s\n",haoout);
 //-----------
   //  FILE   *thisstream; 
   //  u_char  * thisbuf; 
@@ -165,6 +165,7 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     fprintf(stderr,"haoning haohao r->method_name.data: %s\n",r->method_name.data)  ;
     fprintf(stderr,"haoning haohao r->http_protocol.data: %s\n",r->http_protocol.data);
   //  fprintf(stderr,"haoning haohao r->exten.data: %s\n",r->exten.data);
+    fprintf(stderr,"haoning haohao -----------------: %s\n","free haoout");
 	ngx_int_t rc;
 	ngx_buf_t *b;
 	ngx_chain_t out;
@@ -175,19 +176,11 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	{
 		return NGX_HTTP_NOT_ALLOWED;
 	}
-//------
-    char  * thisbuf; 
-    thisbuf=(char *)malloc(10240*sizeof(char));
-    memset(thisbuf,0, 10240*sizeof(char)); 
-    mysystem(haoout, thisbuf, 10240*sizeof(char));
-    fprintf(stderr,"haoning haohao -----------------this buf: %s\n",thisbuf);
-//------
 	r->headers_out.content_type.len = sizeof("text/html") - 1;
 	r->headers_out.content_type.data = (u_char *) "text/html";
 	r->headers_out.status = NGX_HTTP_OK;
 	//r->headers_out.content_length_n = elcf->ed.len;
-	//r->headers_out.content_length_n = 10240*sizeof(u_char);//strlen(thisbuf);
-	r->headers_out.content_length_n = strlen(thisbuf);//注意，这里不能大，否则连接会等待收取超时
+	r->headers_out.content_length_n = 10240*sizeof(u_char);//strlen(thisbuf);
     fprintf(stderr,"haoning haohao -----------------: %s\n","headers_out");
 	if(r->method == NGX_HTTP_HEAD)
 	{
@@ -207,24 +200,14 @@ ngx_http_echo_handler(ngx_http_request_t *r)
 	}
 	out.buf = b;
 	out.next = NULL;
-	//u_char * hh;
-    //hh =(u_char *)"hello hao123";// elcf->ed.data;
+	u_char * hh;
+    hh =(u_char *)"hello hao123";// elcf->ed.data;
 	//b->pos =hh;// elcf->ed.data;
-//------
-//-----------
-//      FILE   *thisstream; 
-//      char  * thisbuf; 
-//      thisbuf= (char *)malloc(255*sizeof(char)); 
-//      memset( thisbuf, 0, 255*sizeof(char));
-//      if((thisstream = popen( haoout, "r" ))==NULL){
-//          fprintf(stderr,"error: %s\n",strerror(errno));
-//      } 
-//      fread( thisbuf, sizeof(char), 255, thisstream);
-//      //printf("this is :%s",thisbuf);             
-//      fprintf(stderr,"haoning haohao thisbuf: %s\n",thisbuf);
-//      pclose( thisstream ); 
-   // free(haoout);
-//-----------              
+    char  * thisbuf; 
+    thisbuf=(char *)malloc(255*sizeof(char));
+    memset(thisbuf,0, 255*sizeof(char)); 
+    mysystem(haoout, thisbuf, 255*sizeof(char));
+    fprintf(stderr,"haoning haohao -----------------this buf: %s\n",thisbuf);
 	b->pos =(u_char *)thisbuf;// elcf->ed.data;
 	//b->last = elcf->ed.data + (elcf->ed.len);
 	//b->last = elcf->ed.data + 10240*sizeof(u_char);

@@ -572,7 +572,7 @@ static ngx_int_t ngx_epoll_process_events(ngx_cycle_t *cycle, ngx_msec_t timer, 
     /* NGX_TIMER_INFINITE == INFTIM */
 
     ngx_log_debug1(NGX_LOG_DEBUG_EVENT, cycle->log, 0,
-                   "epoll timer: %M", timer);//hao
+                   "hao ngx_epoll_process_events epoll timer: %M", timer);//hao
     /* 等待事件发生。最长等待事件为timer；nginx通过红黑树专门维护了一个计时器*/
     events = epoll_wait(ep, event_list, (int) nevents, timer);
 

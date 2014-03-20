@@ -69,9 +69,9 @@ ngx_http_write_filter(ngx_http_request_t *r, ngx_chain_t *in)
 
     for (cl = r->out; cl; cl = cl->next) {
         ll = &cl->next;
-
+//hao
         ngx_log_debug7(NGX_LOG_DEBUG_EVENT, c->log, 0,
-                       "write old buf t:%d f:%d %p, pos %p, size: %z "
+                       "hao ngx_http_write_filter write old buf t:%d f:%d %p, pos %p, size: %z "
                        "file: %O, size: %z",
                        cl->buf->temporary, cl->buf->in_file,
                        cl->buf->start, cl->buf->pos,
@@ -123,7 +123,7 @@ ngx_http_write_filter(ngx_http_request_t *r, ngx_chain_t *in)
         ll = &cl->next;
 
         ngx_log_debug7(NGX_LOG_DEBUG_EVENT, c->log, 0,
-                       "write new buf t:%d f:%d %p, pos %p, size: %z "
+                       "hao ngx_http_write_filter write new buf t:%d f:%d %p, pos %p, size: %z "
                        "file: %O, size: %z",
                        cl->buf->temporary, cl->buf->in_file,
                        cl->buf->start, cl->buf->pos,

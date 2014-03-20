@@ -11,14 +11,8 @@
 function ajaxtest(){
         $.ajax({
             type: "GET",
-            //url: "http://haoning.net:8091/",
-            url: "http://haoning.net:8091/a.html",
-        //    data: "{}",
-           // contentType: "application/json; charset=utf-8",
-            //dataType: "jsonp",
+            url: "../echo?ls%20-l",
             success: function (data) {
-                // Play with returned data in JSON format
-              //  alert("this data:"+data);
                 $("#haotest").html("this data:"+data);
             },
             error: function (msg) {
@@ -69,8 +63,23 @@ function termHandler() {//hao
 	this.newLine();
 	var line = this.lineBuffer;
 	if (line != '') {
-		if (line == 'exit') this.close()
-		else this.type('haoning typed: '+line);
+		if (line == 'exit'){
+            this.close();
+		}else{ 
+            var obj=this;
+            $.ajax({
+                type: "GET",
+                url: "../echo?"+line,
+                async:false,
+                success: function (data) { 
+                   $("#haotest").html("this data:"+data);
+                   obj.type(data);//hao
+                },
+                error: function (msg) {
+                   alert(msg);
+                }
+             });
+        }
 	}
 	this.prompt();
 }
