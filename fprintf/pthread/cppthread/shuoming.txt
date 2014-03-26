@@ -1,0 +1,2 @@
+test.cpp haoshi
+qita buhaoshi

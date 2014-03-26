@@ -7,3 +7,4 @@ make clean
 #cp -f  /data/haoning/mygit/mynginxmodule/html/nginx.conf /usr/local/nginx_upstream/conf/
 #rm -rf /usr/local/nginx_upstream/html
 #ln -s /data/haoning/mygit/mynginxmodule/html /usr/local/nginx_upstream/html
+chown -R haoning:hadoop /usr/local/nginx_upstream/

@@ -27,19 +27,20 @@ int mysystem(char* cmdstring, char* buf, int len)
     else                  /* child process */
     {
         close(fd[0]);     /* close read end */
-        if (fd[1] != STDOUT_FILENO)
+        if (fd[1] != STDERR_FILENO)
         {
-            if (dup2(fd[1], STDOUT_FILENO) != STDOUT_FILENO)
+            if (dup2(fd[1], STDERR_FILENO) != STDERR_FILENO)
             {
                 return -1;
             }
             close(fd[1]);
         } 
+        //sleep(10);
         char * argv[ ]={"ls","-al",(char *)0};
         char * envp[ ]={"PATH=/bin:/sbin",0};
 //        char * envp[ ]={"PATH=/bin",0};
 //        if(execve("/bin/ls",argv,envp) == -1){
-        if(execle("/bin/echo","PATH",NULL,envp) == -1){
+        if(execle("/bin/ls","-al",NULL,envp) == -1){
             return -1;
         }
  //       if (execl("/bin/sh", "sh", "-c", cmdstring, (char*)0) == -1){

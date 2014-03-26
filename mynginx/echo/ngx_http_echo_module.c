@@ -236,6 +236,7 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_http_send_header");
 	if(rc != NGX_OK)
 	{
+        fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_http_output_filter not end !");
 		return rc;
 	}
     fprintf(stderr,"haoning haohao -----------------: %s\n","ngx_http_output_filter end");
