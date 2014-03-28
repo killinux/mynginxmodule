@@ -1,0 +1,2 @@
+set listsize 30
+handle SIGPIPE nostop

@@ -55,7 +55,6 @@ void hao_urldecode(char *dest, const char *src)//why not **
     char code[3] = {0};
     unsigned long ascii = 0;
     char *end = NULL;
-
     while(*p)
     {   
         if(*p == '%')
@@ -125,7 +124,6 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     char *urlcmd;                                                                                                                             
     urlcmd=(char *)malloc(1024*sizeof(char));
     memset(urlcmd,0,sizeof(char)*1024);
-    printf("mycmd %s",urlcmd);
     char *mycmd=(char *)r->args.data;
     strcpy( urlcmd, mycmd);//snprintf
     char * haoout;
@@ -182,7 +180,7 @@ ngx_http_echo_handler(ngx_http_request_t *r)
     mysystem(haoout, thisbuf, 10240*sizeof(char));
     fprintf(stderr,"haoning haohao -----------------this buf: %s\n",thisbuf);
 //------
-	r->headers_out.content_type.len = sizeof("text/html") - 1;
+	r->headers_out.content_type.len = sizeof("text/html") - 1;//去掉\0
 	r->headers_out.content_type.data = (u_char *) "text/html";
 	r->headers_out.status = NGX_HTTP_OK;
 	//r->headers_out.content_length_n = elcf->ed.len;
