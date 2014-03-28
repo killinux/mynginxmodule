@@ -63,14 +63,26 @@ link RBinsert(link root,int item){
     root->red=0;//0 shi heise ,1 shi hongse
     return root;
 }
-int main(){
+int test(){
     int i=0;
     srand(time(NULL));
     link root=RBinit();
     for(i=0;i<N;i++)
-        //root=RBinsert(root,rand()%100);
         root=RBinsert(root,rand()%10);
     printf("\t\\tree");pprint(root);
     printf("\n");
     return 0;
+}
+int test2(int argc,char *argv[]){
+    int i=0;
+    link root=RBinit();
+    for(i=1;i<argc;i++){
+        root=RBinsert(root,atoi(argv[i]));
+    } 
+    printf("\t\\tree");pprint(root);
+    printf("\n");
+}
+int main(int argc,char *argv[]){
+    //test();
+    test2(argc,argv);
 }
