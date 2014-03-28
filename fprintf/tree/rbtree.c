@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-#define N 10
+#define N 5 
 typedef struct node *link;
 struct node{
     int item,red;link l,r;
@@ -12,11 +12,22 @@ link NODE(int item,link l,link r,int red){
     t->item=item;t->l=l;t->r=r;t->red=red;
     return t;
 }
+link RBinit(){
+    null=NODE(0,NULL,NULL,0);
+    null->l=null;null->r=null;                                                                                                                                          
+    return null;
+}
 link rotR(link t){
-    link x=t->l;t->l=x->r;x->r=t;return x;
+    link x=t->l;
+    t->l=x->r;
+    x->r=t;
+    return x;
 }
 link rotL(link t){
-    link x=t->r;t->r=x->l;x->l=t;return x;
+    link x=t->r;
+    t->r=x->l;
+    x->l=t;
+    return x;
 }
 void pprint(link t){
     printf("(");
@@ -27,12 +38,8 @@ void pprint(link t){
     }
     printf(")");
 }
-link RBinit(){
-    null=NODE(0,NULL,NULL,0);
-    null->l=null;null->r=null;
-    return null;
-}
-link insert_node(link t ,int item, int sw){
+//需要看递归转化栈
+link insert_node(link t ,int item, int sw){//sw o表示来自左边插入，1表示来自右边插入
     if(t==null) return NODE(item,null,null,1);
     if(t->l->red && t->r->red){
         t->red=1;t->l->red=0;t->r->red=0;
@@ -51,8 +58,9 @@ link insert_node(link t ,int item, int sw){
     return t;
 }
 link RBinsert(link root,int item){
+    printf("%d\n",item);
     root=insert_node(root,item,0);
-    root->red=0;
+    root->red=0;//0 shi heise ,1 shi hongse
     return root;
 }
 int main(){
@@ -60,7 +68,8 @@ int main(){
     srand(time(NULL));
     link root=RBinit();
     for(i=0;i<N;i++)
-        root=RBinsert(root,rand()%100);
+        //root=RBinsert(root,rand()%100);
+        root=RBinsert(root,rand()%10);
     printf("\t\\tree");pprint(root);
     printf("\n");
     return 0;
