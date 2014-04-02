@@ -14,7 +14,7 @@ link NODE(int item,link l,link r,int red){
 }
 link RBinit(){
     null=NODE(0,NULL,NULL,0);
-    null->l=null;null->r=null;                                                                                                                                          
+    null->l=null;null->r=null;  
     return null;
 }
 link rotR(link t){
@@ -38,8 +38,7 @@ void pprint(link t){
     }
     printf(")");
 }
-//需要看递归转化栈
-link insert_node(link t ,int item, int sw){//sw o表示来自左边插入，1表示来自右边插入
+link insert_node(link t ,int item, int sw){//sw o表示来自左边插入，1表示来自右边插入//需要看递归转化栈
     if(t==null) return NODE(item,null,null,1);
     if(t->l->red && t->r->red){
         t->red=1;t->l->red=0;t->r->red=0;

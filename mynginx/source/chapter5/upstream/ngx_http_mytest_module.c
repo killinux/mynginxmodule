@@ -1,8 +1,6 @@
 #include <ngx_config.h>
 #include <ngx_core.h>
 #include <ngx_http.h>
-
-
 typedef struct
 {
     ngx_http_status_t           status;
@@ -13,20 +11,14 @@ typedef struct
 {
     ngx_http_upstream_conf_t upstream;
 } ngx_http_mytest_conf_t;
-
-
-static char *
-ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
+static char * ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 
 static ngx_int_t ngx_http_mytest_handler(ngx_http_request_t *r);
 static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf);
 static char *ngx_http_mytest_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child);
 
-static ngx_int_t
-mytest_upstream_process_header(ngx_http_request_t *r);
-static ngx_int_t
-mytest_process_status_line(ngx_http_request_t *r);
-
+static ngx_int_t mytest_upstream_process_header(ngx_http_request_t *r);
+static ngx_int_t mytest_process_status_line(ngx_http_request_t *r);
 
 static ngx_str_t  ngx_http_proxy_hide_headers[] =
 {
@@ -41,10 +33,8 @@ static ngx_str_t  ngx_http_proxy_hide_headers[] =
     ngx_null_string
 };
 
-
 static ngx_command_t  ngx_http_mytest_commands[] =
 {
-
     {
         ngx_string("mytest"),
         NGX_HTTP_MAIN_CONF | NGX_HTTP_SRV_CONF | NGX_HTTP_LOC_CONF | NGX_HTTP_LMT_CONF | NGX_CONF_NOARGS,
@@ -53,7 +43,6 @@ static ngx_command_t  ngx_http_mytest_commands[] =
         0,
         NULL
     },
-
     ngx_null_command
 };
 
@@ -88,17 +77,14 @@ ngx_module_t  ngx_http_mytest_module =
     NGX_MODULE_V1_PADDING
 };
 
-
 static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf)
 {
     ngx_http_mytest_conf_t  *mycf;
-
     mycf = (ngx_http_mytest_conf_t  *)ngx_pcalloc(cf->pool, sizeof(ngx_http_mytest_conf_t));
     if (mycf == NULL)
     {
         return NULL;
     }
-
     //以下简单的硬编码ngx_http_upstream_conf_t结构中的各成员，例如
 //超时时间都设为1分钟。这也是http反向代理模块的默认值
     mycf->upstream.connect_timeout = 60000;
@@ -117,7 +103,6 @@ static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf)
     mycf->upstream.busy_buffers_size = 2 * ngx_pagesize;
     mycf->upstream.temp_file_write_size = 2 * ngx_pagesize;
     mycf->upstream.max_temp_file_size = 1024 * 1024 * 1024;
-
     //upstream模块要求hide_headers成员必须要初始化（upstream在解析
 //完上游服务器返回的包头时，会调用
 //ngx_http_upstream_process_headers方法按照hide_headers成员将
@@ -127,10 +112,8 @@ static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf)
 //方法初始化hide_headers 成员
     mycf->upstream.hide_headers = NGX_CONF_UNSET_PTR;
     mycf->upstream.pass_headers = NGX_CONF_UNSET_PTR;
-
     return mycf;
 }
-
 
 static char *ngx_http_mytest_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child)
 {
@@ -141,25 +124,19 @@ static char *ngx_http_mytest_merge_loc_conf(ngx_conf_t *cf, void *parent, void *
     hash.max_size = 100;
     hash.bucket_size = 1024;
     hash.name = "proxy_headers_hash";
-    if (ngx_http_upstream_hide_headers_hash(cf, &conf->upstream,
-                                            &prev->upstream, ngx_http_proxy_hide_headers, &hash)
-        != NGX_OK)
+    if (ngx_http_upstream_hide_headers_hash(cf, &conf->upstream, &prev->upstream, ngx_http_proxy_hide_headers, &hash)!= NGX_OK)
     {
         return NGX_CONF_ERROR;
     }
-
     return NGX_CONF_OK;
 }
 
-
-static ngx_int_t
-mytest_upstream_create_request(ngx_http_request_t *r)
+static ngx_int_t mytest_upstream_create_request(ngx_http_request_t *r)
 {
     //发往google上游服务器的请求很简单，就是模仿正常的搜索请求，
 //以/search?q=…的URL来发起搜索请求。backendQueryLine中的%V等转化
 //格式的用法，请参见4.4节中的表4-7
-    static ngx_str_t backendQueryLine =
-        ngx_string("GET /search?q=%V HTTP/1.1\r\nHost: www.google.com\r\nConnection: close\r\n\r\n");
+    static ngx_str_t backendQueryLine =ngx_string("GET /search?q=%V HTTP/1.1\r\nHost: www.google.com\r\nConnection: close\r\n\r\n");
     ngx_int_t queryLineLen = backendQueryLine.len + r->args.len - 2;
     //必须由内存池中申请内存，这有两点好处：在网络情况不佳的情况下，向上游
 //服务器发送请求时，可能需要epoll多次调度send发送才能完成，
@@ -191,8 +168,7 @@ mytest_upstream_create_request(ngx_http_request_t *r)
     return NGX_OK;
 }
 
-static ngx_int_t
-mytest_process_status_line(ngx_http_request_t *r)
+static ngx_int_t mytest_process_status_line(ngx_http_request_t *r)
 {
     size_t                 len;
     ngx_int_t              rc;
@@ -253,7 +229,6 @@ mytest_process_status_line(ngx_http_request_t *r)
     }
 
     ngx_memcpy(u->headers_in.status_line.data, ctx->status.start, len);
-
     //下一步将开始解析http头部，设置process_header回调方法为
 //mytest_upstream_process_header，
 //之后再收到的新字符流将由mytest_upstream_process_header解析
@@ -264,9 +239,7 @@ mytest_process_status_line(ngx_http_request_t *r)
     return mytest_upstream_process_header(r);
 }
 
-
-static ngx_int_t
-mytest_upstream_process_header(ngx_http_request_t *r)
+static ngx_int_t mytest_upstream_process_header(ngx_http_request_t *r)
 {
     ngx_int_t                       rc;
     ngx_table_elt_t                *h;
@@ -305,7 +278,6 @@ mytest_upstream_process_header(ngx_http_request_t *r)
             {
                 return NGX_ERROR;
             }
-
             h->value.data = h->key.data + h->key.len + 1;
             h->lowcase_key = h->key.data + h->key.len + 1 + h->value.len + 1;
 
@@ -326,7 +298,6 @@ mytest_upstream_process_header(ngx_http_request_t *r)
             //upstream模块会对一些http头部做特殊处理
             hh = ngx_hash_find(&umcf->headers_in_hash, h->hash,
                                h->lowcase_key, h->key.len);
-
             if (hh && hh->handler(r, h, hh->offset) != NGX_OK)
             {
                 return NGX_ERROR;
@@ -334,7 +305,6 @@ mytest_upstream_process_header(ngx_http_request_t *r)
 
             continue;
         }
-
         //返回NGX_HTTP_PARSE_HEADER_DONE表示响应中所有的http头部都解析
 //完毕，接下来再接收到的都将是http包体
         if (rc == NGX_HTTP_PARSE_HEADER_DONE)
@@ -356,7 +326,6 @@ mytest_upstream_process_header(ngx_http_request_t *r)
                 ngx_str_null(&h->value);
                 h->lowcase_key = (u_char *) "server";
             }
-
             if (r->upstream->headers_in.date == NULL)
             {
                 h = ngx_list_push(&r->upstream->headers_in.headers);
@@ -374,7 +343,6 @@ mytest_upstream_process_header(ngx_http_request_t *r)
 
             return NGX_OK;
         }
-
         //如果返回NGX_AGAIN则表示状态机还没有解析到完整的http头部，
 //要求upstream模块继续接收新的字符流再交由process_header
 //回调方法解析
@@ -382,29 +350,22 @@ mytest_upstream_process_header(ngx_http_request_t *r)
         {
             return NGX_AGAIN;
         }
-
         //其他返回值都是非法的
-        ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,
-                      "upstream sent invalid header");
-
+        ngx_log_error(NGX_LOG_ERR, r->connection->log, 0,"upstream sent invalid header");
         return NGX_HTTP_UPSTREAM_INVALID_HEADER;
     }
 }
 
-static void
-mytest_upstream_finalize_request(ngx_http_request_t *r, ngx_int_t rc)
+static void mytest_upstream_finalize_request(ngx_http_request_t *r, ngx_int_t rc)
 {
     ngx_log_error(NGX_LOG_DEBUG, r->connection->log, 0,
                   "mytest_upstream_finalize_request");
 }
 
-
-static char *
-ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
+static char * ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
     ngx_http_core_loc_conf_t  *clcf;
-
-    //首先找到mytest配置项所属的配置块，clcf貌似是location块内的数据
+//首先找到mytest配置项所属的配置块，clcf貌似是location块内的数据
 //结构，其实不然，它可以是main、srv或者loc级别配置项，也就是说在每个
 //http{}和server{}内也都有一个ngx_http_core_loc_conf_t结构体
     clcf = ngx_http_conf_get_module_loc_conf(cf, ngx_http_core_module);
@@ -413,13 +374,10 @@ ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 //请求的主机域名、URI与mytest配置项所在的配置块相匹配，就将调用我们
 //实现的ngx_http_mytest_handler方法处理这个请求
     clcf->handler = ngx_http_mytest_handler;
-
     return NGX_CONF_OK;
 }
 
-
-static ngx_int_t
-ngx_http_mytest_handler(ngx_http_request_t *r)
+static ngx_int_t ngx_http_mytest_handler(ngx_http_request_t *r)
 {
     fprintf(stderr, "haoning ngx_http_mytest_handler:%s\r\n","ningning");
     //首先建立http上下文结构体ngx_http_mytest_ctx_t
