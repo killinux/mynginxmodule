@@ -11,14 +11,18 @@ typedef struct
 {
     ngx_http_upstream_conf_t upstream;
 } ngx_http_mytest_conf_t;
-static char * ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 
+static char * ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 static ngx_int_t ngx_http_mytest_handler(ngx_http_request_t *r);
+
 static void* ngx_http_mytest_create_loc_conf(ngx_conf_t *cf);
 static char *ngx_http_mytest_merge_loc_conf(ngx_conf_t *cf, void *parent, void *child);
 
-static ngx_int_t mytest_upstream_process_header(ngx_http_request_t *r);
+//static ngx_int_t mytest_upstream_process_header(ngx_http_request_t *r);
+
+static ngx_int_t mytest_upstream_create_request(ngx_http_request_t *r);
 static ngx_int_t mytest_process_status_line(ngx_http_request_t *r);
+static void mytest_upstream_finalize_request(ngx_http_request_t *r, ngx_int_t rc);
 
 static ngx_str_t  ngx_http_proxy_hide_headers[] =
 {
@@ -188,7 +192,7 @@ static ngx_int_t mytest_process_status_line(ngx_http_request_t *r)
     rc = ngx_http_parse_status_line(r, &u->buffer, &ctx->status);
     //返回NGX_AGAIN表示还没有解析出完整的http响应行，需要接收更多的
 //字符流再来解析
-    if (rc == NGX_AGAIN)
+    if (rc == NGX_AGAIN)//haoning ********
     {
         return rc;
     }
@@ -203,7 +207,6 @@ static ngx_int_t mytest_process_status_line(ngx_http_request_t *r)
 
         return NGX_OK;
     }
-
     //以下表示解析到完整的http响应行，这时会做一些简单的赋值操作，将解析出
 //的信息设置到r->upstream->headers_in结构体中，upstream解析完所
 //有的包头时，就会把headers_in中的成员设置到将要向下游发送的

@@ -507,3 +507,38 @@ process(8): {??2?$15}
 matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@42b988a6}code: 1005
 send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@22ba6c83}code: 1005
 org.java_websocket.WebSocket@6c6e70c7 has left the room!
+process(240): {GET http://www.baidu.com/index.html HTTP/1.1
+HOST:www.baidu.com
+Accept:*/*
+Accept-Encoding:gzip,deflate,sdch
+Cache-Control:no-cache
+Connection:close
+User-Agent:Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0)
+
+}
+process(446): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://killinux.com
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: MPA/l2+A5vHDmqD3ZHIJDA==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@9d04653}
+write(5): {?new}
+org.java_websocket.WebSocket@48b8f82d entered the room!
+process(9): {??6"?EmQ}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@67ad77a7}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@2d8aaa1e}
+write(5): {?sss}
+org.java_websocket.WebSocket@48b8f82d: sss
+process(8): {??eS[]f?}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@6aa6aeed}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@6526804e}code: 1005
+org.java_websocket.WebSocket@48b8f82d has left the room!
