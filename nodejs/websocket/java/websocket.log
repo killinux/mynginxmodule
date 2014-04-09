@@ -542,3 +542,29 @@ process(8): {??eS[]f?}
 matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@6aa6aeed}code: 1005
 send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@6526804e}code: 1005
 org.java_websocket.WebSocket@48b8f82d has left the room!
+process(445): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://haoning.net
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: 8FSZGEWZq5KZN84zr5KZ5g==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@60072ffb}
+write(5): {?new}
+org.java_websocket.WebSocket@77df38fd entered the room!
+process(9): {???? h??}
+matched frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@6016a786}
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@6f507fb2}
+write(5): {?sss}
+org.java_websocket.WebSocket@77df38fd: sss
+process(8): {????E??;}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@defb836}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@7526e85f}code: 1005
+org.java_websocket.WebSocket@77df38fd has left the room!
