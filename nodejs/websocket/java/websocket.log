@@ -568,3 +568,24 @@ process(8): {????E??;}
 matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@defb836}code: 1005
 send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@7526e85f}code: 1005
 org.java_websocket.WebSocket@77df38fd has left the room!
+process(446): {GET / HTTP/1.1
+Upgrade: websocket
+Connection: Upgrade
+Host: 203.195.183.79:8887
+Origin: http://killinux.com
+Pragma: no-cache
+Cache-Control: no-cache
+Sec-WebSocket-Key: oTa94yKMIt9DnT8FP2eeTQ==
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits, x-webkit-deflate-frame
+User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1700.76 Safari/537.36
+
+}
+open using draft: Draft_17
+send frame: Framedata{ optcode:TEXT, fin:true, payloadlength:3, payload:[B@68916a2}
+write(5): {?new}
+org.java_websocket.WebSocket@122ce908 entered the room!
+process(8): {??#]3?}
+matched frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@4277158a}code: 1005
+send frame: Framedata{ optcode:CLOSING, fin:true, payloadlength:2, payload:[B@1827391d}code: 1005
+org.java_websocket.WebSocket@122ce908 has left the room!

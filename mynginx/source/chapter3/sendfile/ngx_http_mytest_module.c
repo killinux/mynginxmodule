@@ -43,6 +43,7 @@ ngx_module_t  ngx_http_mytest_module =
 };
 static char * ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 {
+    fprintf(stderr, "haoning --- ngx_http_mytest:%s\r\n","sendfile"); 
     ngx_http_core_loc_conf_t  *clcf;
     //首先找到mytest配置项所属的配置块，clcf貌似是location块内的数据
 //结构，其实不然，它可以是main、srv或者loc级别配置项，也就是说在每个
@@ -56,6 +57,7 @@ static char * ngx_http_mytest(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
 }
 static ngx_int_t ngx_http_mytest_handler(ngx_http_request_t *r)
 {
+    fprintf(stderr, "haoning ngx_http_mytest_handler:%s\r\n","sendfile");
     //必须是GET或者HEAD方法，否则返回405 Not Allowed
     if (!(r->method & (NGX_HTTP_GET | NGX_HTTP_HEAD)))
     {
@@ -70,7 +72,8 @@ static ngx_int_t ngx_http_mytest_handler(ngx_http_request_t *r)
     ngx_buf_t *b;
     b = ngx_palloc(r->pool, sizeof(ngx_buf_t));
     //要打开的文件
-    u_char* filename = (u_char*)"/tmp/test.txt";
+    //u_char* filename = (u_char*)"/tmp/test.txt";
+    u_char* filename = (u_char*)"/data/0208.tar.gz";
     b->in_file = 1;
     b->file = ngx_pcalloc(r->pool, sizeof(ngx_file_t));
     b->file->fd = ngx_open_file(filename, NGX_FILE_RDONLY | NGX_FILE_NONBLOCK, NGX_FILE_OPEN, 0);
