@@ -19,7 +19,7 @@ int _flag=0;
             printf("Err: can not open output file.\n"); \
             break; \
         } \
-        fprintf(mydebug_fd,args,##fmt); \
+        fprintf(my_debug_fd,args,##fmt); \
         fflush(my_debug_fd); \
     }while(0)
 

@@ -4,7 +4,7 @@
 
 void enable_my_debug( void ) __attribute__((no_instrument_function));
 void disable_my_debug( void ) __attribute__((no_instrument_function));
-void get_my_debug_flag( void ) __attribute__((no_instrument_function));
+int get_my_debug_flag( void ) __attribute__((no_instrument_function));
 void set_my_debug_flag( int ) __attribute__((no_instrument_function));
 void main_constructor( void  ) __attribute__((no_instrument_function,constructor));
 void main_destructor( void  ) __attribute__((no_instrument_function,destructor));
