@@ -35,6 +35,7 @@ typedef void (*ngx_connection_handler_pt)(ngx_connection_t *c);
 #define  NGX_ABORT      -6
 
 
+#include "my_debug.h"
 #include <ngx_errno.h>
 #include <ngx_atomic.h>
 #include <ngx_thread.h>

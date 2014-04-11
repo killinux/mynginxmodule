@@ -5,9 +5,11 @@
  */
 //test
 
+#define MY_DEBUG_MAIN 1
 #include   <ngx_config.h>
 #include   <ngx_core.h>
 #include   <nginx.h>
+#include   "my_debug.h"
 
 
 static ngx_int_t ngx_add_inherited_sockets(ngx_cycle_t *cycle);
@@ -201,6 +203,7 @@ static char **ngx_os_environ;
 int ngx_cdecl
 main(int argc, char *const *argv)
 {
+    enable_my_debug();
 	int abc=123;
 	printf("haoning nginx test %d",abc);
     ngx_int_t         i;
