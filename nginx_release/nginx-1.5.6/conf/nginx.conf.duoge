@@ -1,0 +1,58 @@
+worker_processes  4;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    server {
+        autoindex on;
+        listen 8080;
+        location ~ \.c$ {
+            rewrite ^ http://106.187.88.34/code.html?aa=$uri;
+        }
+        location / {
+                root   html;
+                index  index.html index.htm;
+        }
+    }
+    server {
+        listen       80;
+        server_name  localhost;
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+    server {
+        listen       80; 
+        server_name  www.nginx.mobi;
+        location / {
+            proxy_pass http://www.baidu.com;
+            proxy_redirect off;
+            proxy_set_header X-Forwarded-For $remote_addr;
+            client_max_body_size 10m;
+            client_body_buffer_size 128k;
+            proxy_connect_timeout 600;
+            proxy_read_timeout 600;
+            proxy_send_timeout 600;
+            proxy_buffer_size 8k;
+            proxy_buffers 4 32k;
+            proxy_busy_buffers_size 64k;
+            proxy_temp_file_write_size 64k;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }   
+    }   
+}
+
+
+
