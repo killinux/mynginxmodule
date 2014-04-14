@@ -10,8 +10,8 @@
 #ifndef __SYMBOLS_H
 #define __SYMBOLS_H
 
-#define MAX_FUNCTIONS		200
-#define MAX_FUNCTION_NAME	50
+#define MAX_FUNCTIONS		20000
+#define MAX_FUNCTION_NAME	5000
 
 typedef struct {
   unsigned int address;

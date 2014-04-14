@@ -16,6 +16,7 @@ pvtrace: $(OBJS)
 
 install: pvtrace
 	cp pvtrace /usr/local/bin
+	cp pvtrace /usr/bin
 
 clean:
 	rm -f pvtrace *.o

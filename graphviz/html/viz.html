@@ -1,0 +1,57 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Viz.js</title>
+</head>
+<body>
+<script type="text/vnd.graphviz"  id="cluster">
+digraph G {
+	subgraph cluster_0 {
+		style=filled;
+		color=lightgrey;
+		node [style=filled,color=white];
+		a0 -> a1 -> a2 -> a3;
+		label = "process #1";
+	}
+	subgraph cluster_1 {
+		node [style=filled];
+		b0 -> b1 -> b2 -> b3;
+		label = "process #2";
+		color=blue
+	}
+	start -> a0;
+	start -> b0;
+	a1 -> b3;
+	b2 -> a3;
+	a3 -> a0;
+	a3 -> end;
+	b3 -> end;
+	start [shape=Mdiamond];
+	end [shape=Msquare];
+}
+</script>
+  <script src="viz.js"></script>
+  <script>
+      function inspect(s) {
+        return "<pre>" + s.replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;") + "</pre>"
+      }
+      function src(id) {
+        return document.getElementById(id).innerHTML;
+      }
+      function example(id, format, engine) {
+        var result;
+        try {
+          result = Viz(src(id), format, engine);
+          if (format === "svg")
+            return result;
+          else
+            return inspect(result);
+        } catch(e) {
+          return inspect(e.toString());
+        }
+      }
+      document.body.innerHTML += "<h1>Cluster (svg output)</h1>";
+      document.body.innerHTML += example("cluster", "svg");
+      </script>
+</body>
+</html>
