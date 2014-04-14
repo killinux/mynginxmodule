@@ -1,5 +1,5 @@
 #include "my_debug.h"
-#define MY_DEBUG_FILE_PATH "/data/mydebug.log"
+#define MY_DEBUG_FILE_PATH "/usr/local/nginx_sendfile/sbin/trace.txt"
 int _flag=0;
 #define open_my_debug_file() \
     (my_debug_fd=fopen(MY_DEBUG_FILE_PATH,"a"))

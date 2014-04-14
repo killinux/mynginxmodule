@@ -1,15 +1,11 @@
 /********************************************************************
  * File: symbols.c
- *
  * Symbols functions.  This file has functions for symbols mgmt
  *  (such as translating addresses to function names with 
  *  addr2line) and also connectivity matrix functions to keep
  *  the function call trace counts.
- *
- * Author: M. Tim Jones <mtj@mtjones.com>
- *
+ * Author: haoning <haoningabc@163.com>
  */
-
 #include <stdio.h>
 #include <assert.h>
 #include <string.h>
@@ -46,7 +42,6 @@ void initSymbol( char *image )
   return;
 }
 
-
 int lookupSymbol( unsigned int address )
 {
   int index;
@@ -58,9 +53,7 @@ int lookupSymbol( unsigned int address )
     if (functions[index].address == address) return index;
 
   }
-
   assert(0);
-
   return 0;
 }
 

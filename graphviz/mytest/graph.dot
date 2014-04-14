@@ -1,0 +1,14 @@
+digraph test {
+
+  main [shape=rectangle]
+  heihei [shape=rectangle]
+  test2 [shape=rectangle]
+  test1 [shape=ellipse]
+  haha [shape=rectangle]
+  main -> heihei [label="1 calls" fontsize="10"]
+  main -> haha [label="1 calls" fontsize="10"]
+  heihei -> test2 [label="2 calls" fontsize="10"]
+  test2 -> test1 [label="2 calls" fontsize="10"]
+  haha -> heihei [label="1 calls" fontsize="10"]
+
+}
