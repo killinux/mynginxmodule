@@ -1,44 +1,65 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "my_debug.h"
+#define MY_DEBUG_FILE_PATH1 "/usr/local/nginx_sendfile/sbin/trace.txt"
+#define MY_DEBUG_FILE_PATH "/data/haoning/mygit/mynginxmodule/nginx_release/debug/my_debug.log"
+int _flag=0;
+#define open_my_debug_file() \
+    (my_debug_fd=fopen(MY_DEBUG_FILE_PATH,"a"))
+#define close_my_debug_file() \
+    do { \
+        if (NULL != my_debug_fd) { \
+            fclose(my_debug_fd); \
+        } \
+    }while(0)
 
-/* Function prototypes with attributes */
+#define my_debug_print(args,fmt...) \
+    do{ \
+        if (0 == _flag) { \
+            break; \
+        } \
+        if (NULL == my_debug_fd && NULL == open_my_debug_file()) { \
+            printf("Err: can not open output file.\n"); \
+            break; \
+        } \
+        fprintf(my_debug_fd,args,##fmt); \
+        fflush(my_debug_fd); \
+    }while(0)
+
+void enable_my_debug( void )
+{
+    _flag = 1;
+}
+void disable_my_debug( void )
+{
+    _flag = 0;
+}
+int get_my_debug_flag( void )
+{
+    return _flag;
+}
+void set_my_debug_flag( int flag )
+{
+    _flag = flag;
+}
 void main_constructor( void )
-	__attribute__ ((no_instrument_function, constructor));
-
+{
+    //do nothing
+}
 void main_destructor( void )
-	__attribute__ ((no_instrument_function, destructor));
-
-void __cyg_profile_func_enter( void *, void * ) 
-	__attribute__ ((no_instrument_function));
-
-void __cyg_profile_func_exit( void *, void * )
-	__attribute__ ((no_instrument_function));
-
-
-static FILE *fp;
-
-
-void main_constructor( void )
 {
-  fp = fopen( "/usr/local/nginx_sendfile/sbin/trace.txt", "w" );
-  if (fp == NULL) exit(-1);
+    close_my_debug_file();
+}
+void __cyg_profile_func_enter( void *this,void *call )
+{
+    my_debug_print("enter\n%p\n%p\n",call,this);
+}
+void __cyg_profile_func_exit( void *this,void *call )
+{
+    my_debug_print("exit\n%p\n%p\n",call,this);
 }
 
 
-void main_deconstructor( void )
-{
-  fclose( fp );
-}
 
 
-void __cyg_profile_func_enter( void *this, void *callsite )
-{
-  fprintf(fp, "E%p\n", (int *)this);
-}
 
 
-void __cyg_profile_func_exit( void *this, void *callsite )
-{
-  fprintf(fp, "X%p\n", (int *)this);
-}
 

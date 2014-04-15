@@ -203,7 +203,7 @@ static char **ngx_os_environ;
 int ngx_cdecl
 main(int argc, char *const *argv)
 {
-    //enable_my_debug();
+    enable_my_debug();
 	int abc=123;
 	printf("haoning nginx test %d",abc);
     ngx_int_t         i;

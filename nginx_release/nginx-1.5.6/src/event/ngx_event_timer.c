@@ -146,7 +146,7 @@ ngx_event_expire_timers(void)
 
             ev->timedout = 1;
 
-            ev->handler(ev);
+            ev->handler(ev);//hao hao shenrupaoxi nginx
 
             continue;
         }
