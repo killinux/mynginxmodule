@@ -1,18 +1,16 @@
-#include <linux/init.h>
+#include <linux/kernel.h>
 #include <linux/module.h>
-static int hello_init(void)
+static int __init helloworld_init(void)
 {
-    printk(KERN_INFO "hello world haohao enter\n");
+    printk("<0>""helloworld!\n");
     return 0;
 }
-static void hello_exit(void)
+static void __exit helloworld_exit(void)
 {
-    printk(KERN_INFO "hello world exit\n");
+    printk("<0>""byebye!\n");
 }
-module_init(hello_init);
-module_exit(hello_exit);
+module_init(helloworld_init);
+module_exit(helloworld_exit);
 
-MODULE_AUTHOR("haoning <haoningabc@163.com>");
-MODULE_LICENSE("Dual BSD/GPL");
-MOUDULE_DESCRIPTION(" a helloworld haoning");
-MOUDULE_ALIAS("a simplest moudle");
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("haoning");
